@@ -2,14 +2,14 @@
   <div class="start-view">
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
-    
-    <button class="start-button" @click="startgame"><router-link v-bind:to="'/startgame/'"> Start game</router-link></button>
+    <button class="start-button" @click="startGame">Start game</button>
 
-    <button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'"> How to play</router-link></button>
+    <button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" > How to play</router-link></button>
   
 
     <!-- <button v-on:click="instructions-button"> </button> !-->
   </div> 
+
 </template>
 
 <script>
@@ -63,6 +63,7 @@ export default {
 <style scoped>
 .start-view {
   background-color: orange;
+  color: rgb(28, 28, 28);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +72,7 @@ export default {
 }
 
 .game-title {
-  color: black;
+  color: rgb(28, 28, 28);
   font-size: 200px;
   margin-bottom: -70px;
   position: center;
