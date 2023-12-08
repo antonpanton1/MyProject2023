@@ -1,5 +1,5 @@
 <template>
-    
+    <div class="background">
     <div class="rectangle">
         <h1 class="instructions-heading_one">Instructions</h1>
         
@@ -23,7 +23,7 @@
     </ul>
     </div>
 
-
+</div>
     
 
 </template>
@@ -41,9 +41,9 @@ const socket = io("localhost:3000");
 
       width: 90%;
       height: 800px;
-      background-color: #eeee;
+      background-color: #ffffff8b;
       border-radius: 20px; /* rounded corners */
-      margin: 30px auto 0; /* margin top, content centered, 0 for sides */      
+      margin: 30px auto 0; /* margin top, content centered, 0 for sides */
     }
 
 .instructions-heading_one {
@@ -58,4 +58,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     }
 
+.background {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 </style>
