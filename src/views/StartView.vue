@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 .start-view {
-  background-color: orange;
+  background-color: pink;
   color: rgb(28, 28, 28);
   display: flex;
   flex-direction: column;
