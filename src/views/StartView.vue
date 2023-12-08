@@ -2,9 +2,10 @@
   <div class="start-view">
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
-    <button class="start-button" @click="startGame">Start game</button>
+    
+    <button class="start-button" @click="startgame"><router-link v-bind:to="'/startgame/'"> Start game</router-link></button>
 
-    <button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" > How to play</router-link></button>
+    <button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'"> How to play</router-link></button>
   
 
     <!-- <button v-on:click="instructions-button"> </button> !-->
@@ -50,7 +51,7 @@ export default {
     },
     startGame: function () {
       // Should redirect to the next Game-page
-      alert("Game started!");
+      //alert("Game started!");
     },
     instructions: function () {
       // Should redirect to an instructions page
