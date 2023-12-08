@@ -4,8 +4,8 @@
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
     <button class="start-button" @click="startGame"><router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link></button>
    
-    <button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" style="text-decoration: none; color: inherit;" >How to play</router-link></button>
-  
+    <!--<button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" style="text-decoration: none; color: inherit;" >How to play</router-link></button>-->
+    <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #3498db; color: #fff; border: none; cursor: pointer;">How to play</router-link>
 
     <!-- <button v-on:click="instructions-button"> </button> !-->
   </div> 
