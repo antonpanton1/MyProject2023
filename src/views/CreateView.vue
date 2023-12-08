@@ -71,12 +71,6 @@ export default {
     },
     runQuestion: function () {
       socket.emit("runQuestion", {pollId: this.pollId, questionNumber: this.questionNumber})
-<<<<<<< HEAD
-    }
-  }
-}
-</script>
-=======
     },
     testpage: function(){
       socket.emit("testSend", {text: this.testText})    
@@ -88,4 +82,3 @@ export default {
 
 <style>
 </style>
->>>>>>> origin/main
