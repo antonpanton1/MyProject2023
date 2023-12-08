@@ -22,7 +22,7 @@ export default {
     // 3 sec timer
     setTimeout(() => {
       this.showMessage = false;
-    }, 4000);
+    }, 3000);
   }
 };
 </script>

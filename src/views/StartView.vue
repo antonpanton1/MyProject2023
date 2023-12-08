@@ -1,4 +1,5 @@
 <template>
+
   <div class="start-view">
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
@@ -73,7 +74,7 @@ export default {
 }
 
 .game-title {
-  color: rgb(28, 28, 28);
+  color: black;
   font-size: 200px;
   margin-bottom: -70px;
   position: center;
