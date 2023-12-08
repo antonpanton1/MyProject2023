@@ -11,7 +11,7 @@
             <p>Welcome to the game! Follow these instructions to get started.</p>
         <h2>How to Play</h2>
     <ul>
-      <h>Step 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h> <br>
+      <h>Step 1: Write three qustions with an answer between 0 to 100 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h> <br>
       <h>Step 2: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h> <br>
       <h>Step 3: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</h>
     </ul>
