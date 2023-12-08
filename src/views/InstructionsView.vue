@@ -4,7 +4,7 @@
         <h1 class="instructions-heading_one">Instructions</h1>
         
         <header>
-            <h1>Game ANTON SVERIGEIDAInstructions</h1>
+            <h1>Game ANTON SVERIGEIDAInstructions också test</h1>
         </header>
 
         <h2>Overview</h2>
