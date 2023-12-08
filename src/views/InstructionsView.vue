@@ -1,7 +1,7 @@
 <template>
     
     <div class="rectangle">
-        <h1 class="instructions-heading_one">Instructions</h1>
+        <h1 class="instructions-heading_one">AnTÅÅÅN</h1>
         
         <header>
             <h1>Game Instructions test</h1>
