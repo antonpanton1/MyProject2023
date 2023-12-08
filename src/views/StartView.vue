@@ -1,6 +1,6 @@
 <template>
   <div class="start-view">
-    <h1 class="game-title">0-1000</h1>
+    <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
     <button class="start-button" @click="startGame"><router-link v-bind:to="'/startgame/'" >Start game</router-link></button>
    
