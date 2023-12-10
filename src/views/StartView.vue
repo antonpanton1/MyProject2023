@@ -7,7 +7,7 @@
    
     <!--<button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" style="text-decoration: none; color: inherit;" >How to play</router-link></button>-->
     <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">How to play</router-link>
-
+    
   </div> 
 
 </template>
