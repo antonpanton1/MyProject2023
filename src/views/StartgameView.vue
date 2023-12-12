@@ -61,7 +61,9 @@
     <button type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
                   Remove Question
     </button>
+    <router-link class="WaitingRoomButton" :to="'/waitingroom/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
   </div>
+  
 </template>
 
 <script>
