@@ -43,7 +43,7 @@ export default{
 },
     methods:{
         submitUsername: function(){
-            socket.emit("submitUsername", {pollId: this.pollId, lang: this.lang, username: this.username })
+            socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
         }
     }
 };
