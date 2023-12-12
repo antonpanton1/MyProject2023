@@ -7,7 +7,7 @@
     </div>
 
     <div class="questionTitle">
-      <h2>Type your questions and answers bellow! </h2>
+      <h2>Type your questions and answers below! </h2>
     </div>    
     <div class="questions">
       <p>
@@ -63,6 +63,7 @@
                   Add question
     </button>
   </div>
+  <router-link class="enterWaitingRoom" :to="'/waitingroom/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;"> Enter Waiting Room</router-link>
 </template>
 
 <script>
