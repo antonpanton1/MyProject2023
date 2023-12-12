@@ -39,16 +39,28 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
+<<<<<<< Updated upstream
   socket.on('sumbitUsername', function(d) {
     data.submitUsername(d.pollId, d.username);
     io.to(d.pollId).emit('participantUpdate', data.getParticipants(d.pollId));
     console.log(d.username)
   });
+=======
+  
+>>>>>>> Stashed changes
 
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
+<<<<<<< Updated upstream
   })
+=======
+  });
+
+  socket.on('testSend', (text) => {
+    io.emit('testEmit',text); // Update testText with data received from socket
+  });
+>>>>>>> Stashed changes
  
 }
 
