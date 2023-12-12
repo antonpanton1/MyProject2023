@@ -20,13 +20,21 @@ export default {
     data: function () {
     return {
         pollId: "inactive poll",
-        userName: ""
-    }
+        userName: ["test1", "test2"],
+        uiLabels: {},
+        lang: localStorage.getItem("lang") || "en",
+        participants: []
+        }
     },
     created: function () {
     this.pollId = this.$route.params.id
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+        this.uiLabels = labels
+    })
+    socket.on("participantsUpdate", )
     socket.emit('joinPoll', this.pollId)
-   
+
     },
     methods: {
     submitUserName: function () {
