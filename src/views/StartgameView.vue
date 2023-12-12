@@ -1,30 +1,35 @@
 <template>
   <div class="question-view_background">
+    <h1 v-if="showMessage" class="questions-view">you are the</h1> <br>
+    <div v-if="showMessage" class="text-container">
+      <h1 class="blacktext">main</h1>
+      <h1 class="plaintext">character.</h1>
+    </div>
 
     <div class="questionTitle">
-      <h2>Type your questions and answers below! </h2>
+      <h2>Type your questions and answers bellow! </h2>
     </div>    
     <div class="questions">
       <p>
         <label for="Question 1">
           Question 1:
         </label><br>
-        <input typ="text" id="Question 1" v-model="question1" requeried="required" placeholder="Good questions only pls">
+        <input type="text" id="Question 1" v-model="question1" requeried="required" placeholder="Good questions only pls">
         {{ question1 }}
       </p>
       <p v-if= "questionNR > 0 ">
         <label for="Question 2">
           Question 2:
         </label><br>
-        <input typ="text" id="Question 1" v-model="question1" requeried="required" placeholder="Good questions only pls">
-        {{ question1 }}
+        <input typ="text" id="Question 2" v-model="question2" requeried="required" placeholder="Good pls">
+        {{ question2 }}
       </p>
       <p v-if= "questionNR > 1 ">
         <label for="Question 3">
           Question 3:
         </label><br>
-        <input typ="text" id="Question 1" v-model="question1" requeried="required" placeholder="Good questions only pls">
-        {{ question1 }}
+        <input typ="text" id="Question 1" v-model="question3" requeried="required" placeholder="Good questions only pls">
+        {{ question3 }}
       </p>
     
     </div>
@@ -41,39 +46,58 @@
         <label for="Answer 2">
          Answer 2:
          </label><br>
-         <input type="number" id="Answer 1" v-model="answer1" required="required" placeholder="Your answer here">
-         {{ answer1 }}
+         <input type="number" id="Answer 2" v-model="answer2" required="required" placeholder="Your answer here">
+         {{ answer2 }}
       </p>  
       <p v-if= "questionNR > 1 ">
         <label for="Answer 2">
          Answer 3:
          </label><br>
-         <input type="number" id="Answer 1" v-model="answer1" required="required" placeholder="Your answer here">
-         {{ answer1 }}
+         <input type="number" id="Answer 3" v-model="answer3" required="required" placeholder="Your answer here">
+         {{ answer3 }}
       </p>  
 
     </div>
 
     <button type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
-                  Add question
+                  Add Question
+    </button>
+
+    <button type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
+                  Remove Question
     </button>
   </div>
-  <router-link class="enterWaitingRoom" :to="'/waitingroom/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;"> Enter Waiting Room</router-link>
 </template>
 
 <script>
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
+
+export default {
+  data() {
+    return {
+      showMessage: true,
+      questionNR: 0
+    };
+  },
+  mounted() {
+    // 3 sec timer
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  }
+};
+
 </script>
 
 <style>
 .question-view_background {
   background-image: linear-gradient(to bottom right, red, yellow);
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
   height: 100vh;
 }
 
@@ -84,6 +108,25 @@ const socket = io("localhost:3000");
   margin-top: -7px;
 }
 
+.text-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.blacktext {
+  color: white;
+  font-size: 200px;
+  margin-bottom: -70px;
+  margin-top: -7px;
+  margin-right: 60px;
+}
+
+.plaintext {
+  color: black;
+  font-size: 200px;
+  margin-bottom: -70px;
+  margin-top: -7px;
+}
 
 .questions{
   width: 50%;
