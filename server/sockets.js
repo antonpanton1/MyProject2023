@@ -55,10 +55,6 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
-
-  socket.on("StartPoll"), function(pollId) {
-    io.to(pollId).emit("startPoll")
-  }
   }
 
 export { sockets };
