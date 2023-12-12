@@ -66,8 +66,6 @@ export default {
   height: 100vh;
 }
 
-
-
 .playersInGame {
     position: absolute;
     align-items: top;

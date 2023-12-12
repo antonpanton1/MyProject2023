@@ -9,6 +9,8 @@
 	"about": "About",
 	"participateInPoll": "Participate", 
 	"usernamePrompt": "Chose a username",
+	"joinGame": "Submit",
+	"inputGameID": "GameID",
 	"username": "username",
 	"participantsReady": "Participants Ready:",
 	"writingQuestions": "Writing Questions:",

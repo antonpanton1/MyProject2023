@@ -56,6 +56,9 @@ function sockets(io, socket, data) {
     data.initializeData();
   });
 
-}
+  socket.on("StartPoll"), function(pollId) {
+    io.to(pollId).emit("startPoll")
+  }
+  }
 
 export { sockets };

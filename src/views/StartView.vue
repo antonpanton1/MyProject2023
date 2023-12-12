@@ -4,8 +4,8 @@
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
 
-    <button class="start-button" @click="startGame"><router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link></button>
-    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;" >Join game</router-link></button>
+    <button class="start-button" @click="startGame"><router-link v-bind:to="'/createlobby/'" style="text-decoration: none; color: inherit;" >Create Game</router-link></button>
+    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;" >Join Game</router-link></button>
    
   
     <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">How to play</router-link>

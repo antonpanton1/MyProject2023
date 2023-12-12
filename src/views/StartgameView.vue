@@ -133,9 +133,11 @@ export default {
   align-items: center;
   justify-content: center;*/
   height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.questions-view {
+.questions-Title {
   color: black;
   font-size: 200px;
   margin-bottom: -70px;

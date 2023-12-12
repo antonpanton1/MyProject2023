@@ -1,6 +1,6 @@
 {
 	"sales-pitch": "0 --> 100",
-	"subHeading": "det mest fantasiak spelet",
+	"subHeading": "Är du en nolla eller en hjälte?",
 	"invite": "Bjud in deltagare med den här länken:",
 	"createPoll": "Skapa röstning",
 	"participatePoll": "Delta i röstning",
@@ -9,6 +9,8 @@
 	"changeLanguage": "Change to English",
 	"about": "Om oss",
 	"participateInPoll": "Gå med",
+	"joinGame": "Gå med",
+	"inputGameID": "SpelID",
 	"usernamePrompt": "Välj ett användarnamn",
 	"username": "användarnamn",
 	"participantsReady": "Deltagare redo:",
