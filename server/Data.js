@@ -50,6 +50,14 @@ Data.prototype.addQuestion = function(pollId, q) {
   }
 }
 
+Data.prototype.getParticipants = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    return poll.participants;
+  }
+  return []
+}
+
 Data.prototype.editQuestion = function(pollId, index, newQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {

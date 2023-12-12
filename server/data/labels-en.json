@@ -7,10 +7,7 @@
 	"answer": "Answer",
 	"changeLanguage": "Byt till svenska",
 	"about": "About",
-<<<<<<< Updated upstream
-	"participateInPoll": "Participate" 
-=======
+	"participateInPoll": "Participate", 
 	"usernamePrompt": "Chose a username",
 	"username": "username"
->>>>>>> Stashed changes
 } 

@@ -39,18 +39,16 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
+  
+
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();
-<<<<<<< HEAD
-  })
-=======
   });
 
   socket.on('testSend', (text) => {
     io.emit('testEmit',text); // Update testText with data received from socket
   });
->>>>>>> origin/main
  
 }
 
