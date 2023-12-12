@@ -20,17 +20,10 @@ export default {
     data: function () {
     return {
         pollId: "inactive poll",
-<<<<<<< Updated upstream
-        userName: "",
-        uiLabels: {},
-        lang: localStorage.getItem("lang") || "en",
-        participants: ["test1", "test2", "test3", "test4"]
-=======
         userName: ["test1", "test2"],
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
         participants: []
->>>>>>> Stashed changes
         }
     },
     created: function () {
@@ -39,11 +32,7 @@ export default {
     socket.on("init", (labels) => {
         this.uiLabels = labels
     })
-<<<<<<< Updated upstream
-    socket.on("participantsUpdate",     )
-=======
     socket.on("participantsUpdate", )
->>>>>>> Stashed changes
     socket.emit('joinPoll', this.pollId)
 
     },
