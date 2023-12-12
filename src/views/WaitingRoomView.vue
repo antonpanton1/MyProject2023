@@ -11,10 +11,9 @@
         <div>
         {{pollId}}
    
-            <div v-for="(userName) in participants">
+            <div v-for="(userName) in this.participants">
             {{ userName }}
             </div>
-            
         </div>
     </div>
 </template>
@@ -34,7 +33,7 @@ export default {
         userName: [],
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
-        participants: ["test1", "test2", "test3"]
+        participants: []
         }
     },
     created: function () {
@@ -43,9 +42,11 @@ export default {
     socket.on("init", (labels) => {
         this.uiLabels = labels
     })
-    socket.on("participantsUpdate", )
-    socket.emit('joinPoll', this.pollId)
-
+    socket.emit('joinPoll', this.pollId);
+    socket.on("participantUpdate", (participants) => 
+        this.participants = participants,
+        );
+    socket.emit("joinedLobby", this.pollId);
     },
     methods: {
     submitUserName: function () {

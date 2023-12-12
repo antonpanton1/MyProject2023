@@ -80,7 +80,7 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
 Data.prototype.getParticipants = function(pollId){
   const poll = this.polls[pollId];
   if (typeof poll !== "undefined"){
-    return pollparticipants;
+    return poll.participants;
   }
   return []
 

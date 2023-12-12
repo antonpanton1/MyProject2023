@@ -10,6 +10,7 @@
         <button class="start-button" v-on:click="submitUsername">
             <router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link>
         </button>
+
     </main>
 
     </body>
@@ -39,11 +40,13 @@ export default{
     })
     socket.on("dataUpdate", (data) =>
       this.data = data
-    )  
+    )
+    socket.emit('joinPoll', this.pollId);
 },
     methods:{
         submitUsername: function(){
             socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
+            console.log(this.username)
         }
     }
 };

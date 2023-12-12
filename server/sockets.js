@@ -39,10 +39,16 @@ function sockets(io, socket, data) {
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
-  socket.on('sumbitUsername', function(d) {
+  socket.on('submitUsername', function(d) {
     data.submitUsername(d.pollId, d.username);
-    io.to(d.pollId).emit('participantUpdate', data.getParticipants(d.pollId));
-    console.log(d.username)
+    let participants = data.getParticipants(d.pollId);
+    console.log("got in socket");
+    socket.emit('participantUpdate', participants);
+  });
+
+  socket.on('joinedLobby', function(pollId) {
+    let participants = data.getParticipants(pollId);
+    socket.emit('participantUpdate', participants);
   });
 
   socket.on('resetAll', () => {

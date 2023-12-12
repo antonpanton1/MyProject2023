@@ -40,9 +40,14 @@ const router = createRouter({
       component: () => import('../views/StartgameView.vue')
     },
     {
-      path: '/waitingroom/',
+      path: '/waitingroom/:id',
       name: 'WaitingRoomView',
       component: () => import('../views/WaitingRoomView.vue')
+    },
+    {
+      path: '/question/:id/:uid',
+      name: 'AnswerQuestionView',
+      component: () => import('../views/AnswerQuestionView.vue')
     },
      {
       path: '/joingame/',
