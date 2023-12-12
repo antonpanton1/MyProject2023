@@ -1,12 +1,15 @@
 <template>
-<div class="CorrectAnswerViewbackground">
+<body>
     <h1>Correct Answer:</h1>
     <div class="slider">
-        <div class="noll"> 0 </div>
-        <div class="line"> </div>
-        <div class="hundra"> 100 </div>
+        <div class="noll">0</div>
+        <div class="line"></div>
+        <div class="hundra">100</div>
     </div>
-</div>
+    <div class="answerSlide">
+        <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
+    </div>
+  </body>
 </template>
 
 <script>
@@ -38,27 +41,29 @@ export default {
 
 <style>
 
-.CorrectAnswerViewbackground {
+body {
   background-image: linear-gradient(to bottom right, purple, pink);
-  display: flex;
+
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
   height: 100vh;
 }
 
 .slider {
-display: grid;
-grid-gap: 2vw;
-grid-template-columns: 30vw 20vw 60vw;
+  align-items: center;
+  display: grid;
+  grid-gap: 2vw;
+  grid-template-columns: 20vw 20vw 20vw;
+  justify-content: center;
 }
 
 .line {
     
-  height: 5px;
+  height: 1vh;
   width: 50vw;
-  background-color: black
-  ;
+  background-color: black;
+  float: center;
+  box-sizing: border-box;
 }
 
 .noll {

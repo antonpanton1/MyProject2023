@@ -1,57 +1,57 @@
 <template>
-    <body>
-        <h1>Questions:</h1>
-        <br>
-        <h2>{{ this.questions }}</h2>
-        <br>
-        <button class="answer" v-on:click="decrease">-</button>
-        <input type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
-        <button class="answer" v-on:click="increase">+</button>
-        <div class="answerSlide">
-            <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
-        </div>
-        <button class="submit">Lock in answer</button>
+  <body>
+      <h1>Questions:</h1>
+      <br>
+      <h2>{{ this.questions }}</h2>
+      <br>
+      <button class="answer" v-on:click="decrease">-</button>
+      <input type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
+      <button class="answer" v-on:click="increase">+</button>
+      <div class="answerSlide">
+          <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
+      </div>
+      <button class="submit">Lock in answer</button>
 
-    </body>
-  </template>
+  </body>
+</template>
   
-  <script>
-  import io from 'socket.io-client';
-  const socket = io("localhost:3000");
-  
-  export default {
-    name: 'CreateView',
-    data: function () {
-      return {
-        lang: localStorage.getItem("lang") || "en",
-        pollId: "",
-        questions: "En bra fråga till 0-100",
-        answer: 50
-      }
-    },
-    created: function () {
-      this.id = this.$route.params.id;
-      socket.emit("pageLoaded", this.lang);
-      socket.on("init", (labels) => {
-        this.uiLabels = labels
-      })
-      socket.on("dataUpdate", (data) =>
-        this.data = data
-      )
-      
-    },
-    methods: {
-        increase: function(){
-            this.answer ++;
-        },
-        decrease: function(){
-            this.answer --;
-        }
-        
-      
+<script>
+import io from 'socket.io-client';
+const socket = io("localhost:3000");
+
+export default {
+  name: 'CreateView',
+  data: function () {
+    return {
+      lang: localStorage.getItem("lang") || "en",
+      pollId: "",
+      questions: "En bra fråga till 0-100",
+      answer: 50
     }
+  },
+  created: function () {
+    this.id = this.$route.params.id;
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+    socket.on("dataUpdate", (data) =>
+      this.data = data
+    )
+    
+  },
+  methods: {
+      increase: function(){
+          this.answer ++;
+      },
+      decrease: function(){
+          this.answer --;
+      }
+      
+    
   }
-  </script>
+}
+</script>
   
 <style>
 body {

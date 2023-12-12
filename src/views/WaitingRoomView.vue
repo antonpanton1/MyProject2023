@@ -1,8 +1,8 @@
 <template>
     <div class="playersInGame">
-        <div id="participantsReady" style="display: inline-block"> {{ uiLabels.participantsReady }} </div>
-        <div id="writingQuestions" style="display: inline-block"> {{ uiLabels.writingQuestions }} </div>
-        <div id="totalPlayers" style="display: inline-block">{{ uiLabels.totalPlayers }} </div>
+        <div id="participantsReady" style="display: inline-block">{{ uiLabels.participantsReady }} # spelare som är inne i väntrummet</div>
+        <div id="writingQuestions" style="display: inline-block">{{ uiLabels.writingQuestions }} # spelare som fortfarande skriver frågor</div>
+        <div id="totalPlayers" style="display: inline-block">{{ uiLabels.totalPlayers }} # totala antal spelare inne på game ID</div>
     </div>
 
     <div class="WaitingRoomViewbackground">
@@ -72,7 +72,7 @@ export default {
     text-align: center;
     display: grid;
     grid-gap: auto;
-    grid-template-columns: 50% 50% 50%;
+    grid-template-columns: 33% 33% 33%;
 
 }
 </style>
