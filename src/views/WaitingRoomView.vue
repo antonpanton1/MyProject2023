@@ -3,7 +3,7 @@
     {{pollId}}
     <input type="text" v-model="userName">
     <button v-on:click="submitUserName"> 
-        {{ uiLabels.participateInPoll }}
+
     </button>
     </div>
 </template>
