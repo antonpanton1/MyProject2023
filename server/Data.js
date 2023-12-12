@@ -88,10 +88,14 @@ Data.prototype.getParticipants = function(pollId){
 
 Data.prototype.submitUsername = function(pollId, username){
   const poll = this.polls[pollId];
+  console.log("new user added", username)
   if (typeof poll !== "undefined"){
-    poll.participants.push(username)
+    let participant = {
+      name: username,
+      answer: []
+    }
+    poll.participants.push(participant)
   }
-
 }
 
 Data.prototype.submitAnswer = function(pollId, answer) {

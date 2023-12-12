@@ -14,6 +14,7 @@
             <div v-for="(userName) in this.participants">
             {{ userName }}
             </div>
+            {{ participants }}
         </div>
     </div>
 </template>
@@ -22,6 +23,7 @@
 // @ is an alias to /src
 
 import io from 'socket.io-client';
+import Username from './Username.vue';
 const socket = io("localhost:3000");
 
 export default {
@@ -38,14 +40,14 @@ export default {
     },
     created: function () {
     this.pollId = this.$route.params.id
+    socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
         this.uiLabels = labels
     })
-    socket.emit('joinPoll', this.pollId);
     socket.on("participantUpdate", (participants) => 
-        this.participants = participants,
-        );
+    this.participants = participants,
+    );
     socket.emit("joinedLobby", this.pollId);
     },
     methods: {

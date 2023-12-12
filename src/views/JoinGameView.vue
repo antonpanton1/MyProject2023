@@ -3,10 +3,10 @@
 
     <main>
         <h2>{{uiLabels.inputGameID}}</h2>
-        <input type="text" v-model="pollID">
+        <input type="text" v-model="idCode">
         <br>
-        <button class="start-button" >
-            <router-link v-bind:to="'/username/' + pollId " style="text-decoration: none; color: inherit;" >Submit</router-link>
+        <button class="start-button" v-on:click="joinID">
+        Submit
         </button>
     </main>
 
@@ -24,13 +24,12 @@ export default{
     data: function () {
     return {
         lang: localStorage.getItem("lang") || "en",
-        testText: '', // Initialize testText as an empty string
         uiLabels: {},
-        pollId: "123",
+        pollId: "inactive poll",
+        idCode: ""
     };
   },
   created: function () {
-    this.pollId = this.$route.params.id
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
@@ -41,8 +40,10 @@ export default{
 },
     methods:{
         joinID: function(){
-            this.pollId = this.pollID
-            
+            this.pollId = this.idCode
+            this.$router.replace({ path: '/username/'+this.pollId })
+
+                
         }
     }
 };

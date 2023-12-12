@@ -23,32 +23,29 @@ import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
 export default{
-    name: 'test',
+    name: 'username',
     data: function () {
     return {
         lang: localStorage.getItem("lang") || "en",
-        testText: '', // Initialize testText as an empty string
+        pollId: "inactive poll",
         uiLabels: {},
-        pollId: "",
+        username: ""
     };
   },
   created: function () {
     this.pollId = this.$route.params.id
+    socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
-    socket.on("dataUpdate", (data) =>
-      this.data = data
-    )
-    socket.emit('joinPoll', this.pollId);
 },
-    methods:{
-        submitUsername: function(){
-            socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
-            console.log(this.username)
-        }
+methods:{
+    submitUsername: function(){
+        socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
+        console.log(this.username)
     }
+}
 };
 
 </script>
