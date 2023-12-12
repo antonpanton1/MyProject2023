@@ -1,15 +1,19 @@
 <template>
-    <header>
+    <body>
+        <header>
         Current game: {{ pollId }}
     </header>
     <main>
-        {{ uiLabels }}
-        <h1>{{uiLabels.createPoll}}</h1>
-        <input type="text"  placeholder={{uiLabels.username}}>
-        <button class="start-button" @click="startGame">
+        <h2>{{uiLabels.usernamePrompt}}</h2>
+        <input type="text" v-model="username">
+        <br>
+        <button class="start-button" v-on:click="submitUsername">
             <router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link>
         </button>
     </main>
+
+    </body>
+    
 
 </template>
 
@@ -24,7 +28,7 @@ export default{
         lang: localStorage.getItem("lang") || "en",
         testText: '', // Initialize testText as an empty string
         uiLabels: {},
-        pollId: ""
+        pollId: "",
     };
   },
   created: function () {
@@ -35,12 +39,60 @@ export default{
     })
     socket.on("dataUpdate", (data) =>
       this.data = data
-    )
-  socket.on('testEmit', (text) => {
-    this.testText = text.text; // Update testText with data received from socket
-    console.log("testText updated:", this.testText);
-  });
-}
+    )  
+},
+    methods:{
+        submitUsername: function(){
+            socket.emit("submitUsername", {pollId: this.pollId, lang: this.lang, username: this.username })
+        }
+    }
 };
 
 </script>
+
+<style>
+body {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  flex-direction: column;
+  height: 100vh
+}
+
+header{
+    text-align: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    
+}
+
+main{
+    position: fixed; /* or absolute */
+    top: 40%;
+    left: 50%;
+    align-items: center;
+    justify-content: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+input{
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+button{
+    background-color:#F05E16 ;
+    padding: 5%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+button:hover{
+    color: black;
+    background-color: darkorange;
+}
+</style>

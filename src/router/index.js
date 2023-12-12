@@ -49,7 +49,10 @@ const router = createRouter({
       name: 'JoinGameView',
       component: () => import('../views/JoinGameView.vue')
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
   ]
 })
 

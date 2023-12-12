@@ -77,6 +77,23 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
   return []
 }
 
+Data.prototype.getParticipants = function(pollId){
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined"){
+    return pollparticipants;
+  }
+  return []
+
+}
+
+Data.prototype.submitUsername = function(pollId, username){
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined"){
+    poll.participants.push(username)
+  }
+
+}
+
 Data.prototype.submitAnswer = function(pollId, answer) {
   const poll = this.polls[pollId];
   console.log("answer submitted for ", pollId, answer);
