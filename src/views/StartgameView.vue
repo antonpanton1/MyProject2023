@@ -104,10 +104,10 @@ export default {
 <style>
 .question-view_background {
   background-image: linear-gradient(to bottom right, red, yellow);
-  /*display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;*/
+  justify-content: center;
   height: 100vh;
 }
 
