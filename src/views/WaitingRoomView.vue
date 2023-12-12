@@ -1,11 +1,12 @@
 <template>
+    <div class="playersInGame">
+        <div id="participantsReady" style="display: inline-block"> {{ uiLabels.participantsReady }} </div>
+        <div id="writingQuestions" style="display: inline-block"> {{ uiLabels.writingQuestions }} </div>
+        <div id="totalPlayers" style="display: inline-block">{{ uiLabels.totalPlayers }} </div>
+    </div>
 
     <div class="WaitingRoomViewbackground">
-        <div class="playersInGame">
-            <h2> {{ uiLabels.participantsReady }} </h2>
-            <h2> {{ uiLabels.writingQuestions }} </h2>
-            <h2> {{ uiLabels.totalPlayers }} </h2>
-        </div>
+        
         <h1>Game Code:</h1>
         <div>
         {{pollId}}
@@ -62,9 +63,17 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
-},
+}
+
+
 
 .playersInGame {
+    position: absolute;
     align-items: top;
+    text-align: center;
+    display: grid;
+    grid-gap: auto;
+    grid-template-columns: 50% 50% 50%;
+
 }
 </style>
