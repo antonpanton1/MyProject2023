@@ -74,6 +74,13 @@
     <button type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
                   Remove Question
     </button>
+
+    <div type="submit" class="save" v-on:click="savequestion">
+      <button type="submit" v-on:click="save_question"  style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #10a428; color: #fff; border: none; cursor: pointer;">
+           Save
+      </button>  
+    </div> 
+
     <div class="submit">
       <router-link class="WaitingRoomButton" :to="'/waitingroom/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
     </div> 
@@ -90,15 +97,30 @@ export default {
   data() {
     return {
       showMessage: true,
-      questionNR: 0
+      questionNR: 0,
+      qu1: '',
+      qu2: '',
+      qu3: '',
+      qu4: '',
+      an1: '',
+      an2: '',
+      an3: '',
+      an4: ''
+
     };
   },
-  mounted() {
+  methods:{
+    mounted() {
     // 3 sec timer
     setTimeout(() => {
       this.showMessage = false;
     }, 3000);
+  },
+  save_question: function(event){
+    console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
   }
+  }
+  
 };
 
 </script>
@@ -140,8 +162,13 @@ export default {
 
 }
 
+.save{
+  text-align: center;
+  margin-top: 25vh;
+}
+
 .submit{
   text-align: center;
-  margin-top: 30vh;
+  margin-top: 5vh;
 }
 </style>
