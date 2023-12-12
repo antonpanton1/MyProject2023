@@ -10,5 +10,9 @@
 	"about": "Om oss",
 	"participateInPoll": "Gå med",
 	"usernamePrompt": "Välj ett användarnamn",
-	"username": "användarnamn"
+	"username": "användarnamn",
+	"participantsReady": "Deltagare redo:",
+	"writingQuestions": "Skriver frågor:",
+	"totalPlayers": "Antal spelare:"
+
 }

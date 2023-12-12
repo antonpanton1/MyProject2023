@@ -9,5 +9,9 @@
 	"about": "About",
 	"participateInPoll": "Participate", 
 	"usernamePrompt": "Chose a username",
-	"username": "username"
+	"username": "username",
+	"participantsReady": "Participants Ready:",
+	"writingQuestions": "Writing Questions:",
+	"totalPlayers": "Players:"
+
 } 

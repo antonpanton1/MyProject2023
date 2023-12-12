@@ -1,12 +1,19 @@
 <template>
+
     <div class="WaitingRoomViewbackground">
+        <div class="playersInGame">
+            <h2> {{ uiLabels.participantsReady }} </h2>
+            <h2> {{ uiLabels.writingQuestions }} </h2>
+            <h2> {{ uiLabels.totalPlayers }} </h2>
+        </div>
+        <h1>Game Code:</h1>
         <div>
         {{pollId}}
    
-        <div v-for="(userName) in participants">
-        {{ userName }}
-        </div>
-            Game Code
+            <div v-for="(userName) in participants">
+            {{ userName }}
+            </div>
+            
         </div>
     </div>
 </template>
@@ -55,5 +62,9 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
+},
+
+.playersInGame {
+    align-items: top;
 }
 </style>
