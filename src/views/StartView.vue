@@ -3,9 +3,11 @@
   <div class="start-view">
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
+
     <button class="start-button" @click="startGame"><router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link></button>
+    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;" >Join game</router-link></button>
    
-    <!--<button class="instructions-button" @click="instructions"><router-link v-bind:to="'/instructions/'" style="text-decoration: none; color: inherit;" >How to play</router-link></button>-->
+  
     <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">How to play</router-link>
     
   </div> 
@@ -55,6 +57,9 @@ export default {
       // Should redirect to the next Game-page
       //alert("Game started!");
     },
+    joinGame: function () {
+      // Should redirect to the next Join-page
+    },
     instructions: function () {
       // Should redirect to an instructions page
     }
@@ -102,6 +107,15 @@ export default {
   cursor: pointer;
   border-radius: 8px;
 }
+.join-button {
+  padding: 20px 20px;
+  font-size: 1.5em;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
 
 .instructions-button {
   top: 30px;
@@ -120,7 +134,9 @@ export default {
 .start-button:hover {
   background-color: #F05E16;
 }
-
+.join-button:hover {
+  background-color: #F05E16;
+}
 .instructions-button:hover {
   background-color: #B80F0A;
 }
