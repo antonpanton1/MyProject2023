@@ -63,12 +63,21 @@ const router = createRouter({
       path: '/leaderboard/',
       name: 'leaderboardView',
       component: () => import('../views/leaderboardView.vue')
+<<<<<<< Updated upstream
     }, 
     {
       path: '/createlobby/',
       name: 'CreateLobby',
       component: () => import('../views/CreateLobby.vue')
+=======
+    },
+    {
+      path: '/results/',
+      name: 'ResultsView',
+      component: () => import('../views/ResultsView.vue')
+>>>>>>> Stashed changes
     } 
+
     
     
   ]
