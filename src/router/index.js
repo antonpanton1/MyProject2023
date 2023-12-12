@@ -37,7 +37,7 @@ const router = createRouter({
     {
       path: '/waitingroom/',
       name: 'WaitingRoomView',
-      component: () => import('../views/WaitingRoom.vue')
+      component: () => import('../views/WaitingRoomView.vue')
     }
     
     
