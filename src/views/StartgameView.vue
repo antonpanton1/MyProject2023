@@ -67,11 +67,11 @@
       </p> 
     </div>
 
-    <button type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
+    <button v-if="questionNR < 3" type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
                   Add Question
     </button>
 
-    <button type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
+    <button v-if="questionNR > -0" type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
                   Remove Question
     </button>
 
@@ -125,7 +125,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .question-view_background {
   background-image: linear-gradient(to bottom right, red, yellow);
   /*display: flex;

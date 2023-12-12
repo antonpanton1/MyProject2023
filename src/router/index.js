@@ -48,6 +48,11 @@ const router = createRouter({
       path: '/joingame/',
       name: 'JoinGameView',
       component: () => import('../views/JoinGameView.vue')
+    }, 
+    {
+      path: '/leaderboard/',
+      name: 'leaderboardView',
+      component: () => import('../views/leaderboardView.vue')
     } 
     
   ]
