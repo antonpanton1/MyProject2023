@@ -1,6 +1,6 @@
 <template>
   <div class="question-view_background">
-
+    
     <div class="questionTitle">
       <h2>Type your questions and answers below! </h2>
     </div>    
@@ -23,8 +23,15 @@
         <label for="Question 3">
           Question 3:
         </label><br>
-        <input typ="text" id="Question 1" v-model="question3" requeried="required" placeholder="Good questions only pls">
+        <input typ="text" id="Question 3" v-model="question3" requeried="required" placeholder="Good questions only pls">
         {{ question3 }}
+      </p>
+      <p v-if= "questionNR > 2 ">
+        <label for="Question 4">
+          Question 4:
+        </label><br>
+        <input typ="text" id="Question 4" v-model="question4" requeried="required" placeholder="Good questions only pls">
+        {{ question4 }}
       </p>
     
     </div>
@@ -45,13 +52,19 @@
          {{ answer2 }}
       </p>  
       <p v-if= "questionNR > 1 ">
-        <label for="Answer 2">
+        <label for="Answer 3">
          Answer 3:
          </label><br>
          <input type="number" id="Answer 3" v-model="answer3" required="required" placeholder="Your answer here">
          {{ answer3 }}
       </p>  
-
+      <p v-if= "questionNR > 2 ">
+        <label for="Answer 4">
+         Answer 4:
+         </label><br>
+         <input type="number" id="Answer 4" v-model="answer4" required="required" placeholder="Your answer here">
+         {{ answer4 }}
+      </p> 
     </div>
 
     <button type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
@@ -68,15 +81,31 @@
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
+
+export default {
+  data() {
+    return {
+      showMessage: true,
+      questionNR: 0
+    };
+  },
+  mounted() {
+    // 3 sec timer
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
+  }
+};
+
 </script>
 
 <style>
 .question-view_background {
   background-image: linear-gradient(to bottom right, red, yellow);
-  display: flex;
+  /*display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;*/
   height: 100vh;
 }
 
@@ -86,6 +115,12 @@ const socket = io("localhost:3000");
   margin-bottom: -70px;
   margin-top: -7px;
 }
+
+.text-container {
+  display: flex;
+  align-items: baseline;
+}
+
 
 .questions{
   width: 50%;
