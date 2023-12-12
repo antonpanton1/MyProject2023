@@ -1,10 +1,13 @@
 <template>
-    <div>
-    {{pollId}}
+    <div class="WaitingRoomViewbackground">
+        <div>
+        {{pollId}}
    
-    <div v-for="(userName) in participants">
-    {{ userName }}
-    </div>
+        <div v-for="(userName) in participants">
+        {{ userName }}
+        </div>
+            Game Code
+        </div>
     </div>
 </template>
 
@@ -20,10 +23,10 @@ export default {
     data: function () {
     return {
         pollId: "inactive poll",
-        userName: ["test1", "test2"],
+        userName: [],
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
-        participants: []
+        participants: ["test1", "test2", "test3"]
         }
     },
     created: function () {
@@ -43,3 +46,14 @@ export default {
     }
 }
 </script>
+
+<style>
+.WaitingRoomViewbackground {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>
