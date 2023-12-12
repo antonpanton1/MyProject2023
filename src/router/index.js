@@ -43,12 +43,12 @@ const router = createRouter({
       path: '/waitingroom/',
       name: 'WaitingRoomView',
       component: () => import('../views/WaitingRoomView.vue')
-    },
-    {
+    }
+   /*  {
       path: '/joingame/',
       name: 'JoinGameView',
       component: () => import('../views/JoinGameView.vue')
-    }
+    } */
     
   ]
 })
