@@ -6,7 +6,7 @@
         <input type="text" v-model="idCode">
         <br>
         <button class="start-button" v-on:click="joinID">
-        Submit
+    
         </button>
     </main>
 
@@ -25,7 +25,7 @@ export default{
     return {
         lang: localStorage.getItem("lang") || "en",
         uiLabels: {},
-        pollId: "inactive poll",
+        pollId: "inactivepoll",
         idCode: ""
     };
   },
@@ -41,7 +41,7 @@ export default{
     methods:{
         joinID: function(){
             this.pollId = this.idCode
-            this.$router.replace({ path: '/username/'+this.pollId })
+            this.$router.push({ path: '/username/'+this.pollId })
 
                 
         }

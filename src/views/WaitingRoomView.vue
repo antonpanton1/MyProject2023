@@ -12,9 +12,8 @@
         {{pollId}}
    
             <div v-for="(userName) in this.participants">
-            {{ userName }}
+            {{ userName.name }}
             </div>
-            {{ participants }}
         </div>
     </div>
 </template>

@@ -82,7 +82,7 @@
     </div> 
 
     <div class="submit">
-      <router-link class="WaitingRoomButton" :to="'/waitingroom/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
+      <router-link class="WaitingRoomButton" :to="'/waitingroom/'+this.pollId" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
     </div> 
   </div>
   
@@ -109,6 +109,14 @@ export default {
 
     };
   },
+  created: function () {
+    this.pollId = this.$route.params.id
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    })
+},
   methods:{
     mounted() {
     // 3 sec timer

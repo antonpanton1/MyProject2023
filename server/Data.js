@@ -11,10 +11,10 @@ function Data() {
       {q: "det här är en fråga?",
       a: "ja"}
     ],
-    answer: [],
+    answers: [],
     currentQuestion: 0,
     participants: []
-  }
+  } 
 }
 
 /***********************************************
@@ -29,7 +29,7 @@ Data.prototype.getUILabels = function (lang = "en") {
 }
 
 Data.prototype.createPoll = function(pollId, lang="en") {
-  if (typeof this.polls[pollId] === "undefined") {
+  if (typeof this.polls[pollId] === "undefined") {   
     let poll = {};
     poll.lang = lang;  
     poll.questions = [];
@@ -76,25 +76,18 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
   }
   return []
 }
-
-Data.prototype.getParticipants = function(pollId){
-  const poll = this.polls[pollId];
-  if (typeof poll !== "undefined"){
-    return poll.participants;
-  }
-  return []
-
-}
-
+ 
 Data.prototype.submitUsername = function(pollId, username){
   const poll = this.polls[pollId];
-  console.log("new user added", username)
+  console.log("new user added", username, pollId)
   if (typeof poll !== "undefined"){
     let participant = {
       name: username,
       answer: []
     }
     poll.participants.push(participant)
+    console.log(poll.participants) 
+
   }
 }
 

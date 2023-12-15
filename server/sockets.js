@@ -42,8 +42,7 @@ function sockets(io, socket, data) {
   socket.on('submitUsername', function(d) {
     data.submitUsername(d.pollId, d.username);
     let participants = data.getParticipants(d.pollId);
-    console.log("got in socket");
-    socket.emit('participantUpdate', participants);
+    io.to(d.pollId).emit('participantUpdate', participants);
   });
 
   socket.on('joinedLobby', function(pollId) {

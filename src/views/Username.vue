@@ -8,7 +8,7 @@
         <input type="text" v-model="username">
         <br>
         <button class="start-button" v-on:click="submitUsername">
-            <router-link v-bind:to="'/startgame/'" style="text-decoration: none; color: inherit;" >Start game</router-link>
+            Join game
         </button>
 
     </main>
@@ -43,7 +43,7 @@ export default{
 methods:{
     submitUsername: function(){
         socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
-        console.log(this.username)
+        //this.$router.replace({ path: '/startgame/'+this.pollId })
     }
 }
 };

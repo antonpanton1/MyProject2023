@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Start',
+      name: 'Start', 
       component: StartView
     },
       {
@@ -21,7 +21,7 @@ const router = createRouter({
     },
     {
       path: '/result/:id',
-      name: 'ResultView',
+      name: 'ResultView', 
       component: () => import('../views/ResultView.vue')
     },
     {
@@ -35,17 +35,18 @@ const router = createRouter({
       component: () => import('../views/InstructionsView.vue')
     },
     {
-      path: '/startgame/',
+      path: '/startgame/:id',
       name: 'StartgameView',
+      
       component: () => import('../views/StartgameView.vue')
     },
     {
-      path: '/waitingroom/:id',
+      path: '/waitingroom/:id', 
       name: 'WaitingRoomView',
       component: () => import('../views/WaitingRoomView.vue')
     },
     {
-      path: '/question/:id/:uid',
+      path: '/question/:id/:uid', 
       name: 'AnswerQuestionView',
       component: () => import('../views/AnswerQuestionView.vue')
     },
