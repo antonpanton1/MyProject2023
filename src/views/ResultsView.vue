@@ -38,11 +38,6 @@
     </div>
   </div> 
    
-    
-         
- 
-
-
 
 </template>
 
