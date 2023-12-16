@@ -33,6 +33,9 @@
         
         <!--lista med placering och användarnman för de utanför top 3-->
     </div> 
+    <div class="button">
+      <router-link class="quit" :to="'/Start/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Quit</router-link>
+    </div>
   </div> 
    
     
@@ -69,9 +72,16 @@
 }
 
 .losers{
-  width: 40%;
+  width: 50%;
   box-sizing: border-box;
   float: left;
+  margin-bottom: 5vh;
+}
+
+.button{
+  width: 50%;
+  box-sizing: border-box;
+  float: right;
   margin-bottom: 5vh;
 }
 
