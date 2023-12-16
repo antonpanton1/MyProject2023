@@ -14,6 +14,7 @@
 	"username": "username",
 	"participantsReady": "Participants Ready:",
 	"writingQuestions": "Writing Questions:",
-	"totalPlayers": "Players:"
+	"totalPlayers": "Players:",
+	"gameCode": "Game code:"
 
 } 

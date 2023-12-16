@@ -15,6 +15,7 @@
 	"username": "användarnamn",
 	"participantsReady": "Deltagare redo:",
 	"writingQuestions": "Skriver frågor:",
-	"totalPlayers": "Antal spelare:"
+	"totalPlayers": "Antal spelare:",
+	"gameCode": "Spel kod::"
 
 }
