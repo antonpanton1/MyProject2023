@@ -96,6 +96,9 @@ const socket = io("localhost:3000");
 export default {
   data() {
     return {
+      lang: localStorage.getItem("lang") || "en",
+      pollId: "inactive poll",
+      uiLabels: {},
       showMessage: true,
       questionNR: 0,
       qu1: '',
@@ -126,6 +129,7 @@ export default {
   },
   save_question: function(event){
     console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
+    socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
   }
   }
   

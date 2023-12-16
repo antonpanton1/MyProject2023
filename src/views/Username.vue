@@ -4,7 +4,7 @@
         Current game: {{ pollId }}
     </header>
     <main>
-        <h2>{{uiLabels.usernamePrompt}}</h2>
+        <h2>Choose usename</h2>
         <input type="text" v-model="username">
         <br>
         <button class="start-button" v-on:click="submitUsername">
@@ -43,7 +43,7 @@ export default{
 methods:{
     submitUsername: function(){
         socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
-        //this.$router.replace({ path: '/startgame/'+this.pollId })
+        this.$router.push({ path: '/startgame/'+this.pollId })
     }
 }
 };

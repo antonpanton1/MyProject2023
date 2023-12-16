@@ -1,22 +1,23 @@
 <template>
   <body>
-      <h1>Questions:</h1>
+      <h1>Question:</h1>
       <br>
-      <h2>{{ this.questions }}</h2>
+      <h2>{{ this.questions}}?</h2>
       <br>
-      <button class="answer" v-on:click="decrease">-</button>
-      <input type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
-      <button class="answer" v-on:click="increase">+</button>
+      <button id="minus"  class="answer" v-on:click="decrease">-</button>
+      <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
+      <button id="plus" class="answer" v-on:click="increase">+</button>
       <div class="answerSlide">
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
-      <button class="submit">Lock in answer</button>
+      <button class="submit" id="lockBtn" v-on:click="lockAnswer"> Lock in answer </button>
 
   </body>
 </template>
   
 <script>
 import io from 'socket.io-client';
+import { queuePostFlushCb } from 'vue';
 const socket = io("localhost:3000");
 
 export default {
@@ -25,20 +26,27 @@ export default {
     return {
       lang: localStorage.getItem("lang") || "en",
       pollId: "",
-      questions: "En bra fråga till 0-100",
-      answer: 50
+      questions: [],
+      answer: 50,
+      username: ""
     }
   },
   created: function () {
-    this.id = this.$route.params.id;
+    this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
     socket.emit("pageLoaded", this.lang);
+    socket.emit('joinPoll', this.pollId);
     socket.on("init", (labels) => {
       this.uiLabels = labels
-    })
+    });
     socket.on("dataUpdate", (data) =>
       this.data = data
-    )
-    
+    );
+    socket.emit("getQuestions", this.pollId);
+
+    socket.on("sendQuestions", (questions) => 
+      this.questions = questions,
+    );
   },
   methods: {
       increase: function(){
@@ -46,9 +54,27 @@ export default {
       },
       decrease: function(){
           this.answer --;
+      },
+      lockAnswer: function(){
+        lockBtn.disabled = true;
+        lockBtn.classList.toggle("submit");
+        lockBtn.textContent = "Answer locked"
+        rangeSlider.disabled = true;
+        plus.disabled = true;
+        plus.classList.toggle("answer");
+        minus.disabled = true;
+        minus.classList.toggle("answer");
+        number.disabled = true;
+
+        var buttons = document.querySelectorAll('#btn');
+          buttons.forEach(function(button) {
+            button.disabled = true; // Disable the button
+        // button.style.display = 'none'; // Alternatively, hide the button
+    });
+
+
+        socket.emit("sendAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
       }
-      
-    
   }
 }
 </script>
@@ -74,6 +100,19 @@ input::-webkit-inner-spin-button {
 
 input[type=number]{
     -moz-appearance: textfield;
+}
+
+button{
+  background-color: #a94411;
+  margin: 20px;
+  padding: 3%;
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
 }
 
 .answer{
@@ -146,11 +185,14 @@ input[type=number]{
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
 }
 
 .submit:hover{
     color: black;
     background-color: darkorange;
+    transition-duration: 0.1s;
+
 }
 
 

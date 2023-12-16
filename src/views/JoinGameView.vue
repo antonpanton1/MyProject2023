@@ -6,7 +6,7 @@
         <input type="text" v-model="idCode">
         <br>
         <button class="start-button" v-on:click="joinID">
-    
+            Join game
         </button>
     </main>
 

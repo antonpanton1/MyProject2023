@@ -56,7 +56,7 @@ const router = createRouter({
       component: () => import('../views/JoinGameView.vue')
     },
     {
-      path: '/correctanswerview/',
+      path: '/correctanswer/',
       name: 'CorrectAnswerView',
       component: () => import('../views/CorrectAnswerView.vue')
     }, 
@@ -75,9 +75,6 @@ const router = createRouter({
       name: 'ResultsView',
       component: () => import('../views/ResultsView.vue')
     } 
-
-    
-    
   ]
 })
 

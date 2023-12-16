@@ -35,7 +35,8 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
-    poll.participants = [];              
+    poll.participants = [];  
+    poll.participants.answers = [];            
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -73,6 +74,15 @@ Data.prototype.getQuestion = function(pollId, qId=null) {
       poll.currentQuestion = qId;
     }
     return poll.questions[poll.currentQuestion];
+  }
+  return []
+}
+
+Data.prototype.getAllQuestions = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    console.log("all questions: ", poll.questions)  
+    return poll.questions;
   }
   return []
 }

@@ -1,4 +1,18 @@
 <template>
+  <body>
+    <main>
+        <h2></h2>
+        <input type="text" v-model="username">
+        <br>
+        <button class="start-button" v-on:click="submitUsername">
+            Join game
+        </button>
+
+    </main>
+
+    </body>
+
+
     <input type="text" name="create" v-model="newId">
     <button v-on:click="startPoll">Create Poll</button>
     </template>
