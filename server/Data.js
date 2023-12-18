@@ -8,12 +8,12 @@ function Data() {
   this.polls['test'] = {
     lang: "en",
     questions: [
-      {q: "det här är en fråga?",
-      a: "ja"}
+      {q: "fråga 1?",
+      a: "1"}
     ],
     answers: [],
     currentQuestion: 0,
-    participants: []
+    participants: {}
   } 
 }
 
@@ -35,9 +35,13 @@ Data.prototype.createPoll = function(pollId, lang="en", gameName) {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
+<<<<<<< Updated upstream
     poll.participants = [];  
     poll.participants.answers = [];
     poll.gName = gameName;            
+=======
+    poll.participants = {};  
+>>>>>>> Stashed changes
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -101,31 +105,31 @@ Data.prototype.submitUsername = function(pollId, username){
   const poll = this.polls[pollId];
   console.log("new user added", username, pollId)
   if (typeof poll !== "undefined"){
-    let participant = {
-      name: username,
-      answer: []
+    if (!poll.participants[username]) {
+      poll.participants[username] = { answers: [], score: 0 };
     }
-    poll.participants.push(participant)
     console.log(poll.participants) 
-
   }
 }
 
-Data.prototype.submitAnswer = function(pollId, answer) {
+Data.prototype.checkAvailability = function(pollId, username){
   const poll = this.polls[pollId];
+  if (poll && poll.participants && poll.participants[username]) {
+    console.log("Username exists for the poll");
+    return false; 
+  }
+  return true
+}
+
+
+Data.prototype.submitAnswer = function(pollId, answer, username) {
+  const poll = this.polls[pollId];
+  const participant = poll.participants[username];
   console.log("answer submitted for ", pollId, answer);
-  if (typeof poll !== 'undefined') {
-    let answers = poll.answers[poll.currentQuestion];
-    if (typeof answers !== 'object') {
-      answers = {};
-      answers[answer] = 1;
-      poll.answers.push(answers);
-    }
-    else if (typeof answers[answer] === 'undefined')
-      answers[answer] = 1;
-    else
-      answers[answer] += 1
-    console.log("answers looks like ", answers, typeof answers);
+
+  if (typeof poll !== 'undefined' && participant !== 'uundefined') {
+    participant.answers.push(answer)
+    console.log(participant)
   }
 }
 

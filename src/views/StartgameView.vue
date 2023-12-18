@@ -82,7 +82,7 @@
     </div> 
 
     <div class="submit">
-      <router-link class="WaitingRoomButton" :to="'/waitingroom/'+this.pollId" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
+      <router-link class="WaitingRoomButton" :to="'/waitingroom/'+this.pollId + '/' + this.username" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
     </div> 
   </div>
   
@@ -99,6 +99,7 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       pollId: "inactive poll",
       uiLabels: {},
+      username: "",
       showMessage: true,
       questionNR: 0,
       qu1: '',
@@ -114,6 +115,7 @@ export default {
   },
   created: function () {
     this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
     socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {

@@ -2,7 +2,7 @@
   <body>
       <h1>Question:</h1>
       <br>
-      <h2>{{ this.questions}}?</h2>
+      <h2>{{this.questions}}?</h2>
       <br>
       <button id="minus"  class="answer" v-on:click="decrease">-</button>
       <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
@@ -66,14 +66,7 @@ export default {
         minus.classList.toggle("answer");
         number.disabled = true;
 
-        var buttons = document.querySelectorAll('#btn');
-          buttons.forEach(function(button) {
-            button.disabled = true; // Disable the button
-        // button.style.display = 'none'; // Alternatively, hide the button
-    });
-
-
-        socket.emit("sendAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
+        socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
       }
   }
 }

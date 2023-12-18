@@ -35,13 +35,13 @@ const router = createRouter({
       component: () => import('../views/InstructionsView.vue')
     },
     {
-      path: '/startgame/:id',
+      path: '/startgame/:id/:uid',
       name: 'StartgameView',
       
       component: () => import('../views/StartgameView.vue')
     },
     {
-      path: '/waitingroom/:id', 
+      path: '/waitingroom/:id/:uid', 
       name: 'WaitingRoomView',
       component: () => import('../views/WaitingRoomView.vue')
     },

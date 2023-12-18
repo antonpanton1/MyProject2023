@@ -52,8 +52,8 @@ function sockets(io, socket, data) {
   });
 
   socket.on('submitAnswer', function(d) {
-    data.submitAnswer(d.pollId, d.answer);
-    io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
+    data.submitAnswer(d.pollId, d.answer, d.username);
+    /* io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId)); */
   });
 
   socket.on('submitUsername', function(d) {
@@ -61,6 +61,10 @@ function sockets(io, socket, data) {
     let participants = data.getParticipants(d.pollId);
     io.to(d.pollId).emit('participantUpdate', participants);
   });
+
+  socket.on('usernameAvailability', function(d){
+    io.to(d.pollId).emit('availability', data.checkAvailability(d.pollId, d.username));
+  })
 
   socket.on('joinedLobby', function(pollId) {
     let participants = data.getParticipants(pollId);

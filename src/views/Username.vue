@@ -4,10 +4,16 @@
         Current game: {{ pollId }}
     </header>
     <main>
+<<<<<<< Updated upstream
         <h1>Hi and welcome to {{ gameName }}!</h1>
         <h3>Please Choose Your Username</h3>
         <input type="text" v-model="username">
+=======
+        <h2>Choose usename</h2>
+        <input type="text" v-model="username"> 
+>>>>>>> Stashed changes
         <br>
+        <p id="unavailable" >username you tried is unavailable</p>
         <button class="start-button" v-on:click="submitUsername">
             Join Game
         </button>
@@ -31,7 +37,10 @@ export default{
         pollId: "inactive poll",
         uiLabels: {},
         username: "",
+<<<<<<< Updated upstream
         gameName: "ddd"
+=======
+>>>>>>> Stashed changes
     };
   },
   created: function () {
@@ -53,8 +62,21 @@ export default{
 
 methods:{
     submitUsername: function(){
+<<<<<<< Updated upstream
         socket.emit("submitUsername", {pollId: this.pollId, username: this.username})
         this.$router.push({ path: '/startgame/'+this.pollId})
+=======
+        socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
+
+        socket.on("availability", (available) => {
+            if (available) {
+                socket.emit("submitUsername", { pollId: this.pollId, username: this.username });
+                this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username });
+            } else {
+                unavailable.style.display = "block";
+            }
+    })
+>>>>>>> Stashed changes
     }
 }
 };
@@ -88,6 +110,10 @@ main{
 input{
     margin: 10px;
     font-size: 1.5em;
+}
+
+#unavailable{
+    display:none
 }
 
 button{
