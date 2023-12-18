@@ -4,14 +4,9 @@
         Current game: {{ pollId }}
     </header>
     <main>
-<<<<<<< Updated upstream
         <h1>Hi and welcome to {{ gameName }}!</h1>
         <h3>Please Choose Your Username</h3>
         <input type="text" v-model="username">
-=======
-        <h2>Choose usename</h2>
-        <input type="text" v-model="username"> 
->>>>>>> Stashed changes
         <br>
         <p id="unavailable" >username you tried is unavailable</p>
         <button class="start-button" v-on:click="submitUsername">
@@ -37,35 +32,35 @@ export default{
         pollId: "inactive poll",
         uiLabels: {},
         username: "",
-<<<<<<< Updated upstream
         gameName: "ddd"
-=======
->>>>>>> Stashed changes
     };
   },
   created: function () {
     this.pollId = this.$route.params.id
-    socket.emit('getGameName', this.pollId);
-    socket.emit('joinPoll', this.pollId);
-    socket.emit('name', this.gameName);
-    socket.emit("pageLoaded", this.lang);
+
+    socket.on("gameNameUpdate", (gameName)=> 
+    {this.gameName = gameName});
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
 
     });
 
-    socket.on("gameNameUpdate", (gameName)=> 
-    {this.gameName = gameName});
+    socket.emit('joinPoll', this.pollId);
+    socket.emit('getGameName', this.pollId);
+    socket.emit('name', this.gameName);
+    socket.emit("pageLoaded", this.lang);
+
+    
+
+    
 
 },
 
 methods:{
     submitUsername: function(){
-<<<<<<< Updated upstream
         socket.emit("submitUsername", {pollId: this.pollId, username: this.username})
         this.$router.push({ path: '/startgame/'+this.pollId})
-=======
         socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
 
         socket.on("availability", (available) => {
@@ -76,7 +71,6 @@ methods:{
                 unavailable.style.display = "block";
             }
     })
->>>>>>> Stashed changes
     }
 }
 };

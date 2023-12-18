@@ -42,7 +42,8 @@ function sockets(io, socket, data) {
 
   socket.on('getGameName', function(pollId){
     console.log('Kom till getname', pollId)
-    io.emit('gameNameUpdate', data.getgName(pollId))
+   socket.emit ('gameNameUpdate', data.getgName(pollId));
+   
  
   });
 
@@ -75,16 +76,7 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
-<<<<<<< Updated upstream
-  //inte klar
-  socket.on('writingQuestions', function(pollId) {
-    let participantsWritingQuestions = data.getParticipants(pollId);
-    socket.emit('participantsWritingQuestionsUpdate', participantsWritingQuestions)
-  });
-  //
-=======
   
->>>>>>> Stashed changes
   }
 
 export { sockets };

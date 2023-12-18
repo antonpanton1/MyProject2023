@@ -49,7 +49,6 @@ export default{
 methods: {
         redirect(pollId) {
             this.$router.push({ path: '/username/'+this.pollId })
-<<<<<<< Updated upstream
     },
 
     joinID: function () {
@@ -67,11 +66,6 @@ methods: {
 
 }
 }
-=======
-        }
-    }
-};
->>>>>>> Stashed changes
 
 </script>
 

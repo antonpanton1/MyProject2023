@@ -35,13 +35,8 @@ Data.prototype.createPoll = function(pollId, lang="en", gameName) {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
-<<<<<<< Updated upstream
-    poll.participants = [];  
-    poll.participants.answers = [];
     poll.gName = gameName;            
-=======
     poll.participants = {};  
->>>>>>> Stashed changes
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
