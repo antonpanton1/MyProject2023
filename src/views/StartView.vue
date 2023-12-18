@@ -4,12 +4,17 @@
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
 
-    <button class="start-button" @click="startGame"><router-link v-bind:to="'/createlobby/'" style="text-decoration: none; color: inherit;" >Create Game</router-link></button>
-    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;" >Join Game</router-link></button>
-   
+    <button class="start-button" @click="startGame"><router-link v-bind:to="'/createlobby/'" style="text-decoration: none; color: inherit;">{{uiLabels.createGame}}</router-link></button><br>
+    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;">{{uiLabels.joinGameWithCode}}</router-link></button>
   
-    <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">How to play</router-link>
+
+    <button class="language-button" v-on:click="switchLanguage">{{ uiLabels.changeLanguage }}</button>
+   <!-- gamla instruktionsknapppen
+    <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">{{uiLabels.instructions}}</router-link>
+  --> 
+    <router-link class="instructions-button" :to="'/instructions/'">{{ uiLabels.instructions }}</router-link>
     
+
   </div> 
 
 </template>
@@ -98,16 +103,8 @@ export default {
   cursor: default;
 }
 
-.start-button {
-  padding: 20px 20px;
-  font-size: 1.5em;
-  background-color: darkorange;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-}
-.join-button {
+button {
+  text-decoration: none;
   padding: 20px 20px;
   font-size: 1.5em;
   background-color: darkorange;
@@ -117,18 +114,44 @@ export default {
   border-radius: 8px;
 }
 
+/* .start-button {
+  padding: 20px 20px;
+  font-size: 1.5em;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+} */
+/* 
+.join-button {
+  padding: 20px 20px;
+  font-size: 1.5em;
+  background-color: darkorange;
+}
+ */
 .instructions-button {
+  text-decoration: none;
   top: 30px;
   right: 40px;
   padding: 10px 20px;
   font-size: 1em;
   position: absolute;
-  background-color: red;
-  
+  background-color: #ed2626;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 8px;
+}
+
+
+.language-button {
+  top: 30px;
+  left: 40px;
+  padding: 10px 20px;
+  font-size: 1em;
+  position: absolute;
+  background-color: #ed2626;
 }
 
 .start-button:hover {
@@ -138,7 +161,11 @@ export default {
   background-color: #F05E16;
 }
 .instructions-button:hover {
-  background-color: #B80F0A;
+  background-color: #db0700;
+}
+
+.language-button:hover {
+  background-color: #db0700;
 }
 
 </style>

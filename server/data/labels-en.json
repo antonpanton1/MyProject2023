@@ -1,5 +1,5 @@
 {
-	"subHeading": "Are you a Zero or a Hero?",
+ 	"subHeading": "Are you a Zero or a Hero?",
 	"invite": "Invite participants with this link:",
 	"createPoll": "Create poll",
 	"participatePoll": "Participate in poll",
@@ -15,6 +15,9 @@
 	"participantsReady": "Participants Ready:",
 	"writingQuestions": "Writing Questions:",
 	"totalPlayers": "Players:",
-	"gameCode": "Game code:"
+	"gameCode": "Game code:",
+	"instructions": "How to play",
+	"createGame": "Create Game",
+	"joinGameWithCode": "Join Game"
 
 } 

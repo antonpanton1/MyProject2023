@@ -86,7 +86,7 @@ body {
     height: 100vh
 }
 
-input{
+input {
     font-size: 24pt;
     width: 40pt;
     background: transparent;
@@ -102,7 +102,7 @@ input[type=number]{
     -moz-appearance: textfield;
 }
 
-button{
+button {
   background-color: #a94411;
   margin: 20px;
   padding: 3%;
@@ -115,7 +115,7 @@ button{
   transition-duration: 0.4s;
 }
 
-.answer{
+.answer {
     background-color:#F05E16 ;
     margin: 10px;
     text-align: center;
@@ -127,15 +127,15 @@ button{
     transition-duration: 0.4s;
 }
 
-.answer:hover{
+.answer:hover {
     color: black;
 }
 
-.answerSlide{
+.answerSlide {
     width: 100%;
 }
 
-.slider{
+.slider {
     width: 50%;
     background: rgb(255, 196, 100) ;
     -webkit-appearance: none;
@@ -174,7 +174,7 @@ button{
     width: 15px;
 }
 
-.submit{
+.submit {
     background-color:#F05E16 ;
     margin: 20px;
     padding: 3%;
@@ -188,7 +188,7 @@ button{
     -webkit-transition-duration: 0.4s;
 }
 
-.submit:hover{
+.submit:hover {
     color: black;
     background-color: darkorange;
     transition-duration: 0.1s;

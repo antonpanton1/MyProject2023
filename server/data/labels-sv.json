@@ -10,12 +10,18 @@
 	"about": "Om oss",
 	"participateInPoll": "Gå med",
 	"joinGame": "Gå med",
-	"inputGameID": "SpelID",
+	"inputGameID": "Spel-ID",
 	"usernamePrompt": "Välj ett användarnamn",
 	"username": "användarnamn",
 	"participantsReady": "Deltagare redo:",
 	"writingQuestions": "Skriver frågor:",
 	"totalPlayers": "Antal spelare:",
-	"gameCode": "Spel kod::"
+	"gameCode": "Spel kod::",
+	"instructions": "Instruktioner",
+	"createGame": "Skapa nytt spel",
+	"joinGameWithCode": "Gå med i spel"
+
+
+
 
 }
