@@ -4,11 +4,12 @@
         Current game: {{ pollId }}
     </header>
     <main>
-        <h2>Choose usename</h2>
+        <h1>Hi and welcome to {{ gameName }}!</h1>
+        <h3>Please Choose Your Username</h3>
         <input type="text" v-model="username">
         <br>
         <button class="start-button" v-on:click="submitUsername">
-            Join game
+            Join Game
         </button>
 
     </main>
@@ -29,21 +30,31 @@ export default{
         lang: localStorage.getItem("lang") || "en",
         pollId: "inactive poll",
         uiLabels: {},
-        username: ""
+        username: "",
+        gameName: "ddd"
     };
   },
   created: function () {
     this.pollId = this.$route.params.id
+    socket.emit('getGameName', this.pollId);
     socket.emit('joinPoll', this.pollId);
+    socket.emit('name', this.gameName);
     socket.emit("pageLoaded", this.lang);
+
     socket.on("init", (labels) => {
       this.uiLabels = labels
-    })
+
+    });
+
+    socket.on("gameNameUpdate", (gameName)=> 
+    {this.gameName = gameName});
+
 },
+
 methods:{
     submitUsername: function(){
-        socket.emit("submitUsername", {pollId: this.pollId, username: this.username })
-        this.$router.push({ path: '/startgame/'+this.pollId })
+        socket.emit("submitUsername", {pollId: this.pollId, username: this.username})
+        this.$router.push({ path: '/startgame/'+this.pollId})
     }
 }
 };

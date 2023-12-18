@@ -10,7 +10,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('createPoll', function(d) {
-    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang));
+    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.gameName));
   });
 
   socket.on('addQuestion', function(d) {
@@ -40,6 +40,12 @@ function sockets(io, socket, data) {
     socket.emit('dataUpdate', data.getAnswers(pollId));
   });
 
+  socket.on('getGameName', function(pollId){
+    console.log('Kom till getname', pollId)
+    io.emit('gameNameUpdate', data.getgName(pollId))
+ 
+  });
+
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
@@ -65,12 +71,16 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
+<<<<<<< Updated upstream
   //inte klar
   socket.on('writingQuestions', function(pollId) {
     let participantsWritingQuestions = data.getParticipants(pollId);
     socket.emit('participantsWritingQuestionsUpdate', participantsWritingQuestions)
   });
   //
+=======
+  
+>>>>>>> Stashed changes
   }
 
 export { sockets };

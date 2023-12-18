@@ -1,30 +1,39 @@
 <template>
-  <body>
-    <main>
-        <h2></h2>
-        <input type="text" v-model="username">
-        <br>
-        <button class="start-button" v-on:click="submitUsername">
-            Join game
-        </button>
-
-    </main>
-
+    <div class="background">
+    <body>
+      <main>
+        <h1>What should we call your game?</h1>
+        <input type="text" name="create" v-model="lobby">
+        <button v-on:click="startPoll" >Create Lobby</button>
+        
+      </main>
     </body>
+    </div>
+  </template>
+  
+  <script>
+  import io from 'socket.io-client';
+  const socket = io("localhost:3000");
+  
 
-
-    <input type="text" name="create" v-model="newId">
-    <button v-on:click="startPoll">Create Poll</button>
-    </template>
-
-<script>
-import io from 'socket.io-client';
-const socket = io("localhost:3000");
-
-export default{
+  // Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod
+  function generateRandomCode() {
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numbers = '0123456789';
+  
+    const randomLetter = () => letters[Math.floor(Math.random() * letters.length)];
+    const randomNumber = () => numbers[Math.floor(Math.random() * numbers.length)];
+  
+    // Kod skapas som skiftar mellan bokstav och siffra
+    const code = `${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}`;
+  
+    return code;
+  }
+  
+  export default {
     name: 'CreateLobby',
     data: function () {
-    return {
+      return {
         lang: localStorage.getItem("lang") || "en",
         pollId: "inactive poll",
         uiLabels: {},
@@ -32,28 +41,52 @@ export default{
         answers: ["", ""],
         questionNumber: 0,
         data: {},
-    };
-  },
-  created: function () {
-    socket.emit('joinPoll', this.pollId);
-    socket.emit("pageLoaded", this.lang);
-    socket.on("init", (labels) => {
-      this.uiLabels = labels
-    })
-    socket.on("dataUpdate", (data) =>
-      this.data = data
-    )
-    socket.on("pollCreated", (data) =>
-      this.data = data)
-      
-      
-},
-methods:{
-    startPoll: function(){
-        this.pollId = this.newId
-        socket.emit("createPoll", {pollId: this.pollId, lang: this.lang })
-    }
-}
-};
+        gameName: "",
+    
+      };
+    },
+    created: function () {
+      //socket.emit('idUpdate', this.pollId);
+      //socket.emit("pageLoaded", this.lang);
+      //socket.emit("gameNameUpdate", this.gameName);
+  
+      socket.on("init", (labels) => {
+        this.uiLabels = labels
+      })
+      socket.on("dataUpdate", (data) =>
+        this.data = data
+      )
+      socket.on("pollCreated", (data) =>
+        this.data = data)
+    },
+    methods: {
+        redirect(pollId) {
+            this.$router.push({ path: '/username/'+this.pollId })
+            //this.$router.push({ path: `/username/${pollId}` });
+    },
 
-</script>
+    startPoll: function () {
+      this.isButtonDisabled = true;
+        this.pollId = generateRandomCode();
+        this.gameName = this.lobby;
+        socket.emit("createPoll", { lang: this.lang, gameName: this.gameName, pollId: this.pollId});
+
+        this.isButtonDisabled = false;
+        // Kör metoden som skickar en vidare till korrekt gameId/username
+        this.redirect(this.pollId);;
+    }
+  }
+  };
+  </script>
+  
+  <style>
+
+.background {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+</style>

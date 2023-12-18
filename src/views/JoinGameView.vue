@@ -17,7 +17,9 @@
 
 <script>
 import io from 'socket.io-client';
+import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
+
 
 export default{
     name: 'test',
@@ -25,28 +27,45 @@ export default{
     return {
         lang: localStorage.getItem("lang") || "en",
         uiLabels: {},
-        pollId: "inactivepoll",
+        pollId: "inactive poll",
         idCode: ""
     };
   },
   created: function () {
+
+    socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
     socket.on("dataUpdate", (data) =>
-      this.data = data
-    )  
+        this.data = data
+      )
+    socket.on("createPoll", (data) =>
+        this.data = data
+      )
+     
 },
-    methods:{
-        joinID: function(){
-            this.pollId = this.idCode
+methods: {
+        redirect(pollId) {
             this.$router.push({ path: '/username/'+this.pollId })
+    },
 
-                
-        }
-    }
-};
+    joinID: function () {
+ // if (this.idCode == this.pollId) {
+    console.log('It´s a perfect match!');
+    // Kör metoden som skickar en vidare till korrekt gameId/username
+    this.redirect(this.pollId);
+  //} else {
+    console.log('The GameID was entered wrong. Please try again');
+  //}
+
+
+  
+},
+
+}
+}
 
 </script>
 

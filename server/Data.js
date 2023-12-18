@@ -28,7 +28,7 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-Data.prototype.createPoll = function(pollId, lang="en") {
+Data.prototype.createPoll = function(pollId, lang="en", gameName) {
   if (typeof this.polls[pollId] === "undefined") {   
     let poll = {};
     poll.lang = lang;  
@@ -36,7 +36,8 @@ Data.prototype.createPoll = function(pollId, lang="en") {
     poll.answers = [];
     poll.currentQuestion = 0;
     poll.participants = [];  
-    poll.participants.answers = [];            
+    poll.participants.answers = [];
+    poll.gName = gameName;            
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -57,6 +58,15 @@ Data.prototype.getParticipants = function(pollId) {
     return poll.participants;
   }
   return []
+}
+
+Data.prototype.getgName = function(pollId) {
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    console.log(poll.gName, 'Uppdaterade det här namnet')
+    return poll.gName;
+  }
+  return ''
 }
 
 Data.prototype.editQuestion = function(pollId, index, newQuestion) {
