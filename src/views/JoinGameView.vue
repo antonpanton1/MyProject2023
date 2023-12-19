@@ -17,7 +17,6 @@
 
 <script>
 import io from 'socket.io-client';
-import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
 
 
@@ -47,21 +46,26 @@ export default{
      
 },
 methods: {
-        redirect(pollId) {
+    redirect(pollId) {
             this.$router.push({ path: '/username/'+this.pollId })
     },
 
     joinID: function () {
+        this.pollId = this.idCode
+        socket.emit('idCheck', this.pollId)
+
+        socket.on('idAvailable', (available) => {
+            if(available){
+                this.$router.push({ path: '/username/'+this.pollId })
+            }else console.log('The GameID was entered wrong. Please try again')
+        })
  // if (this.idCode == this.pollId) {
-    console.log('It´s a perfect match!');
+    //console.log('It´s a perfect match!');
     // Kör metoden som skickar en vidare till korrekt gameId/username
-    this.redirect(this.pollId);
+    //this.redirect(this.pollId);
   //} else {
-    console.log('The GameID was entered wrong. Please try again');
-  //}
-
-
-  
+    //console.log('The GameID was entered wrong. Please try again');
+  //}  
 },
 
 }

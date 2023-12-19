@@ -59,8 +59,6 @@ export default{
 
 methods:{
     submitUsername: function(){
-        socket.emit("submitUsername", {pollId: this.pollId, username: this.username})
-        this.$router.push({ path: '/startgame/'+this.pollId})
         socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
 
         socket.on("availability", (available) => {

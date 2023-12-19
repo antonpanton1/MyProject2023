@@ -18,6 +18,11 @@ function sockets(io, socket, data) {
     socket.emit('dataUpdate', data.getAnswers(d.pollId));
   });
 
+  socket.on('idCheck', function(pollId){
+    console.log("begun idcheck for: ", pollId)
+    socket.emit('idAvailable', data.idCheck(pollId))
+  })
+
   socket.on('saveQuestions', function(d) {
     data.addQuestion(d.pollId, {q: d.q1, a: d.a1});
     data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
@@ -76,7 +81,12 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
-  
+  //inte klar
+  socket.on('writingQuestions', function(pollId) {
+    let participantsWritingQuestions = data.getParticipants(pollId);
+    socket.emit('participantsWritingQuestionsUpdate', participantsWritingQuestions)
+  });
+  //
   }
 
 export { sockets };

@@ -116,6 +116,14 @@ Data.prototype.checkAvailability = function(pollId, username){
   return true
 }
 
+Data.prototype.idCheck = function(pollId){
+  const poll = this.polls[pollId];
+  console.log('now checking', poll)
+  if (typeof poll !== 'undefined') {
+    return true
+  }
+  else return false
+}
 
 Data.prototype.submitAnswer = function(pollId, answer, username) {
   const poll = this.polls[pollId];
