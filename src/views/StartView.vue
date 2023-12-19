@@ -10,7 +10,7 @@
     <!-- nya knappar-->
 
     <router-link class="big-button" :to="'/createlobby/'">{{ uiLabels.createGame }}</router-link><br>
-    <router-link class="big-button" :to="'/joingame/'">{{ uiLabels.joinGameWithCode }}</router-link>
+    <router-link class="big-button" :to="'/joingame/'">{{ uiLabels.join }}</router-link>
     
 
     <button class="small-button" v-on:click="switchLanguage" style="left: 40px;">{{ uiLabels.changeLanguage }}</button>
