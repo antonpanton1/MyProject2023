@@ -46,7 +46,7 @@
 
 </script>
 
-<style >
+<style scoped>
 .result-view {
   background-image: linear-gradient(to bottom right, red, yellow);
   color: rgb(28, 28, 28);

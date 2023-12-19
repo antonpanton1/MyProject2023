@@ -2,12 +2,22 @@
     <body>
         <header> {{uiLabels.currentGame}} {{ pollId }}</header>
     <main>
+<<<<<<< Updated upstream
         <h1> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
         <h3> {{uiLabels.pleaseChoose}} </h3>
         <input type="text" v-model="username">
         <br>
         <p id="unavailable" >{{ uiLabels.usernameUnavailable }}</p>
         <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
+=======
+        <h1>Hi and welcome to {{ gameName }}!</h1>
+        <h3>Please Choose Your Username</h3>
+        <input type="text" v-model="username">
+        <br>
+        <button class="start-button" v-on:click="submitUsername">
+            Join Game
+        </button>
+>>>>>>> Stashed changes
 
     </main>
 
@@ -28,23 +38,34 @@ export default{
         pollId: "inactive poll",
         uiLabels: {},
         username: "",
+<<<<<<< Updated upstream
         gameName: ""
+=======
+        gameName: "ddd"
+>>>>>>> Stashed changes
     };
   },
   created: function () {
     this.pollId = this.$route.params.id
     socket.emit('getGameName', this.pollId);
+<<<<<<< Updated upstream
 
     socket.emit('name', this.gameName);
     socket.on("gameNameUpdate", (gameName)=> 
     {this.gameName = gameName});
 
+=======
+    socket.emit('joinPoll', this.pollId);
+    socket.emit('name', this.gameName);
+    socket.emit("pageLoaded", this.lang);
+>>>>>>> Stashed changes
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
 
     });
 
+<<<<<<< Updated upstream
     socket.emit('joinPoll', this.pollId);
     socket.emit('getGameName', this.pollId);
     socket.emit('name', this.gameName);
@@ -69,13 +90,24 @@ methods:{
                 unavailable.style.display = "block";
             }
     })
+=======
+    socket.on("gameNameUpdate", (gameName)=> 
+    {this.gameName = gameName});
+
+},
+
+methods:{
+    submitUsername: function(){
+        socket.emit("submitUsername", {pollId: this.pollId, username: this.username})
+        this.$router.push({ path: '/startgame/'+this.pollId})
+>>>>>>> Stashed changes
     }
 }
 };
 
 </script>
 
-<style>
+<style scoped>
 body {
   background-image: linear-gradient(to bottom right, red, yellow);
   flex-direction: column;

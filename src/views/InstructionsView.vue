@@ -35,7 +35,7 @@ const socket = io("localhost:3000");
 
 </script>
 
-<style>
+<style scoped>
 
 .rectangle {
 
