@@ -2,15 +2,9 @@
     <div class="background">
     <body>
       <main>
-<<<<<<< Updated upstream
         <h1>{{ uiLabels.nameOfGame }}</h1>
         <input type="text" name="create" v-model="lobby"> 
         <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
-=======
-        <h1>What should we call your game?</h1>
-        <input type="text" name="create" v-model="lobby">
-        <button v-on:click="startPoll" >Create Lobby</button>
->>>>>>> Stashed changes
         
       </main>
     </body>
@@ -53,11 +47,7 @@
     },
     created: function () {
       //socket.emit('idUpdate', this.pollId);
-<<<<<<< Updated upstream
       
-=======
-      //socket.emit("pageLoaded", this.lang);
->>>>>>> Stashed changes
       //socket.emit("gameNameUpdate", this.gameName);
   
       socket.on("init", (labels) => {
@@ -68,11 +58,8 @@
       )
       socket.on("pollCreated", (data) =>
         this.data = data)
-<<<<<<< Updated upstream
         
       socket.emit("pageLoaded", this.lang);
-=======
->>>>>>> Stashed changes
     },
     methods: {
         redirect(pollId) {
@@ -94,7 +81,6 @@
   };
   </script>
   
-<<<<<<< Updated upstream
   <style scoped>
 
 .background {
@@ -119,16 +105,5 @@
 
 .joinLobby:hover {
   background-color: #F05E16;
-=======
-  <style>
-
-.background {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
->>>>>>> Stashed changes
 }
 </style>

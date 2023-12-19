@@ -19,10 +19,6 @@ import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
 
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 export default{
     name: 'test',
     data: function () {
@@ -49,16 +45,11 @@ export default{
      
 },
 methods: {
-<<<<<<< Updated upstream
     redirect(pollId) {
-=======
-        redirect(pollId) {
->>>>>>> Stashed changes
             this.$router.push({ path: '/username/'+this.pollId })
     },
 
     joinID: function () {
-<<<<<<< Updated upstream
         this.pollId = this.idCode
         socket.emit('idCheck', this.pollId)
 
@@ -67,18 +58,6 @@ methods: {
                 this.$router.push({ path: '/username/'+this.pollId })
             }else console.log('The GameID was entered wrong. Please try again')
         })
-=======
- // if (this.idCode == this.pollId) {
-    console.log('It´s a perfect match!');
-    // Kör metoden som skickar en vidare till korrekt gameId/username
-    this.redirect(this.pollId);
-  //} else {
-    console.log('The GameID was entered wrong. Please try again');
-  //}
-
-
-  
->>>>>>> Stashed changes
 },
 
 }

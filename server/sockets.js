@@ -11,10 +11,6 @@ function sockets(io, socket, data) {
 
   socket.on('createPoll', function(d) {
     socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.gameName));
-<<<<<<< Updated upstream
-    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.gameName));
-=======
->>>>>>> Stashed changes
   });
 
   socket.on('addQuestion', function(d) {
@@ -51,12 +47,8 @@ function sockets(io, socket, data) {
 
   socket.on('getGameName', function(pollId){
     console.log('Kom till getname', pollId)
-<<<<<<< Updated upstream
    socket.emit ('gameNameUpdate', data.getgName(pollId));
    
-=======
-    io.emit('gameNameUpdate', data.getgName(pollId))
->>>>>>> Stashed changes
  
   });
 
@@ -90,13 +82,10 @@ function sockets(io, socket, data) {
     data.initializeData();
   });
   
-<<<<<<< Updated upstream
   socket.on('joinedWaitingRoom', function(pollId) {
     io.to(pollId).emit('participantsWritingQuestionsUpdate')
   }); 
   
-=======
->>>>>>> Stashed changes
   }
 
 export { sockets };

@@ -28,10 +28,6 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 Data.prototype.createPoll = function(pollId, lang="en", gameName) {
   if (typeof this.polls[pollId] === "undefined") {   
     let poll = {};
@@ -39,14 +35,9 @@ Data.prototype.createPoll = function(pollId, lang="en", gameName) {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
-<<<<<<< Updated upstream
-    poll.gName = gameName;            
-    poll.participants = {};  
-=======
     poll.participants = [];  
     poll.participants.answers = [];
     poll.gName = gameName;            
->>>>>>> Stashed changes
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
