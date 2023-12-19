@@ -81,12 +81,11 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
-  //inte klar
-  socket.on('writingQuestions', function(pollId) {
-    let participantsWritingQuestions = data.getParticipants(pollId);
-    socket.emit('participantsWritingQuestionsUpdate', participantsWritingQuestions)
-  });
-  //
+  
+  socket.on('joinedWaitingRoom', function(pollId) {
+    io.to(pollId).emit('participantsWritingQuestionsUpdate')
+  }); 
+  
   }
 
 export { sockets };

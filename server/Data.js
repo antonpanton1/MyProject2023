@@ -54,7 +54,8 @@ Data.prototype.addQuestion = function(pollId, q) {
 Data.prototype.getParticipants = function(pollId) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
-    return poll.participants;
+    console.log(Object.keys(poll.participants))
+    return Object.keys(poll.participants);
   }
   return []
 }

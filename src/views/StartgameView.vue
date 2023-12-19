@@ -81,9 +81,12 @@
       </button>  
     </div> 
 
-    <div class="submit">
+    <button class="submit" v-on:click="joinGame" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">
+            Join Waiting Room
+        </button>
+    <!-- <div class="submit">
       <router-link class="WaitingRoomButton" :to="'/waitingroom/'+this.pollId + '/' + this.username" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
-    </div> 
+    </div>  -->
   </div>
   
 </template>
@@ -132,6 +135,10 @@ export default {
   save_question: function(event){
     console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
+  },
+  joinGame: function() {
+    socket.emit("joinedWaitingRoom", pollId)
+    this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   }
   }
   

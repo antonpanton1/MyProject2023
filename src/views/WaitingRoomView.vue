@@ -5,7 +5,7 @@
             {{ uiLabels.participantsReady }}  spelare som är inne i väntrummet 
         </div>
         <div id="writingQuestions" style="display: inline-block">
-            {{ uiLabels.writingQuestions }} {{ participantsWritingQuestions.length }} spelare som fortfarande skriver frågor
+            {{ uiLabels.writingQuestions }} {{ this.participantsWritingQuestions }} spelare som fortfarande skriver frågor
         </div>
         <div id="totalPlayers" style="display: inline-block">
             {{ uiLabels.totalPlayers }} {{ participants.length }} totala antal spelare inne på game ID
@@ -16,11 +16,15 @@
         
         <h1>{{ uiLabels.gameCode }} {{pollId}}</h1>
         <div>
-            <div v-for="(userName) in this.participants">
-            {{ userName.name }}
+            <div v-for="(participants) in this.participants">
+            {{ participants }}
             </div>
         </div>
     </div>
+
+    <button v-if="gameLeader" type="submit" id="leader" > 
+        Start Game
+    </button>
     </body>
 </template>
 
@@ -41,7 +45,8 @@ export default {
         lang: localStorage.getItem("lang") || "en",
         participants: [],
         username: "",
-        participantsWritingQuestions: []
+        participantsWritingQuestions: 0,
+        gameLeader: true
         }
     },
     created: function () {
@@ -54,10 +59,13 @@ export default {
     })
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
+    this.participantsWritingQuestions++,
+    console.log(this.participantsWritingQuestions, "hej")
     );
     //inte klar
-    socket.on("participantsWritingQuestionsUpdate", (participantsWritingQuestions) =>
-    this.participantsWritingQuestions = this.participantsWritingQuestions,
+    socket.on("participantsWritingQuestionsUpdate", 
+    this.participantsWritingQuestions-- 
+    
     );
     //
     socket.emit("joinedLobby", this.pollId);
