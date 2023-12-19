@@ -11,6 +11,7 @@ function sockets(io, socket, data) {
 
   socket.on('createPoll', function(d) {
     socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.gameName));
+    socket.emit('pollCreated', data.createPoll(d.pollId, d.lang, d.gameName));
   });
 
   socket.on('addQuestion', function(d) {

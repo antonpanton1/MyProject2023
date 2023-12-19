@@ -2,9 +2,9 @@
     <div class="background">
     <body>
       <main>
-        <h1>What should we call your game?</h1>
-        <input type="text" name="create" v-model="lobby">
-        <button v-on:click="startPoll" >Create Lobby</button>
+        <h1>{{ uiLabels.nameOfGame }}</h1>
+        <input type="text" name="create" v-model="lobby"> 
+        <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
         
       </main>
     </body>
@@ -47,7 +47,7 @@
     },
     created: function () {
       //socket.emit('idUpdate', this.pollId);
-      //socket.emit("pageLoaded", this.lang);
+      
       //socket.emit("gameNameUpdate", this.gameName);
   
       socket.on("init", (labels) => {
@@ -58,6 +58,8 @@
       )
       socket.on("pollCreated", (data) =>
         this.data = data)
+        
+      socket.emit("pageLoaded", this.lang);
     },
     methods: {
         redirect(pollId) {
@@ -88,5 +90,20 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.joinLobby {
+  text-decoration: none;
+  padding: 20px 20px;
+  font-size: 1.5em;
+  background-color: darkorange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.joinLobby:hover {
+  background-color: #F05E16;
 }
 </style>

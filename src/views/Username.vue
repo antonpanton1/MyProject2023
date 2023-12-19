@@ -1,17 +1,13 @@
 <template>
     <body>
-        <header>
-        Current game: {{ pollId }}
-    </header>
+        <header> {{uiLabels.currentGame}} {{ pollId }}</header>
     <main>
-        <h1>Hi and welcome to {{ gameName }}!</h1>
-        <h3>Please Choose Your Username</h3>
+        <h1> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
+        <h3> {{uiLabels.pleaseChoose}} </h3>
         <input type="text" v-model="username">
         <br>
-        <p id="unavailable" >username you tried is unavailable</p>
-        <button class="start-button" v-on:click="submitUsername">
-            Join Game
-        </button>
+        <p id="unavailable" >{{ uiLabels.usernameUnavailable }}</p>
+        <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
 
     </main>
 
@@ -32,14 +28,17 @@ export default{
         pollId: "inactive poll",
         uiLabels: {},
         username: "",
-        gameName: "ddd"
+        gameName: ""
     };
   },
   created: function () {
     this.pollId = this.$route.params.id
+    socket.emit('getGameName', this.pollId);
 
+    socket.emit('name', this.gameName);
     socket.on("gameNameUpdate", (gameName)=> 
     {this.gameName = gameName});
+
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
@@ -56,6 +55,7 @@ export default{
     
 
 },
+
 
 methods:{
     submitUsername: function(){

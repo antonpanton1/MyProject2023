@@ -19,9 +19,12 @@
 	"gameCode": "Spel kod::",
 	"instructions": "Instruktioner",
 	"createGame": "Skapa nytt spel",
-	"joinGameWithCode": "Gå med i spel"
-
-
-
-
+	"joinGameWithCode": "Gå med i spel",
+	"nameOfGame": "Vad ska vi kalla ditt spel?",
+	"lobby": "Skapa lobby",
+	"join": "Gå med i spel",
+	"usernameUnavailable": "Användarnamnet du angett är upptaget",
+	"pleaseChoose": "Var god ange ditt användarnamn",
+	"welcomeMessage": "Hej och välkommen till: ",
+	"currentGame": "Nuvarande spel: "
 }

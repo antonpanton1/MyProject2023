@@ -10,7 +10,7 @@
 	"participateInPoll": "Participate", 
 	"usernamePrompt": "Chose a username",
 	"joinGame": "Submit",
-	"inputGameID": "GameID",
+	"inputGameID": "Game-ID",
 	"username": "username",
 	"participantsReady": "Participants Ready:",
 	"writingQuestions": "Writing Questions:",
@@ -18,6 +18,12 @@
 	"gameCode": "Game code:",
 	"instructions": "How to play",
 	"createGame": "Create Game",
-	"joinGameWithCode": "Join Game"
-
-} 
+	"joinGameWithCode": "Join Game",
+	"nameOfGame": "What should we call your game?",
+	"lobby": "Create Lobby",
+	"join": "Join Game",
+	"usernameUnavailable": "The username you have chosen is unavailable",
+	"pleaseChoose": "Please choose your username",
+	"welcomeMessage": "Hi and welcome to: ",
+	"currentGame": "Current game: "
+}

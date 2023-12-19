@@ -5,9 +5,7 @@
         <h2>{{uiLabels.inputGameID}}</h2>
         <input type="text" v-model="idCode">
         <br>
-        <button class="start-button" v-on:click="joinID">
-            Join game
-        </button>
+        <button class="start-button" v-on:click="joinID"> {{ uiLabels.join }}</button>
     </main>
 
     </body>
@@ -17,7 +15,9 @@
 
 <script>
 import io from 'socket.io-client';
+import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
+
 
 
 export default{
@@ -59,13 +59,6 @@ methods: {
                 this.$router.push({ path: '/username/'+this.pollId })
             }else console.log('The GameID was entered wrong. Please try again')
         })
- // if (this.idCode == this.pollId) {
-    //console.log('It´s a perfect match!');
-    // Kör metoden som skickar en vidare till korrekt gameId/username
-    //this.redirect(this.pollId);
-  //} else {
-    //console.log('The GameID was entered wrong. Please try again');
-  //}  
 },
 
 }

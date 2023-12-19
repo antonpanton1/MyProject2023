@@ -28,6 +28,7 @@ Data.prototype.getUILabels = function (lang = "en") {
   return JSON.parse(labels);
 }
 
+
 Data.prototype.createPoll = function(pollId, lang="en", gameName) {
   if (typeof this.polls[pollId] === "undefined") {   
     let poll = {};
