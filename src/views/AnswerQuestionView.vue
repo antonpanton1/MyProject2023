@@ -2,7 +2,7 @@
   <body>
       <h1>Question:</h1>
       <br>
-      <h2>{{this.questions}}?</h2>
+      <h2>{{this.questions[currentQuestion].q}}?</h2>
       <br>
       <button id="minus"  class="answer" v-on:click="decrease">-</button>
       <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
@@ -11,13 +11,13 @@
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
       <button class="submit" id="lockBtn" v-on:click="lockAnswer"> Lock in answer </button>
+      <p id="waiting" >Waiting for other players</p>
 
   </body>
 </template>
   
 <script>
 import io from 'socket.io-client';
-import { queuePostFlushCb } from 'vue';
 const socket = io("localhost:3000");
 
 export default {
@@ -28,14 +28,16 @@ export default {
       pollId: "",
       questions: [],
       answer: 50,
-      username: ""
+      username: "",
+      currentQuestion: 0,
     }
   },
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.emit("pageLoaded", this.lang);
     socket.emit('joinPoll', this.pollId);
+    socket.emit('getCurrent', this.pollId)
+    socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
@@ -46,6 +48,10 @@ export default {
 
     socket.on("sendQuestions", (questions) => 
       this.questions = questions,
+    );
+
+    socket.on('currentUpdate', (current) => 
+      this.currentQuestion = current
     );
   },
   methods: {
@@ -65,8 +71,10 @@ export default {
         minus.disabled = true;
         minus.classList.toggle("answer");
         number.disabled = true;
+        waiting.style.display = "block"
 
         socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
+        socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})
       }
   }
 }
@@ -188,7 +196,9 @@ button {
 
 }
 
-
+#waiting {
+  display: none;
+}
 
 
 </style>

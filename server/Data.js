@@ -9,11 +9,12 @@ function Data() {
     lang: "en",
     questions: [
       {q: "fråga 1?",
-      a: "1"}
+      a: 44}
     ],
     answers: [],
     gName: "Test spelet",
     currentQuestion: 0,
+    ready: 0,
     participants: {}
   } 
 }
@@ -37,7 +38,8 @@ Data.prototype.createPoll = function(pollId, lang="en", gameName) {
     poll.answers = [];
     poll.currentQuestion = 0;
     poll.participants = {};  
-    poll.gName = gameName;            
+    poll.gName = gameName;     
+    poll.ready = 0;       
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
   }
@@ -49,6 +51,35 @@ Data.prototype.addQuestion = function(pollId, q) {
   console.log("question added to", pollId, q);
   if (typeof poll !== 'undefined') {
     poll.questions.push(q);
+  }
+}
+
+Data.prototype.ready = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll !== 'undefined'){
+    poll.ready +=1;
+  }
+}
+
+Data.prototype.getReady = function(pollId){
+  const poll = this.polls[pollId];
+  if (typeof poll !== 'undefined') {
+    return poll.ready;
+  }
+  return []
+}
+
+Data.prototype.calcScore = function(pollId, username, answer){
+  const poll = this.polls[pollId];
+  console.log("now calculating score")
+  if (typeof poll !== "undefined"){
+    const participant = poll.participants[username];
+    var score = Math.abs(poll.questions[poll.currentQuestion].a - answer)
+    if (score == 0){
+      var score = -10;
+    } 
+    console.log(score)
+    participant.score += score
   }
 }
 
@@ -103,7 +134,7 @@ Data.prototype.submitUsername = function(pollId, username){
   console.log("new user added", username, pollId)
   if (typeof poll !== "undefined"){
     if (!poll.participants[username]) {
-      poll.participants[username] = { answers: [], score: 0 };
+      poll.participants[username] = { answers: [], score: 0};
     }
     console.log(poll.participants) 
   }
@@ -116,6 +147,21 @@ Data.prototype.checkAvailability = function(pollId, username){
     return false; 
   }
   return true
+}
+
+Data.prototype.nextQuestion = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll !== 'undefined'){
+    poll.currentQuestion += 1;
+  }
+}
+
+Data.prototype.getCurrent = function(pollId){
+  const poll = this.polls[pollId];
+  if(typeof poll !== 'undefined'){
+    return poll.currentQuestion
+  }
+  return 0
 }
 
 Data.prototype.idCheck = function(pollId){
