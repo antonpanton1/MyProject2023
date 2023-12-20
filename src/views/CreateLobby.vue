@@ -13,7 +13,7 @@
   
   <script>
   import io from 'socket.io-client';
-  const socket = io("localhost:3000");
+  const socket = io(sessionStorage.getItem("dataServer"));
   
 
   // Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod

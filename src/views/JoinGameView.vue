@@ -19,12 +19,15 @@ import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
 
 
+
+
 export default{
     name: 'test',
     data: function () {
     return {
         lang: localStorage.getItem("lang") || "en",
         uiLabels: {},
+        pollId: "inactive poll",
         pollId: "inactive poll",
         idCode: ""
     };

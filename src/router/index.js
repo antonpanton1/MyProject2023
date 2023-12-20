@@ -74,7 +74,7 @@ const router = createRouter({
       path: '/results/',
       name: 'ResultsView',
       component: () => import('../views/ResultsView.vue')
-    } 
+    } ,
   ]
 })
 
