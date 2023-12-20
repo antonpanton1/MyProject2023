@@ -12,6 +12,7 @@ function Data() {
       a: "1"}
     ],
     answers: [],
+    gName: "Test spelet",
     currentQuestion: 0,
     participants: {}
   } 
@@ -35,8 +36,7 @@ Data.prototype.createPoll = function(pollId, lang="en", gameName) {
     poll.questions = [];
     poll.answers = [];
     poll.currentQuestion = 0;
-    poll.participants = [];  
-    poll.participants.answers = [];
+    poll.participants = {};  
     poll.gName = gameName;            
     this.polls[pollId] = poll;
     console.log("poll created", pollId, poll);
