@@ -25,15 +25,7 @@
         </label><br>
         <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
         {{ question3 }}
-      </p>
-      <p v-if= "questionNR > 2 ">
-        <label for="Question 4">
-          Question 4:
-        </label><br>
-        <input typ="text" id="Question 4" v-model="qu4" requeried="required" placeholder="Good questions only pls">
-        {{ question4 }}
-      </p>
-    
+      </p>    
     </div>
 
     <div class="answers">  
@@ -58,16 +50,9 @@
          <input type="number" id="Answer 3" v-model="an3" required="required" placeholder="Your answer here">
          {{ answer3 }}
       </p>  
-      <p v-if= "questionNR > 2 ">
-        <label for="Answer 4">
-         Answer 4:
-         </label><br>
-         <input type="number" id="Answer 4" v-model="an4" required="required" placeholder="Your answer here">
-         {{ answer4 }}
-      </p> 
     </div>
 
-    <button v-if="questionNR < 3" type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
+    <button v-if="questionNR < 2" type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
                   Add Question
     </button>
 
@@ -108,11 +93,9 @@ export default {
       qu1: '',
       qu2: '',
       qu3: '',
-      qu4: '',
       an1: '',
       an2: '',
-      an3: '',
-      an4: ''
+      an3: ''
 
     };
   },

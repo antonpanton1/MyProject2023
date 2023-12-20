@@ -37,8 +37,6 @@
       <router-link class="quit" :to="'/Start/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Quit</router-link>
     </div>
   </div> 
-   
-
 </template>
 
 
