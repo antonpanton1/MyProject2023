@@ -118,7 +118,7 @@ export default {
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
   },
   joinGame: function() {
-    socket.emit("joinedWaitingRoom", pollId)
+    socket.emit("joinedWaitingRoom", this.pollId)
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   }
   }
