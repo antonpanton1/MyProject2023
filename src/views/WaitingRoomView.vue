@@ -1,9 +1,7 @@
 <template>
     <body>
     <div id="playersInGame">
-        <div id="participantsReady" style="display: inline-block">
-            {{ uiLabels.participantsReady }}  spelare som är inne i väntrummet 
-        </div>
+        
         <div id="writingQuestions" style="display: inline-block">
             {{ uiLabels.writingQuestions }} {{ this.participantsWritingQuestions }} spelare som fortfarande skriver frågor
         </div>
@@ -22,7 +20,7 @@
         </div>
     </div>
 
-    <button v-if="gameLeader" type="submit" id="leader" > 
+    <button v-if="gameLeader" v-on:click="startGame" type="submit" id="leader" > 
         Start Game
     </button>
     </body>
@@ -62,17 +60,21 @@ export default {
     this.participantsWritingQuestions++,
     console.log(this.participantsWritingQuestions, "hej")
     );
-    //inte klar
+    
     socket.on("participantsWritingQuestionsUpdate", 
     this.participantsWritingQuestions-- 
     
     );
-    //
+    
     socket.emit("joinedLobby", this.pollId);
     },
     methods: {
     submitUserName: function () {
         socket.emit("submitUserName", {pollId: this.pollId, name: this.userName})
+    },
+    startGame: function () {
+        socket.emit("startGame", this.pollId)
+        this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
     }
     }
 }

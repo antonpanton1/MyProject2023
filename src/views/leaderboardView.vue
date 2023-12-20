@@ -18,7 +18,37 @@
 
 
 <script>
+import io from 'socket.io-client';
+const socket = io("localhost:3000");
 
+export default {
+    name: 'WaitingRoomView',
+   
+    data: function () {
+    return {
+        pollId: "inactive poll",
+        userName: [],
+        uiLabels: {},
+        lang: localStorage.getItem("lang") || "en",
+        participants: [],
+        };
+    },
+    created: function () {
+    this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("pageLoaded", this.lang);
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+
+    });
+    },
+    methods: {
+
+    }
+
+
+  }
 </script>
 
 <style scoped>
