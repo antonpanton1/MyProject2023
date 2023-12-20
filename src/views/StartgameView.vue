@@ -2,26 +2,26 @@
   <div class="question-view_background">
     
     <div class="questionTitle">
-      <h2>Type your questions and answers below! </h2>
+      <h2> {{uiLabels.title}} </h2>
     </div>    
     <div class="questions">
       <p>
         <label for="Question 1">
-          Question 1:
+          {{uiLabels.Question1}}
         </label><br>
         <input type="text" id="Question 1" v-model="qu1" requeried="required" placeholder="Good questions only pls">
         {{ question1 }}
       </p>
       <p v-if= "questionNR > 0 ">
         <label for="Question 2">
-          Question 2:
+          {{uiLabels.Question2}}
         </label><br>
         <input typ="text" id="Question 2" v-model="qu2" requeried="required" placeholder="Good pls">
         {{ question2 }}
       </p>
       <p v-if= "questionNR > 1 ">
         <label for="Question 3">
-          Question 3:
+          {{uiLabels.Question3}}
         </label><br>
         <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
         {{ question3 }}
@@ -31,47 +31,45 @@
     <div class="answers">  
       <p>
         <label for="Answer 1">
-         Answer 1:
+          {{uiLabels.Answer1}}
          </label><br>
          <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
-         Answer 2:
+          {{uiLabels.Answer2}}
          </label><br>
          <input type="number" id="Answer 2" v-model="an2" required="required" placeholder="Your answer here">
          {{ answer2 }}
       </p>  
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
-         Answer 3:
+          {{uiLabels.Answer3}}
          </label><br>
          <input type="number" id="Answer 3" v-model="an3" required="required" placeholder="Your answer here">
          {{ answer3 }}
       </p>  
     </div>
-
-    <button v-if="questionNR < 2" type="submit" id= "add" v-on:click="questionNR++" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #26ed58; color: #fff; border: none; cursor: pointer;width: 80px">
-                  Add Question
+    <div type="submit" class="plusmin">
+    <button v-if="questionNR < 2" type="submit" id= "add" v-on:click="questionNR++" style="background-color: #26ed58;">
+          {{uiLabels.addquestion}}
+    </button>
+  </div>
+    <button v-if="questionNR > -0" type="submit" id= "sub" v-on:click="questionNR--" style="background-color: #af1111;">
+          {{uiLabels.removequestion}}
     </button>
 
-    <button v-if="questionNR > -0" type="submit" id= "sub" v-on:click="questionNR--" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #af1111; color: #fff; border: none; cursor: pointer;width: 80px">
-                  Remove Question
-    </button>
-
-    <div type="submit" class="save" v-on:click="savequestion">
+    <!--<div type="submit" class="save" v-on:click="savequestion">
       <button type="submit" v-on:click="save_question"  style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #10a428; color: #fff; border: none; cursor: pointer;">
            Save
       </button>  
-    </div> 
-
-    <button class="submit" v-on:click="joinGame" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">
-            Join Waiting Room
-        </button>
-    <!-- <div class="submit">
-      <router-link class="WaitingRoomButton" :to="'/waitingroom/'+this.pollId + '/' + this.username" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Join Waiting Room</router-link>
-    </div>  -->
+    </div> -->
+    <div type="submit" class="wrap">
+    <button class="submit" v-on:click="joinGame">
+            {{uiLabels.joinwaitroom}}
+    </button>
+    </div>
   </div>
   
 </template>
@@ -116,7 +114,7 @@ export default {
     }, 3000);
   },
   save_question: function(event){
-    console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
+    //console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
   },
   joinGame: function() {
@@ -168,13 +166,33 @@ export default {
 
 }
 
-.save{
+.plusmin{
+  text-decoration: none; 
+  color: inherit; 
+  display: inline-block; 
+  padding: 10px; 
+  color: #fff; 
+  border: none; 
+  cursor: pointer;
+  width: 140px;
+  height: 50px;
+}
+
+.wrap{
   text-align: center;
-  margin-top: 25vh;
+  margin-top: 1vh;
 }
 
 .submit{
   text-align: center;
   margin-top: 5vh;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  padding: 10px; 
+  background-color: #ed2626; 
+  color: #fff; 
+  border: none; 
+  cursor: pointer;
 }
 </style>

@@ -21,6 +21,18 @@
 	"pleaseChoose": "Please choose your username",
 	"usernameUnavailable": "The username you have chosen is unavailable",
 	
+"QuestionsView": "",
+	"title": "Skriv dina frågor och svar nedan!",
+	"Question1": "Fråga 1:",
+	"Question2": "Fråga 2:",
+	"Question3": "Fråga 3:",
+	"Answer1":"Svar 1:",
+	"Answer2":"Svar 2:",
+	"Answer3":"Svar 3:",
+	"addquestion":"Lägg till fråga",
+	"removequestion":" Ta bort fråga",
+	"joinwaitroom":"Gå med i väntrum",
+
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",
 	"writingQuestions": "Writing Questions:",
