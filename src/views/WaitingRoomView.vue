@@ -3,7 +3,9 @@
     <div id="playersInGame">
         
         <div id="writingQuestions" style="display: inline-block">
-            {{ uiLabels.writingQuestions }} {{ this.participantsWritingQuestions }} spelare som fortfarande skriver frågor
+            {{ uiLabels.writingQuestions }} spelare som fortfarande skriver frågor
+            <br>
+            {{ ready }} / {{ participants.length }} players ready
         </div>
         <div id="totalPlayers" style="display: inline-block">
             {{ uiLabels.totalPlayers }} {{ participants.length }} totala antal spelare inne på game ID
@@ -28,7 +30,6 @@
 
 <script>
 // @ is an alias to /src
-
 import io from 'socket.io-client';
 const socket = io(sessionStorage.getItem("dataServer"));
 
@@ -43,35 +44,31 @@ export default {
         lang: localStorage.getItem("lang") || "en",
         participants: [],
         username: "",
-        participantsWritingQuestions: 0,
+        ready: 0,
         gameLeader: true
         }
     },
     created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit("pageLoaded", this.lang);
+
     socket.on("init", (labels) => {
         this.uiLabels = labels
     })
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
-    this.participantsWritingQuestions++,
-    console.log(this.participantsWritingQuestions, "hej")
     );
     
-    socket.on("participantsWritingQuestionsUpdate", 
-    this.participantsWritingQuestions-- 
+    socket.on('readyUpdate', (ready) => {
+        this.ready = ready
+    });
     
-    );
-    
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("joinedWaitingRoom", this.pollId)
     socket.emit("joinedLobby", this.pollId);
+    socket.emit("pageLoaded", this.lang);
     },
     methods: {
-    submitUserName: function () {
-        socket.emit("submitUserName", {pollId: this.pollId, name: this.userName})
-    },
     startGame: function () {
         socket.emit("startGame", this.pollId)
         this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})

@@ -100,11 +100,11 @@ export default {
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("pageLoaded", this.lang);    
 },
   methods:{
     mounted() {
@@ -118,7 +118,7 @@ export default {
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
   },
   joinGame: function() {
-    socket.emit("joinedWaitingRoom", this.pollId)
+    socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   }
   }

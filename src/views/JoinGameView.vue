@@ -15,7 +15,6 @@
 
 <script>
 import io from 'socket.io-client';
-import { toDisplayString } from 'vue';
 const socket = io("localhost:3000");
 
 

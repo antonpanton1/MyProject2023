@@ -56,7 +56,7 @@ const router = createRouter({
       component: () => import('../views/JoinGameView.vue')
     },
     {
-      path: '/correctanswer/',
+      path: '/correctanswer/:id/:uid',
       name: 'CorrectAnswerView',
       component: () => import('../views/CorrectAnswerView.vue')
     }, 

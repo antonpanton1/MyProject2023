@@ -27,8 +27,13 @@ function sockets(io, socket, data) {
     data.addQuestion(d.pollId, {q: d.q1, a: d.a1});
     data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
     data.addQuestion(d.pollId, {q: d.q3, a: d.a3});
+    data.ready(d.pollId);
     io.to(d.pollId).emit('sendQuestions', data.getAllQuestions(d.pollId))
   });
+
+  socket.on('calculateScore', function(d){
+    data.calcScore(d.pollId, d.username, d.answer)
+  })
 
   socket.on('getQuestions', function(pollId) {
     io.to(pollId).emit('sendQuestions', data.getAllQuestions(pollId))
@@ -52,6 +57,14 @@ function sockets(io, socket, data) {
  
   });
 
+  socket.on('nextQuestion', function(pollId){
+    data.nextQuestion(pollId)
+  });
+
+  socket.on('getCurrent', function(pollId){
+    socket.emit('currenUpdate',data.getCurrent(pollId));
+  });
+
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
@@ -69,7 +82,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('usernameAvailability', function(d){
-    io.to(d.pollId).emit('availability', data.checkAvailability(d.pollId, d.username));
+    socket.emit('availability', data.checkAvailability(d.pollId, d.username));
   })
 
   socket.on('joinedLobby', function(pollId) {
@@ -83,7 +96,8 @@ function sockets(io, socket, data) {
   });
   
   socket.on('joinedWaitingRoom', function(pollId) {
-    io.to(pollId).emit('participantsWritingQuestionsUpdate')
+    let ready = data.getReady(pollId);
+    socket.emit('readyUpdate', ready)
   }); 
   
   }
