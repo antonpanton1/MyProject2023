@@ -3,12 +3,12 @@
     <div id="playersInGame">
         
         <div id="writingQuestions" style="display: inline-block">
-            {{ uiLabels.writingQuestions }} spelare som fortfarande skriver frågor
+            {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }}
             <br>
-            {{ ready }} / {{ participants.length }} players ready
+             
         </div>
         <div id="totalPlayers" style="display: inline-block">
-            {{ uiLabels.totalPlayers }} {{ participants.length }} totala antal spelare inne på game ID
+            {{ uiLabels.totalPlayers }} {{ participants.length }} 
         </div>
     </div>
 
@@ -94,8 +94,8 @@ body {
 }
 
 #playersInGame {
-    margin-left: 5vh;
-    margin-right: 5vh;
+    margin-left: 15vh;
+    margin-right: 15vh;
     margin-top: 1vh;
     display: flex;
     justify-content: space-between;

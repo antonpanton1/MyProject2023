@@ -1,19 +1,35 @@
 <template>
-
-   <div class="start-view">
-      <h1 class="game-title">Leaderboard: </h1>
+  <body>
+    <div id="gameTitle"> 
+      <h1>
+        {{ uiLabels.leaderBoard }} 
+      </h1>
+    </div>
   
-    <div class="users">
-        <h2>Namn: </h2>
-        <!--lista med allas username-->
+    <div id="leaderBoard">
+      <div id="players">
+        <h2> {{ uiLabels.name }} </h2>
+          <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
+            {{ index + 1 }}. {{ topPlayer.username }}
+          </div>
+      </div>
+
+      <div id="scores">
+        <h2> {{ uiLabels.scores }} </h2>
+          <div v-for="(topPlayers) in topPlayers">
+            {{ topPlayers.score }}
+          </div>
+      </div>
     </div>
-     
-    <div class="points">
-      <h2>Poäng: </h2>
-      <!--lista med allas poäng-->
+    
+    <div id="picture">
+      <img src= "https://banner2.cleanpng.com/20180422/qxw/kisspng-gold-medal-olympic-medal-clip-art-honors-5adc14f33dc5a6.4712063515243727232531.jpg" alt="Span" title = "Another in-line element" style="width: 200px;">
     </div>
-    <img src= "https://banner2.cleanpng.com/20180422/qxw/kisspng-gold-medal-olympic-medal-clip-art-honors-5adc14f33dc5a6.4712063515243727232531.jpg" alt="Span" title = "Another in-line element" style="width: 200px;">
-</div> 
+
+    <button v-if="gameLeader" v-on:click="nextQuestion" type="submit" id="leader" > 
+        Next Question
+    </button>
+</body>
 </template>
 
 
@@ -22,29 +38,37 @@ import io from 'socket.io-client';
 const socket = io("localhost:3000");
 
 export default {
-    name: 'WaitingRoomView',
+    name: 'leaderboardView',
    
     data: function () {
     return {
         pollId: "inactive poll",
-        userName: [],
+        userName: "",
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
-        participants: [],
+        topPlayers: [],
+        gameLeader: true
+      
         };
     },
     created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
     socket.emit('joinPoll', this.pollId);
+    socket.emit('joinedLeaderboardView', this.pollId)
     socket.emit("pageLoaded", this.lang);
     socket.on("init", (labels) => {
       this.uiLabels = labels
-
     });
-    },
-    methods: {
 
+    socket.on("scoreboardUpdate", topPlayers =>
+    this.topPlayers = topPlayers
+    )},
+    methods: {
+      nextQuestion: function () {
+        socket.emit("nextQuestion", this.pollId)
+        this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+      }
     }
 
 
@@ -52,35 +76,33 @@ export default {
 </script>
 
 <style scoped>
-.start-view {
+body {
   background-image: linear-gradient(to bottom right, red, yellow);
-  color: rgb(28, 28, 28);
-  /*display: flex;
+  flex-direction: column;
+  height: 100vh
+}
+
+#gameTitle {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;*/
-  height: 100vh;
+  justify-content: center;
+  height: 10vh;
+  font-size: x-large;
 }
 
-.game-title {
-  color: black;
-  font-size: 50px;
-  margin-bottom: 00px;
-  position: center;
-  margin-top: -7px;
+#leaderBoard {
+  
+  margin-left: 25vh;
+  margin-right: 25vh;
+  display: flex;
+  justify-content: space-between
 }
 
-.users{
-  width: 50%;
-  box-sizing: border-box;
-  float: left;
-  margin-bottom: 350px;
-}
-.points{
-  width: 50%;
-  box-sizing: border-box;
-  float: right;
-  margin-bottom: 350px;
+#picture {
+  display: flex;
+  justify-content: center;
+  margin-top: 40vh;
 }
 
 </style>

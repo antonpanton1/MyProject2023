@@ -83,6 +83,17 @@ Data.prototype.calcScore = function(pollId, username, answer){
   }
 }
 
+Data.prototype.updateTopPlayers = function(pollId){
+  const poll = this.polls[pollId];
+  if (typeof poll !== "undefined"){
+    const userScores = Object.entries(poll.participants).map(([username, data]) => ({username, score: data.score,}));
+    userScores.sort((a, b) => a.score - b.score);
+    console.log(userScores)
+    return userScores.slice(0,5);   
+  }
+  return []
+}
+
 Data.prototype.getParticipants = function(pollId) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
