@@ -32,6 +32,8 @@
 	"addquestion":"Lägg till fråga",
 	"removequestion":" Ta bort fråga",
 	"joinwaitroom":"Gå med i väntrum",
+	"typequestion": "Skriv din fråga här",
+	"typeanswer": "Skriv ditt svar här",
 
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",

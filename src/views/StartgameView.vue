@@ -9,21 +9,21 @@
         <label for="Question 1">
           {{uiLabels.Question1}}
         </label><br>
-        <input type="text" id="Question 1" v-model="qu1" requeried="required" placeholder="Good questions only pls">
+        <input type="text" id="Question 1" v-model="qu1" requeried="required" placeholder='uiLabels.typequestion' style="width:300px;">
         {{ question1 }}
       </p>
       <p v-if= "questionNR > 0 ">
         <label for="Question 2">
           {{uiLabels.Question2}}
         </label><br>
-        <input typ="text" id="Question 2" v-model="qu2" requeried="required" placeholder="Good pls">
+        <input typ="text" id="Question 2" v-model="qu2" requeried="required" placeholder={{uiLabels.typequestion}} style="width:300px;">
         {{ question2 }}
       </p>
       <p v-if= "questionNR > 1 ">
         <label for="Question 3">
           {{uiLabels.Question3}}
         </label><br>
-        <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
+        <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder={{uiLabels.typequestion}} style="width:300px;">
         {{ question3 }}
       </p>    
     </div>
@@ -33,21 +33,21 @@
         <label for="Answer 1">
           {{uiLabels.Answer1}}
          </label><br>
-         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
+         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder= {{uiLables.typeanswer}}>
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer 2" v-model="an2" required="required" placeholder="Your answer here">
+         <input type="number" id="Answer 2" v-model="an2" required="required" placeholder= {{uiLables.typeanswer}}>
          {{ answer2 }}
       </p>  
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer 3" v-model="an3" required="required" placeholder="Your answer here">
+         <input type="number" id="Answer 3" v-model="an3" required="required" placeholder= "{{uiLables.typeanswer}}">
          {{ answer3 }}
       </p>  
     </div>
@@ -66,7 +66,7 @@
       </button>  
     </div> -->
     <div type="submit" class="wrap">
-    <button class="submit" v-on:click="joinGame">
+    <button class="submit" v-on:click="joinGame" v-bind:disabled="!areAllFieldsFilled">
             {{uiLabels.joinwaitroom}}
     </button>
     </div>
@@ -107,6 +107,18 @@ export default {
     })
 },
   methods:{
+    computed: {
+  areAllFieldsFilled() {
+    return (
+      this.qu1 !== '' &&
+      this.qu2 !== '' &&
+      this.qu3 !== '' &&
+      this.an1 !== '' &&
+      this.an2 !== '' &&
+      this.an3 !== ''
+    );
+  },
+},
     mounted() {
     // 3 sec timer
     setTimeout(() => {

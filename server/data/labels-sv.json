@@ -32,6 +32,8 @@
 	"addquestion":"Add Question",
 	"removequestion":" Remove Question",
 	"joinwaitroom":"Join Waiting Room",
+	"typequestion": "Type your question here",
+	"typeanswer": "Type your answer here",
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",
