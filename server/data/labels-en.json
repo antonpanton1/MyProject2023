@@ -35,9 +35,15 @@
 
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",
-	"writingQuestions": "Writing Questions:",
-	"totalPlayers": "Players:",
+	"writingQuestions": "Players done writing questions:",
+	"totalPlayers": "Amount of players in the game:",
 	"gameCode": "Game code:",
+	"startGame": "Start Game",
+
+"leaderboardView": "",
+	"leaderBoard": "Leaderboard",
+	"name": "Name:",
+	"scores": "Score:",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",

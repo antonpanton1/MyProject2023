@@ -100,6 +100,10 @@ function sockets(io, socket, data) {
     socket.emit('readyUpdate', ready)
   }); 
   
+  socket.on('joinedLeaderboardView', function(pollId) {
+    let topPlayers = data.updateTopPlayers(pollId);
+    socket.emit('scoreboardUpdate', topPlayers)
+  }); 
   }
 
 export { sockets };

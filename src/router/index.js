@@ -61,7 +61,7 @@ const router = createRouter({
       component: () => import('../views/CorrectAnswerView.vue')
     }, 
     {
-      path: '/leaderboard/',
+      path: '/leaderboard/:id/:uid',
       name: 'leaderboardView',
       component: () => import('../views/leaderboardView.vue')
     }, 

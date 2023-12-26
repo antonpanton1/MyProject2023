@@ -35,9 +35,10 @@
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",
-	"writingQuestions": "Skriver frågor:",
-	"totalPlayers": "Antal spelare:",
+	"writingQuestions": "Spelare klara med att skriva frågor:",
+	"totalPlayers": "Antal spelare i spelet:",
 	"gameCode": "Spel kod:",
+	"startGame": "Starta spelet",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"invite": "Bjud in deltagare med den här länken:",
