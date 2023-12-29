@@ -1,17 +1,22 @@
 <template>
-    <body>
-        <header> {{uiLabels.currentGame}} {{ pollId }}</header>
-    <main>
-        <h1> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
+    
+    <div class="background">
+        <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
+        <div class="centering">
+        
+ 
+        
+ 
+        <div class="mediaContainer">
+        <h1 class="heading"> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
         <h3> {{uiLabels.pleaseChoose}} </h3>
         <input type="text" v-model="username">
         <br>
-        <p id="unavailable" >{{ uiLabels.usernameUnavailable }}</p>
+        <p id="unavailable">Hej</p>
         <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
-
-    </main>
-
-    </body>
+        </div>
+    </div>
+    </div>
     
 
 </template>
@@ -58,16 +63,23 @@ export default{
 
 
 methods:{
-    submitUsername: function(){
-        socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
 
+    submitUsername: function(){
+
+        if (this.username.length < 1) {
+            return;
+        }
+      else
+
+        socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
         socket.on("availability", (available) => {
             if (available) {
                 socket.emit("submitUsername", { pollId: this.pollId, username: this.username });
                 this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username });
-            } else {
-                unavailable.style.display = "block";
             }
+            else
+            unavailable.style.display = "block";
+            
     })
     }
 }
@@ -76,31 +88,37 @@ methods:{
 </script>
 
 <style scoped>
-body {
-  background-image: linear-gradient(to bottom right, red, yellow);
+.background {
+    background-image: linear-gradient(to bottom right, red, yellow);
+  height: 100vh;
+  overflow: hidden;
+
+}
+.centering {
+  display: flex;
   flex-direction: column;
-  height: 100vh
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
 }
 
-header{
+.gameCode{
     text-align: left;
-    margin-left: 5px;
-    margin-top: 5px;
-    
+    margin-left: 1vw;
+    margin-top: 1vw;
+
 }
 
 main{
-    position: fixed; /* or absolute */
-    top: 40%;
-    left: 50%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
 }
 
 input{
-    margin: 10px;
+    margin: 1vw;
     font-size: 1.5em;
 }
 
@@ -123,5 +141,18 @@ button{
 button:hover{
     color: black;
     background-color: darkorange;
+}
+
+.mediaContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+.heading {
+  color: black;
+  font-size: 6vw;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
 }
 </style>

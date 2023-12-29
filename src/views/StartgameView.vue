@@ -1,17 +1,43 @@
 <template>
-  <div class="question-view_background">
+  <div class="background">
+    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
+    <div>
+      <h2> {{uiLabels.title}}</h2>
+    </div>
+
+    <div class="centering">
+       <div class="mediaContainer">
+
+
+
     
-    <div class="questionTitle">
-      <h2> {{uiLabels.title}} </h2>
-    </div>    
-    <div class="questions">
-      <p>
+    
+
+
+
+    <div id="row">
+    
+        <div id="questionField">
         <label for="Question 1">
           {{uiLabels.Question1}}
         </label><br>
-        <input type="text" id="Question 1" v-model="qu1" requeried="required" placeholder="Good questions only pls">
+        <input  type="text" id="Question 1" v-model="qu1" requeried="required" placeholder="Good questions only pls">
         {{ question1 }}
-      </p>
+      </div>
+
+      <div id="answerField">
+        <label for="Answer 1">
+          {{uiLabels.Answer1}}
+         </label><br>
+         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
+         {{ answer1 }}
+        </div>
+
+    </div>
+
+    <div id="row">
+    
+    <div id="questionField">
       <p v-if= "questionNR > 0 ">
         <label for="Question 2">
           {{uiLabels.Question2}}
@@ -19,58 +45,64 @@
         <input typ="text" id="Question 2" v-model="qu2" requeried="required" placeholder="Good pls">
         {{ question2 }}
       </p>
-      <p v-if= "questionNR > 1 ">
-        <label for="Question 3">
-          {{uiLabels.Question3}}
-        </label><br>
-        <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
-        {{ question3 }}
-      </p>    
     </div>
-
-    <div class="answers">  
-      <p>
-        <label for="Answer 1">
-          {{uiLabels.Answer1}}
-         </label><br>
-         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
-         {{ answer1 }}
-      </p>  
+    <div id="answerField">
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
          <input type="number" id="Answer 2" v-model="an2" required="required" placeholder="Your answer here">
          {{ answer2 }}
-      </p>  
+      </p> 
+    </div>
+  </div>
+  
+  
+
+    <div id="row">
+    
+    <div id="questionField">
+      <p v-if= "questionNR > 1 ">
+        <label for="Question 3">
+          {{uiLabels.Question3}}
+        </label><br>
+        <input type="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
+        {{ question3 }}
+      </p>
+    </div>
+    <div id="answerField">
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
          <input type="number" id="Answer 3" v-model="an3" required="required" placeholder="Your answer here">
          {{ answer3 }}
-      </p>  
+      </p>
     </div>
-    <div type="submit" class="plusmin">
-    <button v-if="questionNR < 2" type="submit" id= "add" v-on:click="questionNR++" style="background-color: #26ed58;">
+  </div>
+</div>
+  <div id="row">
+
+    <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
           {{uiLabels.addquestion}}
     </button>
-  </div>
-    <button v-if="questionNR > -0" type="submit" id= "sub" v-on:click="questionNR--" style="background-color: #af1111;">
-          {{uiLabels.removequestion}}
-    </button>
+
+  <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="questionNR--">
+    {{uiLabels.removequestion}}
+</button>
+</div>
+
 
     <!--<div type="submit" class="save" v-on:click="savequestion">
       <button type="submit" v-on:click="save_question"  style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #10a428; color: #fff; border: none; cursor: pointer;">
            Save
       </button>  
     </div> -->
-    <div type="submit" class="wrap">
-    <button class="submit" v-on:click="joinGame">
-            {{uiLabels.joinwaitroom}}
-    </button>
-    </div>
+    <div id="row">
+    <button class="joinWaitingRoomButton" v-on:click="joinGame">{{uiLabels.joinwaitroom}}</button>
   </div>
+  </div>
+</div>
   
 </template>
 
@@ -107,12 +139,6 @@ export default {
     socket.emit("pageLoaded", this.lang);    
 },
   methods:{
-    mounted() {
-    // 3 sec timer
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 3000);
-  },
   save_question: function(event){
     //console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
@@ -128,71 +154,78 @@ export default {
 </script>
 
 <style scoped>
-.question-view_background {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  /*display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
-  height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
+.background {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100vh;
+    overflow: hidden;
 }
-
-.questions-Title {
-  color: black;
-  font-size: 200px;
-  margin-bottom: -70px;
-  margin-top: -7px;
-}
-
-.text-container {
+.centering {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2vw;
 }
-
-
-.questions{
-  width: 50%;
+.mediaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+}
+#row {
+  display: flex;
+  justify-content: space-between;
+  gap: 3vw;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+#questionField,
+#answerField {
+  width: 45%;
   box-sizing: border-box;
-  float: left;
-
+  padding: 2vw;
 }
-
-.answers{
-  width: 50%;
+.joinWaitingRoomButton {
+  display: flex;
   box-sizing: border-box;
-  float: right;
-
-}
-
-.plusmin{
-  text-decoration: none; 
-  color: inherit; 
-  display: inline-block; 
-  padding: 10px; 
-  color: #fff; 
-  border: none; 
-  cursor: pointer;
-  width: 140px;
-  height: 50px;
-}
-
-.wrap{
+  background-color:#F05E16 ;
+  padding: 5%;
   text-align: center;
-  margin-top: 1vh;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 1vw;
+}
+.addQuestionButton {
+  display: flex;
+  box-sizing: border-box;
+  padding: 2vw;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 1vw;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer
+}
+.removeQuestionButton {
+  display: flex;
+  box-sizing: border-box;
+  padding: 2vw;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 1vw;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer
+  
+  
+}
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
 }
 
-.submit{
-  text-align: center;
-  margin-top: 5vh;
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
-  padding: 10px; 
-  background-color: #ed2626; 
-  color: #fff; 
-  border: none; 
-  cursor: pointer;
-}
 </style>

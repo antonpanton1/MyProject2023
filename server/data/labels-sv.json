@@ -41,6 +41,7 @@
 	"startGame": "Starta spelet",
 
 "(Comment) Tror vi kan ta bort dessa": "",
+	"sales-pitch": "0 --> 100",
 	"invite": "Bjud in deltagare med den här länken:",
 	"createPoll": "Skapa röstning",
 	"participatePoll": "Delta i röstning",
@@ -51,5 +52,5 @@
 	"joinGame": "Gå med",
 	"usernamePrompt": "Välj ett användarnamn",
 	"username": "användarnamn",
-	"sales-pitch": "0 --> 100"
+	"joinGameWithCode": "Gå med i spel"
 }

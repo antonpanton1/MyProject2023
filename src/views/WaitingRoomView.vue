@@ -1,16 +1,16 @@
 <template>
-    <body>
-    <div id="playersInGame">
+    <div class="background">
         
-        <div id="writingQuestions" style="display: inline-block">
-            {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }}
-            <br>
-             
+    <div class="mediaContainer"> 
+        <div class="writingQuestions">
+            {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
         </div>
-        <div id="totalPlayers" style="display: inline-block">
+
+        <div class="totalPlayers">
             {{ uiLabels.totalPlayers }} {{ participants.length }} 
         </div>
     </div>
+  
 
     <div id="gameCode">
         
@@ -22,10 +22,10 @@
         </div>
     </div>
 
-    <button v-if="gameLeader" v-on:click="startGame" type="submit" id="leader" > 
+    <button v-if="gameLeader" v-on:click="startGame" type="submit" class="leader" > 
         Start Game
     </button>
-    </body>
+</div>
 </template>
 
 <script>
@@ -78,18 +78,13 @@ export default {
 </script>
 
 <style scoped>
-body {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  flex-direction: column;
-  height: 100vh
-}
 
 #gameCode {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 55vh;
   font-size: x-large;
 }
 
@@ -101,5 +96,39 @@ body {
     justify-content: space-between;
     font-size: large;
 
+}
+.background {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100vh;
+    overflow: hidden;
+}
+.writingQuestions{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+.totalPlayers{
+    text-align: right;
+    margin-right: 1vw;
+    margin-top: 1vw;
+}
+.mediaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2vw;
+}
+.leader{
+    width: 30%;
+    background-color:#F05E16 ;
+    padding: 5%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1vw;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <div class="background">
       <h1>Question:</h1>
       <br>
       <h2>{{this.questions[currentQuestion].q}}?</h2>
@@ -13,7 +13,7 @@
       <button class="submit" id="lockBtn" v-on:click="lockAnswer"> Lock in answer </button>
       <p id="waiting" >Waiting for other players</p>
 
-  </body>
+    </div>
 </template>
   
 <script>
@@ -82,10 +82,10 @@ export default {
 </script>
   
 <style scoped>
-body {
-    background-image: linear-gradient(to bottom right, red, yellow);
-    flex-direction: column;
-    height: 100vh
+.background {
+  background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100vh;
+    overflow: hidden;
 }
 
 input {
