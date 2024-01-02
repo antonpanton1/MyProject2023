@@ -140,12 +140,12 @@ Data.prototype.getAllQuestions = function(pollId) {
   return []
 }
  
-Data.prototype.submitUsername = function(pollId, username){
+Data.prototype.submitUsername = function(pollId, username, host){
   const poll = this.polls[pollId];
   console.log("new user added", username, pollId)
   if (typeof poll !== "undefined"){
     if (!poll.participants[username]) {
-      poll.participants[username] = { answers: [], score: 0};
+      poll.participants[username] = { answers: [], score: 0, host: host};
     }
     console.log(poll.participants) 
   }
@@ -195,13 +195,11 @@ Data.prototype.submitAnswer = function(pollId, answer, username) {
   }
 }
 
-Data.prototype.getAnswers = function(pollId) {
+Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
-    const answers = poll.answers[poll.currentQuestion];
-    if (typeof poll.questions[poll.currentQuestion] !== 'undefined') {
-      return {q: poll.questions[poll.currentQuestion].q, a: answers};
-    }
+    const answers = Object.values(participants).map(participant => participant.answers[currentQuestion]);
+    return answers
   }
   return {}
 }

@@ -31,7 +31,7 @@ function Player(name, question, answer, points) {
   ]
 
   export default {
-    name: 'WaitingRoomView',
+    name: 'correctAnswer',
 
    
    components: {
@@ -40,10 +40,27 @@ function Player(name, question, answer, points) {
 
     data() {
       return {
+        lang: localStorage.getItem("lang") || "en",
+        pollId: "inactive poll",
+        username: "",
+        uiLabels: {},
         value: [0, 10, 20, 55], //spelarnas svar
         marks: [55] //rätt svar
       }
-    }
+    },
+    created: function () {
+    this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+
+    });
+
+    socket.emit('joinPoll', this.pollId);
+    socket.emit('getGameName', this.pollId);
+    socket.emit('name', this.gameName);
+    socket.emit("pageLoaded", this.lang);
+}
 }
 </script>
 

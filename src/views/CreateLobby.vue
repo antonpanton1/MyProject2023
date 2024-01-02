@@ -3,8 +3,19 @@
     <body>
       <main>
         <div class="mediaContainer">
-        <h1 class="heading">{{ uiLabels.nameOfGame }}</h1>
-        <input type="text" name="create" v-model="lobby"> 
+        <h1>Title</h1>
+        <section>
+          <label class="heading">{{ uiLabels.nameOfGame }}</label> 
+          <br>
+          <input type="text" name="create" v-model="lobby" placeholder="Lobby name"> 
+        </section>
+        
+        <section>
+          <label>{{ uiLabels.nameOfYou }}</label>
+          <br>
+          <input type="text" v-model="username" placeholder="Username">          
+        </section>
+        
         <br>
         <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
         </div>
@@ -44,7 +55,7 @@
         questionNumber: 0,
         data: {},
         gameName: "",
-    
+        username:""
       };
     },
     created: function () {
@@ -65,7 +76,7 @@
     },
     methods: {
         redirect(pollId) {
-            this.$router.push({ path: '/username/'+this.pollId })
+            this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username })
             //this.$router.push({ path: `/username/${pollId}` });
     },
 
@@ -81,7 +92,7 @@
         this.pollId = generateRandomCode();
         this.gameName = this.lobby;
         socket.emit("createPoll", { lang: this.lang, gameName: this.gameName, pollId: this.pollId});
-
+        socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:true });
         this.isButtonDisabled = false;
         // Kör metoden som skickar en vidare till korrekt gameId/username
         this.redirect(this.pollId);;
@@ -90,15 +101,23 @@
   };
   </script>
   
-  <style scoped>
+<style scoped>
 
-.background {
+body{
   background-image: linear-gradient(to bottom right, red, yellow);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+section{
+  margin: 10px;
+}
+
+input{
+  display: inline-block;
 }
 
 .joinLobby {

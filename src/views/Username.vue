@@ -70,7 +70,7 @@ methods:{
         socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
         socket.on("availability", (available) => {
             if (available) {
-                socket.emit("submitUsername", { pollId: this.pollId, username: this.username });
+                socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:false });
                 this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username });
             }
             else

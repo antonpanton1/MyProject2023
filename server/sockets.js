@@ -75,13 +75,17 @@ function sockets(io, socket, data) {
   });
 
   socket.on('submitUsername', function(d) {
-    data.submitUsername(d.pollId, d.username);
+    data.submitUsername(d.pollId, d.username, d.host);
     let participants = data.getParticipants(d.pollId);
     io.to(d.pollId).emit('participantUpdate', participants);
   });
 
   socket.on('usernameAvailability', function(d){
     socket.emit('availability', data.checkAvailability(d.pollId, d.username));
+  })
+
+  socket.on("getAnswers", function(d){
+    socket.emit('allAnswers', data.getAnswers(d.pollId, d.currentQuestion));
   })
 
   socket.on('joinedLobby', function(pollId) {
