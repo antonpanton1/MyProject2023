@@ -54,7 +54,6 @@ function sockets(io, socket, data) {
     console.log('Kom till getname', pollId)
    socket.emit ('gameNameUpdate', data.getgName(pollId));
    
- 
   });
 
   socket.on('nextQuestion', function(pollId){

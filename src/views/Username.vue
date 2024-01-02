@@ -3,19 +3,15 @@
     <div class="background">
         <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
         <div class="centering">
-        
- 
-        
- 
-        <div class="mediaContainer">
-        <h1 class="heading"> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
-        <h3> {{uiLabels.pleaseChoose}} </h3>
-        <input type="text" v-model="username">
-        <br>
-        <p id="unavailable">Hej</p>
-        <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
+            <div class="mediaContainer">
+                <h1 class="heading"> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
+                <h3> {{uiLabels.pleaseChoose}} </h3>
+                <input type="text" v-model="username">
+                <br>
+                <p id="unavailable">Hej</p>
+                <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
+            </div>
         </div>
-    </div>
     </div>
     
 
