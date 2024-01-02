@@ -41,7 +41,7 @@ const router = createRouter({
       component: () => import('../views/StartgameView.vue')
     },
     {
-      path: '/waitingroom/:id/:uid', 
+      path: '/waitingroom/:id/:uid',
       name: 'WaitingRoomView',
       component: () => import('../views/WaitingRoomView.vue')
     },

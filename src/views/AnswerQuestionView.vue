@@ -139,7 +139,7 @@ button {
 
 .slider {
     width: 50%;
-    background: rgb(255, 196, 100) ;
+    background: rgb(255, 196, 100);
     -webkit-appearance: none;
     outline: none; /* Remove outline */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
