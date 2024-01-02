@@ -10,7 +10,7 @@
 	"inputGameID": "Spel-ID",
 
 "StartView": "",
-	"subHeading": "Är du en nolla eller en hjälte?",
+	"subHeading": "Spelet där svaret är mellan noll till hundra",
 	"createGame": "Skapa nytt spel",
 	"changeLanguage": "Change to English",
 	"instructions": "Instruktioner",
@@ -32,16 +32,16 @@
 	"addquestion":"Add Question",
 	"removequestion":" Remove Question",
 	"joinwaitroom":"Join Waiting Room",
-	"typequestion": "Type your question here",
-	"typeanswer": "Type your answer here",
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",
-	"writingQuestions": "Skriver frågor:",
-	"totalPlayers": "Antal spelare:",
+	"writingQuestions": "Spelare klara med att skriva frågor:",
+	"totalPlayers": "Antal spelare i spelet:",
 	"gameCode": "Spel kod:",
+	"startGame": "Starta spelet",
 
 "(Comment) Tror vi kan ta bort dessa": "",
+	"sales-pitch": "0 --> 100",
 	"invite": "Bjud in deltagare med den här länken:",
 	"createPoll": "Skapa röstning",
 	"participatePoll": "Delta i röstning",
@@ -52,5 +52,5 @@
 	"joinGame": "Gå med",
 	"usernamePrompt": "Välj ett användarnamn",
 	"username": "användarnamn",
-	"sales-pitch": "0 --> 100"
+	"joinGameWithCode": "Gå med i spel"
 }

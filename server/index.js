@@ -4,7 +4,8 @@ import { Server } from "socket.io";
 const httpServer = createServer();
 const io = new Server(httpServer, {
     cors: {
-      origin: "http://localhost:5173",
+      //origin: "http://localhost:5173", // Kan endast kommas åt av localhost, lämna denna bortkommenterad
+      origin: "*", // Kan kommas åt av alla, aktivera för att tillåta anslutning av alla på ditt wi-fi
       methods: ["GET"],
       credentials: true
   }

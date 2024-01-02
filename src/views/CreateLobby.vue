@@ -2,10 +2,12 @@
     <div class="background">
     <body>
       <main>
-        <h1>{{ uiLabels.nameOfGame }}</h1>
+        <div class="mediaContainer">
+        <h1 class="heading">{{ uiLabels.nameOfGame }}</h1>
         <input type="text" name="create" v-model="lobby"> 
+        <br>
         <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
-        
+        </div>
       </main>
     </body>
     </div>
@@ -13,7 +15,7 @@
   
   <script>
   import io from 'socket.io-client';
-  const socket = io("localhost:3000");
+  const socket = io(sessionStorage.getItem("dataServer"));
   
 
   // Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod
@@ -67,7 +69,14 @@
             //this.$router.push({ path: `/username/${pollId}` });
     },
 
+
     startPoll: function () {
+
+      if (this.lobby.length < 1) {
+        return;
+      }
+      else
+
       this.isButtonDisabled = true;
         this.pollId = generateRandomCode();
         this.gameName = this.lobby;
@@ -94,16 +103,35 @@
 
 .joinLobby {
   text-decoration: none;
-  padding: 20px 20px;
+  padding: 2vw 2vw;
   font-size: 1.5em;
   background-color: darkorange;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 1vw;
 }
 
 .joinLobby:hover {
   background-color: #F05E16;
+}
+
+input {
+  margin: 10px;
+  font-size: 1.5em;
+}
+
+.mediaContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+
+.heading {
+  color: black;
+  font-size: 6vw;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
 }
 </style>

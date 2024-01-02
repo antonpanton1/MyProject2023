@@ -1,16 +1,16 @@
 <template>
-    <body>
-    <div id="playersInGame">
-        <div id="participantsReady" style="display: inline-block">
-            {{ uiLabels.participantsReady }}  spelare som är inne i väntrummet 
+    <div class="background">
+        
+    <div class="mediaContainer"> 
+        <div class="writingQuestions">
+            {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
         </div>
-        <div id="writingQuestions" style="display: inline-block">
-            {{ uiLabels.writingQuestions }} {{ this.participantsWritingQuestions }} spelare som fortfarande skriver frågor
-        </div>
-        <div id="totalPlayers" style="display: inline-block">
-            {{ uiLabels.totalPlayers }} {{ participants.length }} totala antal spelare inne på game ID
+
+        <div class="totalPlayers">
+            {{ uiLabels.totalPlayers }} {{ participants.length }} 
         </div>
     </div>
+  
 
     <div id="gameCode">
         
@@ -22,17 +22,16 @@
         </div>
     </div>
 
-    <button v-if="gameLeader" type="submit" id="leader" > 
+    <button v-if="gameLeader" v-on:click="startGame" type="submit" class="leader" > 
         Start Game
     </button>
-    </body>
+</div>
 </template>
 
 <script>
 // @ is an alias to /src
-
 import io from 'socket.io-client';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
     name: 'WaitingRoomView',
@@ -45,62 +44,91 @@ export default {
         lang: localStorage.getItem("lang") || "en",
         participants: [],
         username: "",
-        participantsWritingQuestions: 0,
+        ready: 0,
         gameLeader: true
         }
     },
     created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit("pageLoaded", this.lang);
+
     socket.on("init", (labels) => {
         this.uiLabels = labels
     })
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
-    this.participantsWritingQuestions++,
-    console.log(this.participantsWritingQuestions, "hej")
     );
-    //inte klar
-    socket.on("participantsWritingQuestionsUpdate", 
-    this.participantsWritingQuestions-- 
     
-    );
-    //
+    socket.on('readyUpdate', (ready) => {
+        this.ready = ready
+    });
+    
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("joinedWaitingRoom", this.pollId)
     socket.emit("joinedLobby", this.pollId);
+    socket.emit("pageLoaded", this.lang);
     },
     methods: {
-    submitUserName: function () {
-        socket.emit("submitUserName", {pollId: this.pollId, name: this.userName})
+    startGame: function () {
+        socket.emit("startGame", this.pollId)
+        this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
     }
     }
 }
 </script>
 
 <style scoped>
-body {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  flex-direction: column;
-  height: 100vh
-}
 
 #gameCode {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 55vh;
   font-size: x-large;
 }
 
 #playersInGame {
-    margin-left: 5vh;
-    margin-right: 5vh;
+    margin-left: 15vh;
+    margin-right: 15vh;
     margin-top: 1vh;
     display: flex;
     justify-content: space-between;
     font-size: large;
 
+}
+.background {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100vh;
+    overflow: hidden;
+}
+.writingQuestions{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+.totalPlayers{
+    text-align: right;
+    margin-right: 1vw;
+    margin-top: 1vw;
+}
+.mediaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2vw;
+}
+.leader{
+    width: 30%;
+    background-color:#F05E16 ;
+    padding: 5%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 1vw;
 }
 </style>

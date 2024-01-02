@@ -15,8 +15,9 @@
 
 <script>
 import io from 'socket.io-client';
-import { toDisplayString } from 'vue';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer"));
+
+
 
 
 export default{
@@ -25,6 +26,7 @@ export default{
     return {
         lang: localStorage.getItem("lang") || "en",
         uiLabels: {},
+        pollId: "inactive poll",
         pollId: "inactive poll",
         idCode: ""
     };

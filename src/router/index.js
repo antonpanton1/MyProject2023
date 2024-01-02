@@ -56,12 +56,12 @@ const router = createRouter({
       component: () => import('../views/JoinGameView.vue')
     },
     {
-      path: '/correctanswer/',
+      path: '/correctanswer/:id/:uid',
       name: 'CorrectAnswerView',
       component: () => import('../views/CorrectAnswerView.vue')
     }, 
     {
-      path: '/leaderboard/',
+      path: '/leaderboard/:id/:uid',
       name: 'leaderboardView',
       component: () => import('../views/leaderboardView.vue')
     }, 
@@ -74,7 +74,7 @@ const router = createRouter({
       path: '/results/',
       name: 'ResultsView',
       component: () => import('../views/ResultsView.vue')
-    } 
+    } ,
   ]
 })
 
