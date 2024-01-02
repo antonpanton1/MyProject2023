@@ -56,5 +56,14 @@
 	"participatePoll": "Participate in poll",
 	"question": "Question",
 	"answer": "Answer",
-	"about": "About"
+	"about": "About",
+
+"InstructionsView": "",
+	"insructions": "Instructions",
+	"overview": "Overview",
+	"how": "How to play",
+
+	"overviewText": "",
+	"howText": "",
+	"tipsText:": ""
 }

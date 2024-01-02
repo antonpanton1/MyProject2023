@@ -47,10 +47,21 @@
 	"participatePoll": "Delta i röstning",
 	"question": "Fråga",
 	"answer": "Svar",
+	"changeLanguage": "Change to English",
 	"about": "Om oss",
 	"participateInPoll": "Gå med",
 	"joinGame": "Gå med",
+	"inputGameID": "Spel-ID",
 	"usernamePrompt": "Välj ett användarnamn",
 	"username": "användarnamn",
-	"joinGameWithCode": "Gå med i spel"
+	"joinGameWithCode": "Gå med i spel",
+
+"InstructionsView": "",
+	"insructions": "Instructions",
+	"overview": "Overview",
+	"how": "How to play",
+
+	"overviewText": "heeeej",
+	"howText": "",
+	"tipsText:": ""
 }

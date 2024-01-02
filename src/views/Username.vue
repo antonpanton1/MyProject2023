@@ -100,14 +100,12 @@ methods:{
   align-items: center;
   justify-content: center;
   height: 100vh;
-
 }
 
 .gameCode{
     text-align: left;
     margin-left: 1vw;
     margin-top: 1vw;
-
 }
 
 main{
