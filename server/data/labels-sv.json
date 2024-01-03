@@ -42,6 +42,15 @@
 	"gameCode": "Spel kod:",
 	"startGame": "Starta spelet",
 
+"ResultsView": "",
+	"results": "Resultat:",
+	"first": "1a Plats",
+	"second": "2a Plats",
+	"third": "3e plats",
+	"losers": "Förlorare:",
+	"quit": "Avsluta",
+
+
 "(Comment) Tror vi kan ta bort dessa": "",
 	"sales-pitch": "0 --> 100",
 	"invite": "Bjud in deltagare med den här länken:",

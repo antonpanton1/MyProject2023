@@ -47,6 +47,15 @@
 	"name": "Name:",
 	"scores": "Score:",
 
+"ResultsView": "",
+	"results": "Results:",
+	"first": "1st Place",
+	"second": "2nd Place",
+	"third": "3rd Place",
+	"losers": "Losers:",
+	"quit": "Quit",
+
+
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",
 	"username": "username",

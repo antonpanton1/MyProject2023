@@ -110,6 +110,11 @@ function sockets(io, socket, data) {
     let topPlayers = data.updateTopPlayers(pollId);
     socket.emit('scoreboardUpdate', topPlayers)
   }); 
+
+  socket.on('joinedResultsView', function(pollId) {
+    let topPlayers = data.updateTopPlayers(pollId);
+    socket.emit('scoreboardUpdate', topPlayers)
+  }); 
   }
 
 export { sockets };
