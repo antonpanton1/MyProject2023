@@ -31,8 +31,9 @@
 	"Answer2": "Answer 2:",
 	"Answer3": "Answer 3:",
 	"addquestion": "Add Question",
-	"removequestion": " Remove Question",
+	"removequestion": "Remove Question",
 	"joinwaitroom": "Join Waiting Room",
+	"typeQuestion": "Type your question",
 
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",

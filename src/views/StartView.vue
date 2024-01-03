@@ -1,7 +1,5 @@
 <template>
-
   <div class="start-view">
-
     <div class="small-button-container">
       <button class="small-button" v-on:click="switchLanguage" style="left: 40px;">{{ uiLabels.changeLanguage }}</button>
       <router-link class="small-button" :to="'/instructions/'" style="right: 40px;">{{ uiLabels.instructions }}</router-link>
@@ -10,28 +8,11 @@
     <h1 class="game-title">0-100</h1>
     <h2 class="subheading">{{ uiLabels.subHeading }}</h2>
     
-
-   <!--  <button class="start-button" @click="startGame"><router-link v-bind:to="'/createlobby/'" style="text-decoration: none; color: inherit;">{{ uiLabels.createGame }}</router-link></button><br>
-    <button class="join-button" @click="joinGame"><router-link v-bind:to="'/joingame/'" style="text-decoration: none; color: inherit;">{{ uiLabels.joinGameWithCode }}</router-link></button>
-   -->
-    <!-- nya knappar-->
     <div class="big-button-container">
     <router-link class="big-button" :to="'/createlobby/'">{{ uiLabels.createGame }}</router-link><br>
     <router-link class="big-button" :to="'/joingame/'">{{ uiLabels.join }}</router-link>
     </div>
-
-  
-    
-
-    
-   
-    <!-- gamla instruktionsknapppen
-    <router-link class="instructions-button" :to="'/instructions/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">{{uiLabels.instructions}}</router-link>
-  --> 
-    
-
   </div> 
-
 </template>
 
 <script>
@@ -54,8 +35,6 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       hideNav: true,
     };
-
-    
   },
   created: function () {
     socket.emit("pageLoaded", this.lang);
@@ -91,9 +70,10 @@ export default {
 
 <style scoped>
 
+
 .start-view {
   background-color: orange;
-  color: rgb(28, 28, 28);
+  color: rgb(40, 40, 40);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,13 +84,11 @@ export default {
 }
 
 .game-title {
-  color: black;
+  color: rgb(40, 40, 40);
   font-size: 15vw;
   margin-bottom: -2vh;
   margin-top: 1vh;
-  
 }
-
 .subheading {
   margin-bottom: 10vh;
   padding: 5vh;
@@ -122,14 +100,12 @@ export default {
   gap: 20vw;
   margin-top: 0.1vh;
 }
-
 .big-button-container {
   display: flex;
   align-items: center;
   flex-direction: row;
   gap: 0.5vw;
 }
-
 .big-button{
   text-decoration: none;
   padding: 2vw 2vw;

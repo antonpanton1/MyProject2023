@@ -50,7 +50,7 @@ const router = createRouter({
       name: 'AnswerQuestionView',
       component: () => import('../views/AnswerQuestionView.vue')
     },
-     {
+    {
       path: '/joingame/',
       name: 'JoinGameView',
       component: () => import('../views/JoinGameView.vue')

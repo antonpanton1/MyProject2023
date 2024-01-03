@@ -14,7 +14,7 @@
         <label for="Question1">
           {{uiLabels.Question1}}
         </label><br>
-        <input typ="text" id="Question1" v-model="qu1" requeried="required" placeholder={{uiLabels.typequestion}} style="width:300px;">
+        <input typ="text" id="Question1" v-model="qu1" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
         {{ question1 }}
       </p>
       <p v-if= "questionNR > 0 ">

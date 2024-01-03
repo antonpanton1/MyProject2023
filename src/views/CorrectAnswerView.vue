@@ -54,7 +54,7 @@ function Player(name, question, answer, points) {
         pollId: "inactive poll",
         username: "",
         uiLabels: {},
-        answers: [0, 10, 20, 55], //spelarnas svar
+        answers: [0, 10, 20, 20, 55], //spelarnas svar
         marks: [55] //rätt svar
       }
     },
@@ -68,7 +68,7 @@ function Player(name, question, answer, points) {
       socket.emit('getGameName', this.pollId);
       socket.emit('name', this.gameName);
       socket.emit("pageLoaded", this.lang);
-    }
+    },
   }
 </script>
 
