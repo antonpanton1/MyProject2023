@@ -198,7 +198,7 @@ Data.prototype.submitAnswer = function(pollId, answer, username) {
 Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
-    const answers = Object.values(participants).map(participant => participant.answers[currentQuestion]);
+    const answers = Object.values(poll.participants).map(participant => participant.answers[currentQuestion]);
     return answers
   }
   return {}
