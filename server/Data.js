@@ -164,7 +164,16 @@ Data.prototype.nextQuestion = function(pollId){
   const poll = this.polls[pollId];
   if(typeof poll !== 'undefined'){
     poll.currentQuestion += 1;
+    console.log("updated current q to:", poll.currentQuestion)
   }
+} 
+
+Data.prototype.lastQuestion = function(pollId) {
+  const poll = this.polls[pollId];
+  if(typeof poll !== 'undefined' && poll.currentQuestion == poll.questions.length){
+    return true
+  }
+  return false
 }
 
 Data.prototype.getCurrent = function(pollId){

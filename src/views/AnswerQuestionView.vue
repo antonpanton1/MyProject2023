@@ -36,17 +36,6 @@ export default {
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit('getCurrent', this.pollId)
-    socket.emit("pageLoaded", this.lang);
-    socket.on("init", (labels) => {
-      this.uiLabels = labels
-    });
-    socket.on("dataUpdate", (data) =>
-      this.data = data
-    );
-    socket.emit("getQuestions", this.pollId);
-
     socket.on("sendQuestions", (questions) => 
       this.questions = questions,
     );
@@ -54,6 +43,20 @@ export default {
     socket.on('currentUpdate', (current) => 
       this.currentQuestion = current
     );
+
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    });
+    socket.on("dataUpdate", (data) =>
+      this.data = data
+    );
+
+    socket.emit('getCurrent', this.pollId)
+    socket.emit("pageLoaded", this.lang);
+    socket.emit('joinPoll', this.pollId);
+    socket.emit("getQuestions", this.pollId);
+
+    
   },
   methods: {
       increase: function(){

@@ -47,7 +47,8 @@ export default {
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
         topPlayers: [],
-        gameLeader: true
+        gameLeader: true,
+        lastQuestion: false
       
         };
     },
@@ -55,8 +56,15 @@ export default {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
     socket.emit('joinPoll', this.pollId);
-    socket.emit('joinedLeaderboardView', this.pollId)
+    socket.emit('joinedLeaderboardView', this.pollId);
     socket.emit("pageLoaded", this.lang);
+    
+    socket.on("endGame", this.lastQuestion = true);
+
+    socket.emit("getCurrent", this.pollId);
+
+
+    
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
@@ -66,9 +74,15 @@ export default {
     )},
     methods: {
       nextQuestion: function () {
-        socket.emit("nextQuestion", this.pollId)
-        this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
-      }
+        console.log("knapptryck")
+        if(this.lastQuestion == false) {          console.log("inte sis ta")
+          socket.emit('nextQuestion', this.pollId);
+          this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+        }else {
+        console.log("sista")
+        this.$router.push({ path: '/results/'+this.pollId})
+      }}
+      
     }
 
 

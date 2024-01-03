@@ -47,14 +47,32 @@
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer2" v-model="an2" required="required" placeholder= {{uiLables.typeanswer}}>
+         <input type="number" id="Answer 2" v-model="an2" required="required" placeholder= {{uiLabels.typeanswer}}>
          {{ answer2 }}
       </p> 
+    </div>
+  </div>
+  </div>
+  
+  
+
+    <div id="row">
+    
+    <div id="questionField">
+      <p v-if= "questionNR > 1 ">
+        <label for="Question 3">
+          {{uiLabels.Question3}}
+        </label><br>
+        <input type="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
+        {{ question3 }}
+      </p>
+    </div>
+    <div id="answerField">
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer3" v-model="an3" required="required" placeholder= {{uiLables.typeanswer}}>
+         <input type="number" id="Answer 3" v-model="an3" required="required" placeholder= "{{uiLabels.typeanswer}}">
          {{ answer3 }}
       </p> 
     </div>
@@ -86,8 +104,7 @@
   
     </div> 
   </div>
-</div>
-  
+
 </template>
 
 <script>
