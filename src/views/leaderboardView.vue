@@ -10,7 +10,7 @@
       <div id="players">
         <h2> {{ uiLabels.name }} </h2>
           <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
-            {{ index + 1 }}. {{ topPlayer.username }}
+            {{ index + 1}}. {{ topPlayer.username }}
           </div>
       </div>
 
@@ -23,7 +23,7 @@
     </div>
     
     <div id="picture">
-      <img src= "https://banner2.cleanpng.com/20180422/qxw/kisspng-gold-medal-olympic-medal-clip-art-honors-5adc14f33dc5a6.4712063515243727232531.jpg" alt="Span" title = "Another in-line element" style="width: 200px;">
+      <img src= "https://static.vecteezy.com/system/resources/previews/019/819/389/non_2x/award-medal-gold-silver-and-bronze-medals-on-transparent-background-file-png.png" alt="Span" title = "Another in-line element" style="width: 200px;">
     </div>
 
     <button v-if="gameLeader" v-on:click="nextQuestion" type="submit" id="leader" > 
