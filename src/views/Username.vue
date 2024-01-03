@@ -6,7 +6,7 @@
             <div class="mediaContainer">
                 <h1 class="heading"> {{ uiLabels.welcomeMessage }} {{ gameName }}!</h1>
                 <h3> {{uiLabels.pleaseChoose}} </h3>
-                <input type="text" v-model="username">
+                <input type="text" autofocus v-model="username" id="uername"  v-on:keyup.enter="submitUsername">
                 <br>
                 <p id="unavailable">Hej</p>
                 <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }} </button>
@@ -61,7 +61,6 @@ export default{
 methods:{
 
     submitUsername: function(){
-
         if (this.username.length < 1) {
             return;
         }
@@ -75,7 +74,6 @@ methods:{
             }
             else
             unavailable.style.display = "block";
-            
     })
     }
 }

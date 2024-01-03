@@ -1,29 +1,29 @@
 <template>
-  <div class="background">
-  <body>
-    <main>
-      <div class="mediaContainer">
-      <h1>Title</h1>
-      <section>
-        <label class="heading">{{ uiLabels.nameOfGame }}</label> 
+    <div class="background">
+    <body>
+      <main>
+        <div class="mediaContainer">
+        <section>
+          <label class="heading">{{ uiLabels.nameOfGame }}</label> 
+          <br>
+          <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
+        </section>
+        
+        <section>
+          <label class="heading"> {{ uiLabels.nameOfYou }}</label>
+          <br>
+          <input type="text" v-model="username" :placeholder="uiLabels.username">          
+        </section>
+        
         <br>
-        <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
-      </section>
-      <section>
-        <label>{{ uiLabels.nameOfYou }}</label>
-        <br>
-        <input type="text" v-model="username" :placeholder="uiLabels.username">          
-      </section>
-      <br>
-      <button class="joinLobby" v-on:click="startPoll">{{uiLabels.lobby}}</button>
-      </div>
-    </main>
-  </body>
-  </div>
-</template>
+        <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
+        </div>
+      </main>
+    </body>
+    </div>
+  </template>
   
-
-<script>
+  <script>
   import io from 'socket.io-client';
   const socket = io(sessionStorage.getItem("dataServer"));
 
@@ -56,7 +56,8 @@
       };
     },
     created: function () {
-      //socket.emit('idUpdate', this.pollId);     
+      //socket.emit('idUpdate', this.pollId);
+      
       //socket.emit("gameNameUpdate", this.gameName);
       socket.on("init", (labels) => {
         this.uiLabels = labels
@@ -90,10 +91,7 @@
       }
     }
   };
-
-</script>
-
-
+  </script>
 <style scoped>
 
 body{
@@ -142,7 +140,7 @@ input {
 
 .heading {
   color: black;
-  font-size: 6vw;
+  font-size: clamp(12px ,5vw, 35px);
   margin-bottom: 2vh;
   margin-top: 1vh;
 }

@@ -3,7 +3,7 @@
 
     <main>
         <h2>{{uiLabels.inputGameID}}</h2>
-        <input type="text" v-model="idCode">
+        <input type="text" v-model="idCode" v-on:keyup.enter="joinID" autofocus>
         <br>
         <button class="start-button" v-on:click="joinID"> {{ uiLabels.join }}</button>
     </main>

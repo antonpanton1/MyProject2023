@@ -2,7 +2,7 @@
 
   <body>
 
-    <h1>Correct Answer: 55</h1><br>
+    <h1>Correct Answer: {{ this.questions[currentQuestion].a }}</h1><br>
 
     <div class="slider">
       <vue-slider 
@@ -54,8 +54,10 @@ function Player(name, question, answer, points) {
         pollId: "inactive poll",
         username: "",
         uiLabels: {},
-        answers: [0, 10, 20, 20, 55], //spelarnas svar
-        marks: [55] //rätt svar
+        answers: [], //spelarnas svar
+        marks: 55, //rätt svar
+        qurrentQuestion: 0,
+        questions: []
       }
     },
     created: function () {
@@ -64,10 +66,23 @@ function Player(name, question, answer, points) {
       socket.on("init", (labels) => {
         this.uiLabels = labels
       });
+      socket.on('currentUpdate', current => {
+        this.currentQuestion = current
+      });
+      socket.on("sendQuestions", (questions) => 
+      this.questions = questions
+    );
+      socket.on('allAnswers', answers => {
+        this.answers = answers
+      });
       socket.emit('joinPoll', this.pollId);
       socket.emit('getGameName', this.pollId);
       socket.emit('name', this.gameName);
+      socket.emit('getCurrent', this.pollId)
+      socket.emit('getAnswers', {pollId: this.pollId, currentQuestion: this.qurrentQuestion})
       socket.emit("pageLoaded", this.lang);
+      socket.emit("getQuestions", this.pollId);
+
     },
   }
 </script>

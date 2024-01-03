@@ -204,10 +204,22 @@ Data.prototype.submitAnswer = function(pollId, answer, username) {
   }
 }
 
+/* Data.prototype.getCorrect = function(pollId, currentQuestion) {
+  const poll = this.polls[pollId];
+  const correct = poll.questions[currentQuestion].a
+  //console.log("korrekt svar", poll.questions[currentQuestion].a)
+
+  if (typeof poll !== 'undefined') {
+    return poll.questions[currentQuestion].a;
+  }
+  
+} */
+
 Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
     const answers = Object.values(poll.participants).map(participant => participant.answers[currentQuestion]);
+    console.log(answers)
     return answers
   }
   return {}
