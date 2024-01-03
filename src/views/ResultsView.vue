@@ -4,35 +4,55 @@
       <h1 class="title">Results: </h1>
     <div class="podium">
       <svg width="210" height="250">
-        <rect width="200" height="150" style="fill:rgb(67, 67, 173);stroke-width:3;stroke:rgb(0,0,0)" />
+        <rect width="200" height="150" style="fill:rgb(230, 155, 111);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="47%" alignment-baseline="bottom" text-anchor="middle" fill="white">2nd Place</text>
+        <text x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white">Score</text>
         <text x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white">Namn på tvåan</text>
       </svg>
 
       <svg width="210" height="330">
         
-        <rect width="200" height="230" style="fill:rgb(56, 159, 109);stroke-width:3;stroke:rgb(0,0,0)" />
+        <rect width="200" height="230" style="fill:rgb(240, 154, 56);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="60%" alignment-baseline="bottom" text-anchor="middle" fill="white">1st Place</text>
+        <text x="50%" y="18%" alignment-baseline="bottom" text-anchor="middle" fill="white">Score</text>
         <text x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white">Namn på ettan</text>
       </svg>
 
       <svg width="210" height="200">
-        <rect width="200" height="100" style="fill:rgb(229, 78, 169);stroke-width:3;stroke:rgb(0,0,0)" />
+        <rect width="200" height="100" style="fill:rgb(213, 95, 31);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="35%" alignment-baseline="bottom" text-anchor="middle" fill="white">3rd Place</text>
+        <text x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white">Score</text>
         <text x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white">Namn på trean</text>
       </svg>        
-    </div>  
-    <div class="losers">
-        <h2 style="margin-top: -80px;">Losers: </h2>
-        <ul>
-          <li>den som kom fyra</li>
-          <li>den som kom femma</li>
-          <li>den som kom sexa</li>
-          <li>osv</li>
-        </ul>
-        
-        <!--lista med placering och användarnman för de utanför top 3-->
     </div> 
+
+    <div id="listwrap">
+      <h2 style="margin-top: -80px;">Losers: </h2>
+    <div class="loserName">
+        
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <p>hello</p>
+          <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
+            {{ index + 1 }}. {{ topPlayer.username }}
+          </div>
+      
+        
+    </div> 
+    <div class="loserScore">
+
+      <p>HI</p>
+      <p>HI</p>
+      <p>HI</p>
+      <p>HI</p>
+      <div v-for="(topPlayers) in topPlayers">
+            {{ topPlayers.score }}
+      </div>
+    </div>
+
+  </div>
+
     <div class="button">
       <router-link class="quit" :to="'/Start/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">Quit</router-link>
     </div>
@@ -64,10 +84,23 @@
   padding:30px;
 }
 
-.losers{
+#listwrap{
+  width:45%;
+  box-sizing: border-box;
+  float: left;
+  margin-bottom: 5vh;
+
+}
+.loserName{
   width: 50%;
   box-sizing: border-box;
   float: left;
+  margin-bottom: 5vh;
+}
+.loserScore{
+  width: 50%;
+  box-sizing: border-box;
+  float: right;
   margin-bottom: 5vh;
 }
 
