@@ -71,7 +71,7 @@ const router = createRouter({
       component: () => import('../views/CreateLobby.vue')
     },
     {
-      path: '/results/',
+      path: '/results/:id',
       name: 'ResultsView',
       component: () => import('../views/ResultsView.vue')
     } ,
