@@ -1,33 +1,31 @@
 <template>
-    <div class="background">
-    <body>
-      <main>
-        <div class="mediaContainer">
-        <h1>Title</h1>
-        <section>
-          <label class="heading">{{ uiLabels.nameOfGame }}</label> 
-          <br>
-          <input type="text" name="create" v-model="lobby" placeholder="Lobby name"> 
-        </section>
-        
-        <section>
-          <label>{{ uiLabels.nameOfYou }}</label>
-          <br>
-          <input type="text" v-model="username" placeholder="Username">          
-        </section>
-        
+  <div class="background">
+  <body>
+    <main>
+      <div class="mediaContainer">
+      <h1>Title</h1>
+      <section>
+        <label class="heading">{{ uiLabels.nameOfGame }}</label> 
         <br>
-        <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
-        </div>
-      </main>
-    </body>
-    </div>
-  </template>
+        <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
+      </section>
+      <section>
+        <label>{{ uiLabels.nameOfYou }}</label>
+        <br>
+        <input type="text" v-model="username" :placeholder="uiLabels.username">          
+      </section>
+      <br>
+      <button class="joinLobby" v-on:click="startPoll">{{uiLabels.lobby}}</button>
+      </div>
+    </main>
+  </body>
+  </div>
+</template>
   
-  <script>
+
+<script>
   import io from 'socket.io-client';
   const socket = io(sessionStorage.getItem("dataServer"));
-  
 
   // Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod
   function generateRandomCode() {
@@ -42,7 +40,6 @@
   
     return code;
   }
-  
   export default {
     name: 'CreateLobby',
     data: function () {
@@ -59,10 +56,8 @@
       };
     },
     created: function () {
-      //socket.emit('idUpdate', this.pollId);
-      
+      //socket.emit('idUpdate', this.pollId);     
       //socket.emit("gameNameUpdate", this.gameName);
-  
       socket.on("init", (labels) => {
         this.uiLabels = labels
       })
@@ -70,37 +65,35 @@
         this.data = data
       )
       socket.on("pollCreated", (data) =>
-        this.data = data)
-        
+        this.data = data
+      ) 
       socket.emit("pageLoaded", this.lang);
     },
     methods: {
-        redirect(pollId) {
-            this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username })
-            //this.$router.push({ path: `/username/${pollId}` });
-    },
-
-
-    startPoll: function () {
-
-      if (this.lobby.length < 1) {
-        return;
+      redirect(pollId) {
+        this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username })
+        //this.$router.push({ path: `/username/${pollId}` });
+      },
+      startPoll: function () {
+        if (this.lobby.length < 1) {
+          return;
+        }
+        else
+          this.isButtonDisabled = true;
+          this.pollId = generateRandomCode();
+          this.gameName = this.lobby;
+          socket.emit("createPoll", { lang: this.lang, gameName: this.gameName, pollId: this.pollId});
+          socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:true });
+          this.isButtonDisabled = false;
+          // Kör metoden som skickar en vidare till korrekt gameId/username
+          this.redirect(this.pollId);;
       }
-      else
-
-      this.isButtonDisabled = true;
-        this.pollId = generateRandomCode();
-        this.gameName = this.lobby;
-        socket.emit("createPoll", { lang: this.lang, gameName: this.gameName, pollId: this.pollId});
-        socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:true });
-        this.isButtonDisabled = false;
-        // Kör metoden som skickar en vidare till korrekt gameId/username
-        this.redirect(this.pollId);;
     }
-  }
   };
-  </script>
-  
+
+</script>
+
+
 <style scoped>
 
 body{
