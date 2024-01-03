@@ -1,111 +1,74 @@
 <template>
   <div class="background">
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
-    <div>
-      <h2> {{uiLabels.title}}</h2>
-    </div>
-
+      <div>
+        <h2> {{uiLabels.title}}</h2>
+      </div>
+    
     <div class="centering">
        <div class="mediaContainer">
 
-
-
-    
-    
-
-
-
-    <div id="row">
-    
-        <div id="questionField">
-        <label for="Question 1">
+      <div id="questionField">
+      <div id="questions">  
+      <p>
+        <label for="Question1">
           {{uiLabels.Question1}}
         </label><br>
-        <input type="text" id="Question 1" v-model="qu1" requeried="required" placeholder="Good questions only pls">
+        <input typ="text" id="Question1" v-model="qu1" requeried="required" placeholder={{uiLabels.typequestion}} style="width:300px;">
         {{ question1 }}
-      </div>
-
-      <div id="answerField">
-        <label for="Answer 1">
-          {{uiLabels.Answer1}}
-         </label><br>
-         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
-         {{ answer1 }}
-        </div>
-
-    </div>
-
-    <div id="row">
-    
-    <div id="questionField">
+      </p>
       <p v-if= "questionNR > 0 ">
-        <label for="Question 2">
+        <label for="Question2">
           {{uiLabels.Question2}}
         </label><br>
-        <input typ="text" id="Question 2" v-model="qu2" requeried="required" placeholder={{uiLabels.typequestion}} style="width:300px;">
+        <input typ="text" id="Question2" v-model="qu2" requeried="required" placeholder="Good questions only pls" style="width:300px;">
         {{ question2 }}
-      </p>
+      </p>    
       <p v-if= "questionNR > 1 ">
-        <label for="Question 3">
+        <label for="Question3">
           {{uiLabels.Question3}}
         </label><br>
-        <input typ="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
+        <input typ="text" id="Question3" v-model="qu3" requeried="required" placeholder="Good questions only pls" style="width:300px;">
         {{ question3 }}
-      </p>    
+      </p>  
+    </div>
     </div>
 
+    <div id="answerField">
     <div class="answers">  
       <p>
         <label for="Answer 1">
           {{uiLabels.Answer1}}
          </label><br>
-         <input type="number" id="Answer 1" v-model="an1" required="required" placeholder="Your answer here">
+         <input type="number" id="Answer1" v-model="an1" required="required" placeholder="Your answer here">
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer 2" v-model="an2" required="required" placeholder= {{uiLables.typeanswer}}>
+         <input type="number" id="Answer2" v-model="an2" required="required" placeholder= {{uiLables.typeanswer}}>
          {{ answer2 }}
       </p> 
-    </div>
-  </div>
-  
-  
-
-    <div id="row">
-    
-    <div id="questionField">
-      <p v-if= "questionNR > 1 ">
-        <label for="Question 3">
-          {{uiLabels.Question3}}
-        </label><br>
-        <input type="text" id="Question 3" v-model="qu3" requeried="required" placeholder="Good questions only pls">
-        {{ question3 }}
-      </p>
-    </div>
-    <div id="answerField">
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer 3" v-model="an3" required="required" placeholder= "{{uiLables.typeanswer}}">
+         <input type="number" id="Answer3" v-model="an3" required="required" placeholder= {{uiLables.typeanswer}}>
          {{ answer3 }}
-      </p>
+      </p> 
     </div>
-  </div>
-</div>
-  <div id="row">
+    </div>
+
 
     <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
-          {{uiLabels.addquestion}}
+        {{uiLabels.addquestion}}
     </button>
 
-  <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="questionNR--">
-    {{uiLabels.removequestion}}
-</button>
-</div>
+    <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="removefunc">
+        {{uiLabels.removequestion}}
+    </button>
+
 
 
     <!--<div type="submit" class="save" v-on:click="savequestion">
@@ -113,13 +76,18 @@
            Save
       </button>  
     </div> -->
+
     <div type="submit" class="wrap">
-    <button class="submit" v-on:click="joinGame">
+    <button id="submit" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
     </div>
+    
+  
+    </div> 
   </div>
-  </div>
+</div>
+  
 </template>
 
 <script>
@@ -145,6 +113,19 @@ export default {
 
     };
   },
+
+  computed: {
+    areAllQuestionsAndAnswersFilled() {
+      // Check if all questions and answers are filled in
+      return (
+        this.qu1 !== '' &&
+        this.an1 !== '' &&
+        (this.questionNR < 1 ||
+          (this.qu2 !== '' && this.an2 !== '' && (this.questionNR < 2 || (this.qu3 !== '' && this.an3 !== ''))))
+      );
+    },
+  },
+
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
@@ -153,18 +134,32 @@ export default {
     })
     socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);    
-},
+    
+
+  },
+ 
   methods:{
+
     mounted() {
     // 3 sec timer
     setTimeout(() => {
       this.showMessage = false;
     }, 3000);
   },
-  save_question: function(event){
-    //console.log(this.qu1, this.qu2,this.qu3,this.qu4,this.an1,this.an2,this.an3,this.an4)
-    socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
+  removefunc: function(){
+    
+      if (this.questionNR === 1) {
+        // If removing the second question
+        this.qu2 = '';
+        this.an2 = '';
+      } else if (this.questionNR === 2) {
+        // If removing the third question
+        this.qu3 = '';
+        this.an3 = '';
+      }
+      this.questionNR--;
   },
+  
   joinGame: function() {
     socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
@@ -182,16 +177,16 @@ export default {
     overflow: hidden;
 }
 .centering {
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 0 2vw;
+  align-items: center; 
+  padding: 0 2vw;*/
 }
 .mediaContainer {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 10%;
+  gap: 10%; */
 }
 #row {
   display: flex;
@@ -200,17 +195,36 @@ export default {
   justify-content: center;
   margin-bottom: 2%;
 }
-#questionField,
+#questionField {
+  width: 45%;
+  box-sizing: border-box;
+  padding: 2vw;
+  float:left;
+}
 #answerField {
   width: 45%;
   box-sizing: border-box;
   padding: 2vw;
+  float:right;
 }
+
+/* .answers{
+  width: 50%;
+  box-sizing: border-box;
+  float:right;
+}
+
+.questions{
+  width: 50%;
+  box-sizing: border-box;
+  float:left;
+} */
+
 .joinWaitingRoomButton {
   display: flex;
   box-sizing: border-box;
   background-color:#F05E16 ;
-  padding: 5%;
+  padding: 2vw;
   text-align: center;
   font-size: 1.5em;
   color: white;
