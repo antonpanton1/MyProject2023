@@ -60,7 +60,7 @@
     </div>
     </div>
 
-
+    
     <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
         {{uiLabels.addquestion}}
     </button>
@@ -78,7 +78,7 @@
     </div> -->
 
     <div type="submit" class="wrap">
-    <button id="submit" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
+    <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
     </div>
@@ -220,7 +220,7 @@ export default {
   float:left;
 } */
 
-.joinWaitingRoomButton {
+#joinWaitingRoomButton {
   display: flex;
   box-sizing: border-box;
   background-color:#F05E16 ;
@@ -242,7 +242,7 @@ export default {
   border-radius: 1vw;
   align-items: center;
   justify-content: center;
-  cursor: pointer
+  cursor: pointer;
 }
 .removeQuestionButton {
   display: flex;
