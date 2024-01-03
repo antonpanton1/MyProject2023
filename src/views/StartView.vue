@@ -73,7 +73,7 @@ export default {
 
 .start-view {
   background-color: orange;
-  color: rgb(40, 40, 40);
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +84,7 @@ export default {
 }
 
 .game-title {
-  color: rgb(40, 40, 40);
+  color: black;
   font-size: 15vw;
   margin-bottom: -2vh;
   margin-top: 1vh;

@@ -21,14 +21,14 @@
         <label for="Question2">
           {{uiLabels.Question2}}
         </label><br>
-        <input typ="text" id="Question2" v-model="qu2" requeried="required" placeholder="Good questions only pls" style="width:300px;">
+        <input typ="text" id="Question2" v-model="qu2" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
         {{ question2 }}
       </p>    
       <p v-if= "questionNR > 1 ">
         <label for="Question3">
           {{uiLabels.Question3}}
         </label><br>
-        <input typ="text" id="Question3" v-model="qu3" requeried="required" placeholder="Good questions only pls" style="width:300px;">
+        <input typ="text" id="Question3" v-model="qu3" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
         {{ question3 }}
       </p>  
     </div>
@@ -38,23 +38,23 @@
     <div class="answers">  
       <p>
         <label for="Answer 1">
-          {{uiLabels.Answer1}}
+          {{ uiLabels.Answer1 }}
          </label><br>
-         <input type="number" id="Answer1" v-model="an1" required="required" placeholder="Your answer here">
+         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer" >
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer2" v-model="an2" required="required" placeholder= {{uiLables.typeanswer}}>
+         <input type="number" id="Answer2" v-model="an2" required="required" :placeholder="uiLabels.typeAnswer" >
          {{ answer2 }}
       </p> 
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer3" v-model="an3" required="required" placeholder= {{uiLables.typeanswer}}>
+         <input type="number" id="Answer3" v-model="an3" required="required" :placeholder="uiLabels.typeAnswer" >
          {{ answer3 }}
       </p> 
     </div>
