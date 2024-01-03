@@ -1,11 +1,13 @@
 {
 "(Comment) Other/ more than one view": "",
 	"join": "Gå med i spel",
+	"username": "Användarnamn",
 	
 "CreateLobby": "",
 	"nameOfGame": "Vad ska vi kalla ditt spel?",
 	"nameOfYou": "Välj ett användarnamn",
 	"lobby": "Skapa lobby",
+	"lobbyname": "Spelnamn",
 
 "JoinGameView": "",
 	"inputGameID": "Spel-ID",
@@ -50,13 +52,11 @@
 	"participatePoll": "Delta i röstning",
 	"question": "Fråga",
 	"answer": "Svar",
-	"changeLanguage": "Change to English",
 	"about": "Om oss",
 	"participateInPoll": "Gå med",
 	"joinGame": "Gå med",
-	"inputGameID": "Spel-ID",
 	"usernamePrompt": "Välj ett användarnamn",
-	"username": "användarnamn",
+	
 	"joinGameWithCode": "Gå med i spel",
 
 "InstructionsView": "",

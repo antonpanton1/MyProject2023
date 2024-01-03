@@ -1,11 +1,13 @@
 {
 "(Comment) Other/ more than one view": "",
 	"join": "Join Game",
+	"username": "Username",
 
 "CreateLobby": "",
 	"nameOfGame": "What should we call your game?",
 	"nameOfYou": "Choose your username",
 	"lobby": "Create Lobby",
+	"lobbyname": "Lobby name",
 
 "JoinGameView": "",
 	"inputGameID": "Game-ID",
@@ -50,7 +52,6 @@
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",
-	"username": "username",
 	"participateInPoll": "Participate", 
 	"usernamePrompt": "Chose a username",
 "SkelletonCode": "",
