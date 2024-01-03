@@ -1,32 +1,27 @@
 <template>
-    <div class="background">
-        
+  <div class="background">    
     <div class="mediaContainer"> 
-        <div class="writingQuestions">
-            {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
+      <div class="writingQuestions">
+        {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
+      </div>
+      <div class="totalPlayers">
+        {{ uiLabels.totalPlayers }} {{ participants.length }} 
+      </div>
+    </div>   
+    <div id="gameCode">     
+      <h1>{{ uiLabels.gameCode }} {{pollId}}</h1>
+      <div>
+        <div v-for="(participants) in this.participants">
+        {{ participants }}
         </div>
-
-        <div class="totalPlayers">
-            {{ uiLabels.totalPlayers }} {{ participants.length }} 
-        </div>
+      </div>
     </div>
-  
-
-    <div id="gameCode">
-        
-        <h1>{{ uiLabels.gameCode }} {{pollId}}</h1>
-        <div>
-            <div v-for="(participants) in this.participants">
-            {{ participants }}
-            </div>
-        </div>
-    </div>
-
-    <button v-if="gameLeader" v-on:click="startGame" type="submit" class="leader" > 
-        Start Game
+    <button class="leader" v-if="gameLeader" v-on:click="startGame" type="submit"> 
+      Start Game
     </button>
-</div>
+  </div>
 </template>
+
 
 <script>
 // @ is an alias to /src
@@ -34,46 +29,46 @@ import io from 'socket.io-client';
 const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
-    name: 'WaitingRoomView',
-   
-    data: function () {
+  name: 'WaitingRoomView',
+  
+  data: function () {
     return {
-        pollId: "inactive poll",
-        userName: [],
-        uiLabels: {},
-        lang: localStorage.getItem("lang") || "en",
-        participants: [],
-        username: "",
-        ready: 0,
-        gameLeader: true
-        }
-    },
-    created: function () {
+      pollId: "inactive poll",
+      userName: [],
+      uiLabels: {},
+      lang: localStorage.getItem("lang") || "en",
+      participants: [],
+      username: "",
+      ready: 0,
+      gameLeader: true
+    }
+  },
+  created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
 
     socket.on("init", (labels) => {
-        this.uiLabels = labels
+      this.uiLabels = labels
     })
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
     );
     
     socket.on('readyUpdate', (ready) => {
-        this.ready = ready
+      this.ready = ready
     });
     
     socket.emit('joinPoll', this.pollId);
     socket.emit("joinedWaitingRoom", this.pollId)
     socket.emit("joinedLobby", this.pollId);
     socket.emit("pageLoaded", this.lang);
-    },
-    methods: {
+  },
+  methods: {
     startGame: function () {
-        socket.emit("startGame", this.pollId)
-        this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+      socket.emit("startGame", this.pollId)
+      this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
     }
-    }
+  }
 }
 </script>
 
@@ -89,28 +84,27 @@ export default {
 }
 
 #playersInGame {
-    margin-left: 15vh;
-    margin-right: 15vh;
-    margin-top: 1vh;
-    display: flex;
-    justify-content: space-between;
-    font-size: large;
-
+  margin-left: 15vh;
+  margin-right: 15vh;
+  margin-top: 1vh;
+  display: flex;
+  justify-content: space-between;
+  font-size: large;
 }
 .background {
-    background-image: linear-gradient(to bottom right, red, yellow);
-    height: 100vh;
-    overflow: hidden;
+  background-image: linear-gradient(to bottom right, red, yellow);
+  height: 100vh;
+  overflow: hidden;
 }
 .writingQuestions{
-    text-align: left;
-    margin-left: 1vw;
-    margin-top: 1vw;
+  text-align: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 .totalPlayers{
-    text-align: right;
-    margin-right: 1vw;
-    margin-top: 1vw;
+  text-align: right;
+  margin-right: 1vw;
+  margin-top: 1vw;
 }
 .mediaContainer {
   display: flex;
@@ -120,15 +114,20 @@ export default {
   align-items: center;
   padding: 0 2vw;
 }
+
 .leader{
-    width: 30%;
-    background-color:#F05E16 ;
-    padding: 5%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 1vw;
+  padding: 2vh 2vw;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }
+.leader:hover{
+  background-color: #f05e16;
+}
+
 </style>

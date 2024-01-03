@@ -10,7 +10,8 @@
 	"lobbyname": "Lobby name",
 
 "JoinGameView": "",
-	"inputGameID": "Game-ID",
+	"inputGameID": "Enter Game-ID for the lobby",
+	"GameID": "Game-ID",
 
 "StartView": "",
 	"subHeading": "The general knowledge game for the generally unknowledgeable",

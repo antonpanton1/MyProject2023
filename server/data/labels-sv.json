@@ -10,7 +10,8 @@
 	"lobbyname": "Spelnamn",
 
 "JoinGameView": "",
-	"inputGameID": "Spel-ID",
+	"inputGameID": "Ange spel-ID för lobbyn",
+	"GameID": "Spel-ID",
 
 "StartView": "",
 	"subHeading": "Spelet där svaret är mellan noll till hundra",

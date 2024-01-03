@@ -82,7 +82,6 @@ export default {
   width: 100vw;
   overflow: hidden;
 }
-
 .game-title {
   color: black;
   font-size: 15vw;
@@ -108,30 +107,27 @@ export default {
 }
 .big-button{
   text-decoration: none;
-  padding: 2vw 2vw;
+  padding: 2vh 2vw;
   font-size: 1.5em;
-  background-color: darkorange;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }
 .small-button {
   text-decoration: none;
-  padding: 2vw 2vw;
   font-size: 1.5em;
-  background-color: darkorange;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 1vw;
-}
-
-.small-button {
-  top: 30px;
-  padding: 10px 20px;
+  border-radius: 0.75vw;
+/*   top: 30px; */
+  padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }
 
 .big-button:hover {
