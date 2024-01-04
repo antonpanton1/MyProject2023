@@ -69,18 +69,10 @@
         {{uiLabels.removequestion}}
     </button>
 
-
-
-    <!--<div type="submit" class="save" v-on:click="savequestion">
-      <button type="submit" v-on:click="save_question"  style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #10a428; color: #fff; border: none; cursor: pointer;">
-           Save
-      </button>  
-    </div> -->
-
-    <div type="submit" class="wrap">
     <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
+  
     </div>
     
   
@@ -265,5 +257,3 @@ export default {
 }
 
 </style>
-message.txt
-7 KB
