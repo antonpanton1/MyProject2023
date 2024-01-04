@@ -170,18 +170,19 @@ export default {
     height: 100vh;
     overflow: hidden;
 }
-/* .centering {
-  /*display: flex;
-   flex-direction: column;
+ .centering {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center; 
   padding: 0 2vw;
-} */
-/* .mediaContainer {
-  /* display: flex;
+} 
+ .mediaContainer {
+  display: flex;
   flex-direction: column;
   gap: 10%; 
-} */
+} 
+
 #row {
   display: flex;
   justify-content: space-between;
@@ -191,7 +192,7 @@ export default {
 }
 
 #buttonsthing{
-  margin-top: 275px;
+  margin-top: 5px;
   justify-content: center;
   align-items: center; 
 }
