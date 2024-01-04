@@ -101,6 +101,10 @@ function sockets(io, socket, data) {
     data = new Data();
     data.initializeData();
   });
+
+  socket.on('hostCheck', function(d){
+    socket.emit('isHost', data.hostCheck(d.pollId, d.username))
+  })
   
   socket.on('joinedWaitingRoom', function(pollId) {
     let ready = data.getReady(pollId);

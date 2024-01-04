@@ -196,24 +196,19 @@ Data.prototype.idCheck = function(pollId){
 Data.prototype.submitAnswer = function(pollId, answer, username) {
   const poll = this.polls[pollId];
   const participant = poll.participants[username];
-  console.log("answer submitted for ", pollId, answer);
-
-  if (typeof poll !== 'undefined' && participant !== 'uundefined') {
+  if (typeof poll !== 'undefined' && participant !== 'undefined') {
     participant.answers.push(answer)
-    console.log(participant)
   }
 }
 
-/* Data.prototype.getCorrect = function(pollId, currentQuestion) {
+ Data.prototype.hostCheck = function(pollId, username) {
   const poll = this.polls[pollId];
-  const correct = poll.questions[currentQuestion].a
-  //console.log("korrekt svar", poll.questions[currentQuestion].a)
-
-  if (typeof poll !== 'undefined') {
-    return poll.questions[currentQuestion].a;
+  const participant = poll.participants[username];
+  if (typeof poll !== 'undefined' && participant !== 'undefined') {
+    return participant.host === true;
   }
-  
-} */
+  return false
+} 
 
 Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];

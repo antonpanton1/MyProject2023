@@ -53,14 +53,18 @@ export default {
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
     );
-    
+    socket.on('isHost', host => {
+        this.gameLeader = host
+    })
     socket.on('readyUpdate', (ready) => {
       this.ready = ready
     });
     
+    socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
     socket.emit('joinPoll', this.pollId);
     socket.emit("joinedWaitingRoom", this.pollId)
     socket.emit("joinedLobby", this.pollId);
+    
     socket.emit("pageLoaded", this.lang);
   },
   methods: {
