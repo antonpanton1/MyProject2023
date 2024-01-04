@@ -12,6 +12,7 @@
 "JoinGameView": "",
 	"inputGameID": "Ange spel-ID för lobbyn",
 	"GameID": "Spel-ID",
+	"wrongGameID": "Det angivna spel-ID:t är fel.",
 
 "StartView": "",
 	"subHeading": "Spelet där svaret är mellan noll till hundra",
@@ -23,7 +24,8 @@
 	"currentGame": "Nuvarande spel: ",
 	"welcomeMessage": "Hej och välkommen till: ",
 	"pleaseChoose": "Var god ange ditt användarnamn",
-	"usernameUnavailable": "Användarnamnet du angett är upptaget",
+	"usernameUnavailable": "Användarnamnet du angett är redan upptaget!",
+	
 
 "QuestionsView": "",
 	"title": "Skriv dina frågor och svar nedan!",

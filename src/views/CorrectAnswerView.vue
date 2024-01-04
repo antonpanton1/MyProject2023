@@ -1,6 +1,6 @@
 <template>
-
-  <body>
+<div class="background">
+  
 
     <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
 
@@ -20,7 +20,8 @@
     </div>
     <br><br>
     <button v-if="gameLeader" v-on:click="goToLeaderBoard" type="submit">{{ uiLabels.next }}</button>
-  </body>
+  
+</div>
 </template>
 
 <script>
@@ -101,10 +102,10 @@ function Player(name, question, answer, points) {
 
 <style scoped>
 
-body {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  flex-direction: column;
-  height: 100vh;
+.background {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100vh;
+    overflow: hidden;
 }
 
 .slider {

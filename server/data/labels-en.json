@@ -12,6 +12,7 @@
 "JoinGameView": "",
 	"inputGameID": "Enter Game-ID for the lobby",
 	"GameID": "Game-ID",
+	"wrongGameID": "The given Game-ID does not match any currently active lobbys",
 
 "StartView": "",
 	"subHeading": "The general knowledge game for the generally unknowledgeable",
@@ -23,7 +24,7 @@
 	"currentGame": "Current game: ",
 	"welcomeMessage": "Hi and welcome to ",
 	"pleaseChoose": "Please choose your username",
-	"usernameUnavailable": "The username you have chosen is unavailable",
+	"usernameUnavailable": "The username you have chosen is already in use!",
 	
 "QuestionsView": "",
 	"title": "Type your questions and answers below!",
