@@ -72,13 +72,10 @@
     <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
-  
     </div>
-    
-  
-    </div> 
   </div>
 
+  
   
 </template>
 

@@ -80,11 +80,31 @@
 	"joinGameWithCode": "Gå med i spel",
 
 "InstructionsView": "",
-	"insructions": "Instructions",
-	"overview": "Overview",
-	"how": "How to play",
+	"insructions": "Instruktioner",
+	"overview": "Skapa spel",
+	"how": "Gå med i spel",
+	"tips":"Spelets gång",
+	"return": "Tillbaka",
 
-	"overviewText": "heeeej",
-	"howText": "",
-	"tipsText:": ""
+	"oT1": "1. Om du vill skapa ett nytt spel för dig och dina vänner, klicka då på Skapa Spel.",
+	"oT2": "2. Du presenteras då med två alternativ där du får fylla i vad spelet ska heta samt ditt användarnam.",
+	"oT3": "3. Därefter presenteras upp till 3 frågor där varje spelare har möjlighet att skapa upp till 3 frågor var.",
+	"oT4": "4. För ett så rättvist spel som möjligt rekommenderas att samtliga spelare skapar lika många frågor.",
+	"oT5": "5. Efter detta blir du som spelledare ansvarig för att dela spelkoden med dina vänner så att de kan ansluta till just ditt spel.",
+	"oT6": "6. När ni är redo klickar ni på Create Lobby för att påbörja spelet.",
+
+	"hT1": "1. Alternativet för er som redan har en ett spel skapat och ska ansluta till någon annans spel.",
+	"hT2": "2. Var god fyll i den unika spelkoden för just er lobby. Var god ta hänsyn till både stora och små bokstäver.",
+	"hT3": "3. Du ombeds nu att välja användarnamn. Tänk på att varje unik spelare behöver ha ett unikt användarnamn.",
+	"hT4": "4. Du placeras nu i en lobby där ni inväntar spelledaren som sedan startar spelet då alla spelare lyckats ansluta till lobbyn.",
+
+	"tT1": "1. Spelet går till så att alla spelarnas frågor presenteras i tur och ordning.",
+	"tT2": "2. Efter en viss tid då frågan presenterats kommer samtliga spelare att tvingas gissa ett tal mellan 0 - 100 de tror kan vara det rätta svaret.",
+	"tT3": "3. Detta görs genom att dra i slidern, alternativt klicka på plus- respektive minusknappen.",
+	"tT4": "4. Efter att alla spelare gissat eller den maximala tiden som spelledaren satt passerat, presenteras det korrekta svaret.",
+	"tT5": "5. En topplista visas för samtliga spelare.",
+	"tT6": "6. Detta görs om och om igen tills att samtliga frågor tagits upp och besvarats."
+
+	  
+
 }
