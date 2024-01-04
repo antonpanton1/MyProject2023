@@ -76,8 +76,25 @@
 	"insructions": "Instructions",
 	"overview": "Overview",
 	"how": "How to play",
+	"tips":"How the game works",
+	"return": "Return",
 
-	"overviewText": "",
-	"howText": "",
-	"tipsText:": ""
+	"oT1": "1. If you want to create a new game for yourself and your friends, click on Create Game.",
+	"oT2": "2. You will then be presented with two options where you can fill in the name of the game and your username.",
+	"oT3": "3. Afterward, up to 3 questions will be presented where each player has the opportunity to create up to 3 questions each.",
+	"oT4": "4. For a fair game, it is recommended that all players create an equal number of questions.",
+	"oT5": "5. After this, you, as the game master, are responsible for sharing the game code with your friends so they can join your game.",
+	"oT6": "6. When you're ready, click on Create Lobby to start the game.",
+
+	"hT1": "1. The option for those who already have a game created and want to join someone else's game.",
+	"hT2": "2. Please fill in the unique game code for your lobby. Please consider both uppercase and lowercase letters.",
+	"hT3": "3. You are now asked to choose a username. Keep in mind that each unique player needs to have a unique username.",
+	"hT4": "4. You are now in a lobby where you wait for the game master, who will start the game once all players have successfully joined the lobby.",
+
+	"tT1": "1. The game proceeds with all players' questions presented in turn.",
+	"tT2": "2. After a certain time when the question has been presented, all players will be forced to guess a number between 0 - 100 that they think is the correct answer.",
+	"tT3": "3. This is done by dragging the slider or clicking on the plus or minus button.",
+	"tT4": "4. After all players have guessed or the maximum time set by the game master has passed, the correct answer is revealed.",
+	"tT5": "5. A leaderboard is shown for all players."
+	  
 }
