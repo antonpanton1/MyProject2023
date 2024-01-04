@@ -1,5 +1,5 @@
 <template>
-  <div class="background" v-on:keyup.enter="joinGame">
+  <div class="background">
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
       <div>
         <h2> {{uiLabels.title}}</h2>
