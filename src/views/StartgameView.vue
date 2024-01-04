@@ -281,4 +281,10 @@ export default {
     margin-top: 1vw;
 }
 
+#Answer3,#Answer2,#Answer1,#Question1,#Question2,#Question3{
+  height: 4vw;
+  border-radius:0.5rem;
+  font-size: 2.5vw;
+}
+
 </style>
