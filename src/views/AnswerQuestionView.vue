@@ -13,50 +13,55 @@
       <br>
       <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
       <p id="waiting" > {{ uiLabels.waitingOthers }}</p>
+      <br>
+      <button class="submit" id="nextPage" v-if="host" v-on:click="goNext" > {{ uiLabels.goNext }} </button>
 
     </div>
 </template>
   
 <script>
 import io from 'socket.io-client';
-import { queuePostFlushCb } from 'vue';
 const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
-  name: 'CreateView',
+  name: 'answerQuestionsView',
   data: function () {
     return {
       lang: localStorage.getItem("lang") || "en",
-      pollId: "",
+      pollId: "inactive poll",
       questions: [],
       answer: 50,
       username: "",
       currentQuestion: 0,
       uiLabels: {},
+      host: false
     }
   },
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-    socket.on("sendQuestions", (questions) => 
-      this.questions = questions,
-    );
-
-    socket.on('currentUpdate', (current) => 
-      this.currentQuestion = current
-    );
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
-    socket.on("dataUpdate", (data) =>
-      this.data = data
+    socket.on('nextView',() => {
+      this.$router.push({ path: '/correctanswer/'+this.pollId+'/'+this.username})
+    });
+    socket.on("sendQuestions", (questions) => 
+      this.questions = questions,
     );
-
-    socket.emit('getCurrent', this.pollId)
-    socket.emit("pageLoaded", this.lang);
+    socket.on('isHost', host => {
+        this.host = host
+    })
+    socket.on('currentUpdate', (current) => 
+      this.currentQuestion = current
+    );
+  
     socket.emit('joinPoll', this.pollId);
+    socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
+    socket.emit('getCurrent', this.pollId);
     socket.emit("getQuestions", this.pollId);
+    socket.emit("pageLoaded", this.lang);
   },
   methods: {
       increase: function(){
@@ -79,6 +84,9 @@ export default {
 
         socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
         socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})
+      },
+      goNext: function(){
+        socket.emit("nextView", this.pollId)
       }
   }
 }

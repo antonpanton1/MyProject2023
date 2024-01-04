@@ -103,6 +103,10 @@ body {
   height: 100vh;
 }
 
+h1{
+  margin-bottom: 0;
+}
+
 section {
   margin: 10px;
 }
@@ -113,6 +117,7 @@ input {
 
 .joinLobby {
   text-decoration: none;
+  font-size: 1.5em; 
   padding: 2vh 2vw;
   color: white;
   border: none;

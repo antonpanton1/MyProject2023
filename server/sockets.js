@@ -78,7 +78,7 @@ function sockets(io, socket, data) {
   socket.on('submitUsername', function(d) {
     data.submitUsername(d.pollId, d.username, d.host);
     let participants = data.getParticipants(d.pollId);
-    io.to(d.pollId).emit('participantUpdate', participants);
+    socket.emit('participantUpdate', participants);
   });
 
   socket.on('usernameAvailability', function(d){
@@ -93,6 +93,10 @@ function sockets(io, socket, data) {
     let participants = data.getParticipants(pollId);
     socket.emit('participantUpdate', participants);
   });
+
+  socket.on('nextView', function(pollId){
+    io.to(pollId).emit('nextView')
+  })
 
   socket.on('resetAll', () => {
     data = new Data();

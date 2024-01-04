@@ -46,13 +46,17 @@ export default {
 
     socket.on("init", (labels) => {
       this.uiLabels = labels
-    })
+    });
     socket.on("participantUpdate", (participants) => 
     this.participants = participants,
     );
+
+    socket.on('nextView',() => {
+      this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+    });
     socket.on('isHost', host => {
         this.gameLeader = host
-    })
+    });
     socket.on('readyUpdate', (ready) => {
       this.ready = ready
     });
@@ -65,8 +69,7 @@ export default {
   },
   methods: {
     startGame: function () {
-      socket.emit("startGame", this.pollId)
-      this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+      socket.emit("nextView", this.pollId)
     }
   }
 }

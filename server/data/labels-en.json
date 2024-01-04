@@ -64,6 +64,7 @@
 	"dispQuestion": "Question:",
 	"lockIn": "Lock in answer",
 	"waitingOthers": "Waiting for other players",
+	"goNext":"Show correct answer",
 
 "CorrectAnswerView": "",
 	"next": "next",
