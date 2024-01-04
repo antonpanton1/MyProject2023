@@ -2,7 +2,7 @@
 
   <body>
 
-    <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion].a }}</h1><br>
+    <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
 
     <div class="slider">
       <vue-slider 

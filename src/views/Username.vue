@@ -45,6 +45,14 @@ export default{
     socket.emit('getGameName', this.pollId);
     socket.emit('name', this.gameName);
     socket.emit("pageLoaded", this.lang);
+    socket.on("availability", (available) => {
+        if (available) {
+          socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:false });
+          this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username });
+        }
+        else
+        unavailable.style.display = "block";
+      })
   },
   methods:{
     submitUsername: function(){
@@ -53,14 +61,7 @@ export default{
       }
       else
       socket.emit("usernameAvailability", {pollId: this.pollId, username: this.username })
-      socket.on("availability", (available) => {
-        if (available) {
-          socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:false });
-          this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username });
-        }
-        else
-        unavailable.style.display = "block";
-      })
+      
     }
   }
 };

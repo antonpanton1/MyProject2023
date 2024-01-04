@@ -35,7 +35,13 @@ export default{
     )
     socket.on("createPoll", (data) =>
       this.data = data
-    )    
+    )
+    socket.on('idAvailable', (available) => {
+        if(available){
+          this.$router.push({ path: '/username/'+this.pollId })
+        }
+        else console.log('The GameID was entered wrong. Please try again')
+      })    
   },
   methods: {
     redirect(pollId) {
@@ -44,12 +50,7 @@ export default{
     joinID: function () {
       this.pollId = this.idCode
       socket.emit('idCheck', this.pollId)
-      socket.on('idAvailable', (available) => {
-        if(available){
-          this.$router.push({ path: '/username/'+this.pollId })
-        }
-        else console.log('The GameID was entered wrong. Please try again')
-      })
+    
     },
   }
 }

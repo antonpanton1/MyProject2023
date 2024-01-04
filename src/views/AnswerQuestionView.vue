@@ -2,7 +2,7 @@
   <div class="background" v-on:keyup.enter="lockAnswer">
       <h1>{{ uiLabels.dispQuestion }}</h1>
       <br>
-      <h2>{{this.questions[currentQuestion].q}}?</h2>
+      <h2>{{this.questions[currentQuestion]?.q}}?</h2>
       <br>
       <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
       <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
