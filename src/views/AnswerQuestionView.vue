@@ -11,10 +11,10 @@
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
       <br>
-      <button class="submit" id="lockBtn" v-on:click="lockAnswer">{{ uiLabels.lockIn }}</button>
-      <p id="waiting">{{ uiLabels.waitingOthers }}</p>
+      <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
+      <p id="waiting"> {{ uiLabels.waitingOthers }} {{this.answered}} / {{ this.participants.length }}</p>
       <br>
-      <button class="submit" id="nextPage" v-if="host" v-on:click="goNext">{{ uiLabels.goNext }}</button>
+      <button class="submit" id="nextPage" v-on:click="goNext">{{ uiLabels.goNext }}</button>
 
     </div>
 </template>
@@ -34,7 +34,10 @@ export default {
       username: "",
       currentQuestion: 0,
       uiLabels: {},
-      host: false
+      host: false,
+      participants: [],
+      answered: 0,
+      locked: false
     }
   },
   created: function () {
@@ -44,6 +47,9 @@ export default {
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
+    socket.on('lockIn', () =>
+    this.lockAnswer()
+    );
     socket.on('nextView',() => {
       this.$router.push({ path: '/correctanswer/'+this.pollId+'/'+this.username})
     });
@@ -56,11 +62,18 @@ export default {
     socket.on('currentUpdate', (current) => 
       this.currentQuestion = current
     );
+    socket.on('totalPlayers', (players) => 
+    this.participants = players
+    );
+    socket.on('answerSubmitted', () => 
+      this.answered +=1
+    );
   
     socket.emit('joinPoll', this.pollId);
     socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
     socket.emit('getCurrent', this.pollId);
     socket.emit("getQuestions", this.pollId);
+    socket.emit('totalPlayers', this.pollId)
     socket.emit("pageLoaded", this.lang);
   },
   methods: {
@@ -71,21 +84,31 @@ export default {
           this.answer --;
       },
       lockAnswer: function(){
-        lockBtn.disabled = true;
-        lockBtn.classList.toggle("submit");
-        lockBtn.textContent = "Answer locked"
-        rangeSlider.disabled = true;
-        plus.disabled = true;
-        plus.classList.toggle("answer");
-        minus.disabled = true;
-        minus.classList.toggle("answer");
-        number.disabled = true;
-        waiting.style.display = "block"
+        if(!this.locked){
+          this.locked = true;
+          lockBtn.disabled = true;
+          lockBtn.classList.toggle("submit");
+          lockBtn.textContent = "Answer locked"
+          rangeSlider.disabled = true;
+          plus.disabled = true;
+          plus.classList.toggle("answer");
+          minus.disabled = true;
+          minus.classList.toggle("answer");
+          number.disabled = true;
+          waiting.style.display = "block"
 
-        socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
-        socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})
+          if(this.host){
+            nextPage.style.display ="inline-block";
+          }
+
+          socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
+          socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})
+        }
       },
       goNext: function(){
+        this.$router.push({ path: '/correctanswer/'+this.pollId+'/'+this.username})
+
+        socket.emit('lockScores', this.pollId)
         socket.emit("nextView", this.pollId)
       }
   }
@@ -222,6 +245,10 @@ button {
 }
 
 #waiting {
+  display: none;
+}
+
+#nextPage {
   display: none;
 }
 
