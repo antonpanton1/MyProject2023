@@ -167,7 +167,7 @@ button {
  */
 
 .answer {
-    background-color:#F05E16 ;
+    background-color:#ff8000;
     margin: 10px;
     text-align: center;
     font-size: 1.5em;

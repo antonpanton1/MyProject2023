@@ -10,9 +10,9 @@
 	"lobbyname": "Spelnamn",
 
 "JoinGameView": "",
-	"inputGameID": "Ange spel-ID för lobbyn",
-	"GameID": "Spel-ID",
-	"wrongGameID": "Det angivna spel-ID:t är fel.",
+	"inputGameID": "Ange spelkod för lobbyn",
+	"GameID": "Spelkod",
+	"wrongGameID": "Den angivna spelkoden är fel.",
 
 "StartView": "",
 	"subHeading": "Spelet där svaret är mellan noll till hundra",

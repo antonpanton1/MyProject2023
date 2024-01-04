@@ -8,7 +8,7 @@
       <vue-slider 
         v-model="answers" 
         disabled="true" 
-        :marks="marks" 
+        :marks="[this.questions[currentQuestion]?.a,]" 
         :process="false"
         :railStyle="{ backgroundColor: 'rgb(255, 196, 100)' }"
         :tooltip-style="{ backgroundColor: '#F05E16', borderColor: '#F05E16' }"

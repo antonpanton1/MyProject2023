@@ -9,11 +9,11 @@
     <div id="leaderBoard">
       <div id="players">
         <h2> {{ uiLabels.name }} </h2>
-          <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
-            <div id="names">
-              {{ index + 1}}. {{ topPlayer.username }}
-            </div>
+        <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
+          <div id="names">
+            {{ index + 1 }}. {{ topPlayer.username }}
           </div>
+        </div>
       </div>
 
       <div id="scores">
@@ -28,8 +28,8 @@
       <img src= "https://static.vecteezy.com/system/resources/previews/019/819/389/non_2x/award-medal-gold-silver-and-bronze-medals-on-transparent-background-file-png.png" alt="Span" title = "Another in-line element" style="width: 200px;">
     </div>
 
-    <button v-if="gameLeader" v-on:click="nextQuestion" type="submit" id="leader" > 
-        {{ uiLabels.nextQuestion }}
+    <button v-if="host" v-on:click="nextQuestion" type="submit" id="leader" > 
+      {{ uiLabels.nextQuestion }}
     </button>
 </body>
 </template>
@@ -43,29 +43,34 @@ export default {
   name: 'leaderboardView',
    
   data: function () {
-  return {
+    return {
       pollId: "inactive poll",
       userName: "",
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
       topPlayers: [],
-      gameLeader: true,      
-      };
+      host: false,   
+     /*  end: false,   */ 
+    };
   },
   created: function () {
-  this.pollId = this.$route.params.id
-  this.username = this.$route.params.uid
-  socket.emit('joinPoll', this.pollId);
-  socket.emit('joinedLeaderboardView', this.pollId);
-  socket.emit("pageLoaded", this.lang);
-      
-  socket.on("init", (labels) => {
+    this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
+    socket.emit('joinPoll', this.pollId);
+    socket.emit('joinedLeaderboardView', this.pollId);
+    socket.emit("pageLoaded", this.lang);
+    socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
+        
+    socket.on("init", (labels) => {
       this.uiLabels = labels
-  });
-
-  socket.on("scoreboardUpdate", topPlayers =>
-  this.topPlayers = topPlayers
-  )},
+    });
+    socket.on('isHost', host => {
+      this.host = host
+    });
+    socket.on("scoreboardUpdate", topPlayers =>
+    this.topPlayers = topPlayers
+    );
+  },
   methods: {
     nextQuestion: function () {
       socket.emit("endGame", this.pollId)
