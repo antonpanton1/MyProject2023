@@ -33,6 +33,7 @@
       </p>  
     </div>
     </div>
+    </div>
 
     <div id="answerField">
     <div class="answers">  
