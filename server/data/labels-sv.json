@@ -46,12 +46,6 @@
 	"gameCode": "Spelkod:",
 	"startGame": "Starta spelet",
 
-"leaderboardView": "",
-	"leaderBoard": "Poängställning",
-	"name": "Namn:",
-	"scores": "Poäng:",
-	"nextQuestion": "Nästa Fråga",
-
 "ResultsView": "",
 	"results": "Resultat:",
 	"first": "1a Plats",
@@ -109,7 +103,5 @@
 	"tT4": "4. Efter att alla spelare gissat eller den maximala tiden som spelledaren satt passerat, presenteras det korrekta svaret.",
 	"tT5": "5. En topplista visas för samtliga spelare.",
 	"tT6": "6. Detta görs om och om igen tills att samtliga frågor tagits upp och besvarats."
-
-	  
 
 }

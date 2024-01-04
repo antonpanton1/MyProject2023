@@ -4,12 +4,13 @@
       <div>
         <h2> {{uiLabels.title}}</h2>
       </div>
-    
+   
     <div class="centering">
        <div class="mediaContainer">
 
-      <div class="inputWrap">   
-      <div id="questionField"> 
+
+      <div class="inputWrap">  
+      <div id="questionField">
       <p>
         <label for="Question1">
           {{uiLabels.Question1}}
@@ -33,7 +34,8 @@
       </p>  
     </div>
 
-    <div id="answerField"> 
+
+    <div id="answerField">
       <p>
         <label for="Answer 1">
           {{ uiLabels.Answer1 }}
@@ -47,22 +49,23 @@
          </label><br>
          <input type="number" id="Answer2" v-model="an2" required="required" :placeholder="uiLabels.typeAnswer" >
          {{ answer2 }}
-      </p> 
+      </p>
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
          <input type="number" id="Answer3" v-model="an3" required="required" :placeholder="uiLabels.typeAnswer" >
          {{ answer3 }}
-      </p> 
+      </p>
     </div>
-  </div> 
-    </div> 
-  </div> 
+  </div>
+    </div>
+  </div>
   <div id="buttonsthing">
   <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
         {{uiLabels.addquestion}}
     </button>
+
 
     <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="removefunc">
         {{uiLabels.removequestion}}
@@ -75,13 +78,17 @@
   </div>  
   </div>
 
-  
-  
+
+ 
+ 
 </template>
+
 
 <script>
 import io from 'socket.io-client';
 const socket = io("localhost:3000");
+
+
 
 
 export default {
@@ -100,8 +107,10 @@ export default {
       an2: '',
       an3: ''
 
+
     };
   },
+
 
   computed: {
     areAllQuestionsAndAnswersFilled() {
@@ -115,6 +124,7 @@ export default {
     },
   },
 
+
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
@@ -123,11 +133,13 @@ export default {
     })
     socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);    
-    
+   
+
 
   },
  
   methods:{
+
 
     mounted() {
     // 3 sec timer
@@ -136,7 +148,7 @@ export default {
     }, 3000);
   },
   removefunc: function(){
-    
+   
       if (this.questionNR === 1) {
         // If removing the second question
         this.qu2 = '';
@@ -148,13 +160,13 @@ export default {
       }
       this.questionNR--;
   },
-  
+ 
   joinGame: function() {
-  
-    
+ 
+   
     socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu1, a: this.an1})
     console.log("första frågan skickas")
-    
+   
     if (this.qu2 !== ''){
       socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu2, a: this.an2})
       console.log("andra frågan skickas")  
@@ -166,10 +178,12 @@ export default {
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   }
   }
-  
+ 
 };
 
+
 </script>
+
 
 <style scoped>
 .background {
@@ -181,14 +195,15 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   padding: 0 2vw;
-} 
+}
  .mediaContainer {
   display: flex;
   flex-direction: column;
-  gap: 10%; 
-} 
+  gap: 10%;
+}
+
 
 #row {
   display: flex;
@@ -198,21 +213,24 @@ export default {
   margin-bottom: 2%;
 }
 
+
 #buttonsthing{
   display:flex;
   margin-top: 5px;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
+
 
 #joinbutton{
   display:flex;
   margin-top: 5px;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 .inputWrap{
   width: 100%;
+
 
 }
 #questionField {
@@ -230,12 +248,16 @@ export default {
 
 
 
+
+
+
 .addQuestionButton,
 .removeQuestionButton,
 #joinWaitingRoomButton {
-  margin-top: 20px;   
-  
-} 
+  margin-top: 20px;  
+ 
+}
+
 
 #joinWaitingRoomButton {
   display: flex;
@@ -253,7 +275,7 @@ export default {
   align-items: center;
 }
 .addQuestionButton {
-  
+ 
   display: flex;
   box-sizing: border-box;
   padding: 2vw;
@@ -278,8 +300,9 @@ export default {
   cursor: pointer
 }
 
+
 .wrap{
-  margin-bottom: 500px; 
+  margin-bottom: 500px;
 }
 .gameCode{
     text-align: left;
@@ -287,10 +310,12 @@ export default {
     margin-top: 1vw;
 }
 
+
 #Answer3,#Answer2,#Answer1,#Question1,#Question2,#Question3{
   height: 4vw;
   border-radius:0.5rem;
   font-size: 2.5vw;
 }
+
 
 </style>
