@@ -156,7 +156,19 @@ export default {
   },
   
   joinGame: function() {
-    socket.emit('saveQuestions', {pollId: this.pollId, q1: this.qu1, q2: this.qu2, q3: this.qu3, a1: this.an1, a2: this.an2, a3: this.an3} )
+  
+    
+    socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu1, a: this.an1})
+    console.log("första frågan skickas")
+    
+    if (this.qu2 !== ''){
+      socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu2, a: this.an2})
+      console.log("andra frågan skickas")  
+    }
+    if (this.qu3 !== ''){
+      socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu3, a: this.an3})
+      console.log("tredje frågan skickas")  
+    }
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   }
   }

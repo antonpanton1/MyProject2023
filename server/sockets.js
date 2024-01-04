@@ -24,9 +24,9 @@ function sockets(io, socket, data) {
   })
 
   socket.on('saveQuestions', function(d) {
-    data.addQuestion(d.pollId, {q: d.q1, a: d.a1});
-    data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
-    data.addQuestion(d.pollId, {q: d.q3, a: d.a3});
+    data.addQuestion(d.pollId, {q: d.q, a: d.a});
+    /* data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
+    data.addQuestion(d.pollId, {q: d.q3, a: d.a3}); */
     data.ready(d.pollId);
     io.to(d.pollId).emit('sendQuestions', data.getAllQuestions(d.pollId))
   });
