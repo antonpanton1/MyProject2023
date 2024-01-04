@@ -78,7 +78,8 @@ export default {
         if(this.lastQuestion == false) {          console.log("inte sis ta")
           socket.emit('nextQuestion', this.pollId);
           this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
-        }else {
+        }
+        else {
         console.log("sista")
         this.$router.push({ path: '/results/'+this.pollId})
       }}
