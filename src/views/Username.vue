@@ -112,10 +112,12 @@ button {
   border-radius: 1vw;
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+  transition-duration: 0.4s;
 }
 
 button:hover {
   background-color: #f05e16;
+  transition-duration: 0.1s;
 }
 
 .mediaContainer {

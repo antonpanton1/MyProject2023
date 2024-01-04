@@ -65,6 +65,9 @@
 	"lockIn": "Lock in answer",
 	"waitingOthers": "Waiting for other players",
 
+"CorrectAnswerView": "",
+	"next": "next",
+	"correctAnswer": "Correct answer: ",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",

@@ -16,9 +16,7 @@
         </div>
       </div>
     </div>
-    <button class="leader" v-if="gameLeader" v-on:click="startGame" type="submit"> 
-      Start Game
-    </button>
+    <button class="leader" v-if="gameLeader" v-on:click="startGame" type="submit">{{ uiLabels.startGame }}</button>
   </div>
 </template>
 
@@ -64,7 +62,6 @@ export default {
     socket.emit('joinPoll', this.pollId);
     socket.emit("joinedWaitingRoom", this.pollId)
     socket.emit("joinedLobby", this.pollId);
-    
     socket.emit("pageLoaded", this.lang);
   },
   methods: {
@@ -119,7 +116,7 @@ export default {
   padding: 0 2vw;
 }
 
-.leader{
+.leader {
   padding: 2vh 2vw;
   text-align: center;
   font-size: 1.5em;
@@ -130,7 +127,7 @@ export default {
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }
-.leader:hover{
+.leader:hover {
   background-color: #f05e16;
 }
 

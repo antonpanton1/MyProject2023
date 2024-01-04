@@ -2,7 +2,7 @@
 
   <body>
 
-    <h1>Correct Answer: {{ this.questions[currentQuestion].a }}</h1><br>
+    <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion].a }}</h1><br>
 
     <div class="slider">
       <vue-slider 
@@ -18,7 +18,8 @@
         </template>
       </vue-slider>
     </div>
-
+    <br><br>
+    <button v-if="gameLeader" v-on:click="goToLeaderBoard" type="submit">{{ uiLabels.next }}</button>
   </body>
 </template>
 
@@ -35,11 +36,6 @@ function Player(name, question, answer, points) {
   this.answer = answer
   this.points = points
   }
- /* const arrayOfPlayers = [
-  new Player("test1", "Question1", "answer1", 10),
-  new Player("test2", "Question1", "answer2", 30),
-  new Player("test3", "Question1", "answer3", 20),
-  ] */
 
   export default {
     name: 'correctAnswer',
@@ -47,7 +43,6 @@ function Player(name, question, answer, points) {
     components: {
       VueSlider,
     }, 
-
     data() {
       return {
         lang: localStorage.getItem("lang") || "en",
@@ -55,9 +50,10 @@ function Player(name, question, answer, points) {
         username: "",
         uiLabels: {},
         answers: [], //spelarnas svar
-        marks: 55, //rätt svar
+        marks: [], //rätt svar 
         qurrentQuestion: 0,
-        questions: []
+        questions: [],
+        gameLeader: true
       }
     },
     created: function () {
@@ -70,11 +66,14 @@ function Player(name, question, answer, points) {
         this.currentQuestion = current
       });
       socket.on("sendQuestions", (questions) => 
-      this.questions = questions
-    );
+        this.questions = questions
+      );
       socket.on('allAnswers', answers => {
         this.answers = answers
       });
+      socket.on('isHost', host => {
+        this.gameLeader = host
+      })
       socket.emit('joinPoll', this.pollId);
       socket.emit('getGameName', this.pollId);
       socket.emit('name', this.gameName);
@@ -82,8 +81,14 @@ function Player(name, question, answer, points) {
       socket.emit('getAnswers', {pollId: this.pollId, currentQuestion: this.qurrentQuestion})
       socket.emit("pageLoaded", this.lang);
       socket.emit("getQuestions", this.pollId);
-
+      socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
     },
+    methods: {
+      goToLeaderBoard: function () {
+      socket.emit("goToLeaderBoard", this.pollId)
+      this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
+      }
+    }
   }
 </script>
 
@@ -106,6 +111,21 @@ body {
   border-radius: 50%;
   background-color: white;
 }
-  
+
+
+button {
+  padding: 2vh 2vw;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+button:hover {
+  background-color: #f05e16;
+}
 
 </style>

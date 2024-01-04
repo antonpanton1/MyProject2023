@@ -65,6 +65,10 @@
 	"lockIn": "Lås svar",
 	"waitingOthers": "Väntar på andra spelare",
 
+"CorrectAnswerView": "",
+	"next": "Gå vidare",
+	"correctAnswer": "Rätt svar: ",
+
 "(Comment) Tror vi kan ta bort dessa": "",
 	"sales-pitch": "0 --> 100",
 	"invite": "Bjud in deltagare med den här länken:",

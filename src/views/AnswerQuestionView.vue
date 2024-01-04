@@ -10,6 +10,7 @@
       <div class="answerSlide">
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
+      <br>
       <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
       <p id="waiting" > {{ uiLabels.waitingOthers }}</p>
 
@@ -56,8 +57,6 @@ export default {
     socket.emit("pageLoaded", this.lang);
     socket.emit('joinPoll', this.pollId);
     socket.emit("getQuestions", this.pollId);
-
-    
   },
   methods: {
       increase: function(){
@@ -108,7 +107,7 @@ input[type=number]{
     -moz-appearance: textfield;
 }
 
-button {
+/* button {
   background-color: #a94411;
   margin: 20px;
   padding: 3%;
@@ -119,9 +118,24 @@ button {
   cursor: pointer;
   border-radius: 8px;
   transition-duration: 0.4s;
+} */
+
+button {
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 2vh 2vw;
+  border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+  transition-duration: 0.4s;
+  margin: 1vw;
 }
 
-.answer {
+
+/* .answer {
     background-color:#F05E16 ;
     margin: 10px;
     text-align: center;
@@ -131,25 +145,25 @@ button {
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 0.4s;
-}
+} */
 
 .answer:hover {
-    color: black;
+  background-color: #f05e16;
 }
 
 .answerSlide {
-    width: 100%;
+  width: 100%;
 }
 
 .slider {
-    width: 50%;
-    background: rgb(255, 196, 100);
-    -webkit-appearance: none;
-    outline: none; /* Remove outline */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-    cursor: pointer; /* Cursor on hover */
-    border-radius: 30px;
+  width: 50%;
+  background: rgb(255, 196, 100);
+  -webkit-appearance: none;
+  outline: none; /* Remove outline */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 30px;
 }
 
 .slider::-webkit-slider-runnable-track {
@@ -162,43 +176,41 @@ button {
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    height: 1.2rem;
-    width: 1.2rem;
-    background: white;
-    margin-top: -7px;
-    border-radius: 50%;
-    
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  height: 1.2rem;
+  width: 1.2rem;
+  background: white;
+  margin-top: -7px;
+  border-radius: 50%;
 }
 
 .slider::-moz-range-thumb {
-    border: none; /*Removes extra border that FF applies*/
-    border-radius: 0; /*Removes default border-radius that FF applies*/
-    background-color: red;
-    height: 15px;
-    width: 15px;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: red;
+  height: 15px;
+  width: 15px;
 }
 
-.submit {
-    background-color:#F05E16 ;
-    margin: 20px;
-    padding: 3%;
-    text-align: center;
-    font-size: 24px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-}
+/* .submit {
+  text-align: center;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  font-size: 1.5em;
+  padding: 2vh 2vw;
+  border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+} */
 
 .submit:hover {
-    color: black;
-    background-color: darkorange;
-    transition-duration: 0.1s;
-
+  background-color: #f05e16;
+  transition-duration: 0.1s;
 }
 
 #waiting {
