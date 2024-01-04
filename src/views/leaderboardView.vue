@@ -10,7 +10,9 @@
       <div id="players">
         <h2> {{ uiLabels.name }} </h2>
           <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
-            {{ index + 1}}. {{ topPlayer.username }}
+            <div id="names">
+              {{ index + 1}}. {{ topPlayer.username }}
+            </div>
           </div>
       </div>
 
@@ -110,4 +112,24 @@ body {
   margin-top: 40vh;
 }
 
+#players, #scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+  padding: 2vh 2vw;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 1vw;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+button:hover {
+  background-color: #f05e16;
+}
 </style>

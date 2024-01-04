@@ -6,23 +6,23 @@
       <svg width="210" height="250">
         <rect width="200" height="150" style="fill:rgb(230, 155, 111);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="47%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.second }}</text>
-        <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[1].score }}</text>
-        <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[1].username }} </text>
+        <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[1]?.score }}</text>
+        <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[1]?.username }} </text>
       </svg>
 
       <svg width="210" height="330">
         
         <rect width="200" height="230" style="fill:rgb(240, 154, 56);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="60%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.first }}</text>
-        <text x="50%" y="18%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[0].score }}</text>
-        <text x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[0].username }}</text>
+        <text x="50%" y="18%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[0]?.score }}</text>
+        <text x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[0]?.username }}</text>
       </svg>
 
       <svg width="210" height="200">
         <rect width="200" height="100" style="fill:rgb(213, 95, 31);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="35%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.third }}</text>
-        <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2].score }} </text>
-        <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2].username }} </text>
+        <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2]?.score }} </text>
+        <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2]?.username }} </text>
       </svg>        
     </div> 
 

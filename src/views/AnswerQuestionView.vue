@@ -2,7 +2,7 @@
   <div class="background" v-on:keyup.enter="lockAnswer">
       <h1>{{ uiLabels.dispQuestion }}</h1>
       <br>
-      <h2>{{this.questions[currentQuestion].q}}?</h2>
+      <h2>{{this.questions[currentQuestion]?.q}}?</h2>
       <br>
       <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
       <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
@@ -11,10 +11,10 @@
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
       <br>
-      <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
-      <p id="waiting" > {{ uiLabels.waitingOthers }}</p>
+      <button class="submit" id="lockBtn" v-on:click="lockAnswer">{{ uiLabels.lockIn }}</button>
+      <p id="waiting">{{ uiLabels.waitingOthers }}</p>
       <br>
-      <button class="submit" id="nextPage" v-if="host" v-on:click="goNext" > {{ uiLabels.goNext }} </button>
+      <button class="submit" id="nextPage" v-if="host" v-on:click="goNext">{{ uiLabels.goNext }}</button>
 
     </div>
 </template>
@@ -95,8 +95,8 @@ export default {
 <style scoped>
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
-    height: 100vh;
-    overflow: hidden;
+  height: 100vh;
+  overflow: hidden;
 }
 
 input {
@@ -115,7 +115,7 @@ input[type=number]{
     -moz-appearance: textfield;
 }
 
-/* button {
+button {
   background-color: #a94411;
   margin: 20px;
   padding: 3%;
@@ -126,9 +126,9 @@ input[type=number]{
   cursor: pointer;
   border-radius: 8px;
   transition-duration: 0.4s;
-} */
+}
 
-button {
+/* button {
   text-align: center;
   font-size: 1.5em;
   color: white;
@@ -141,9 +141,9 @@ button {
   transition-duration: 0.4s;
   margin: 1vw;
 }
+ */
 
-
-/* .answer {
+.answer {
     background-color:#F05E16 ;
     margin: 10px;
     text-align: center;
@@ -153,7 +153,7 @@ button {
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 0.4s;
-} */
+}
 
 .answer:hover {
   background-color: #f05e16;
@@ -201,7 +201,7 @@ button {
   width: 15px;
 }
 
-/* .submit {
+.submit {
   text-align: center;
   color: white;
   border: none;
@@ -214,7 +214,7 @@ button {
   border-radius: 1vw;
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
-} */
+}
 
 .submit:hover {
   background-color: #f05e16;

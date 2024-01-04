@@ -78,7 +78,7 @@ function sockets(io, socket, data) {
   socket.on('submitUsername', function(d) {
     data.submitUsername(d.pollId, d.username, d.host);
     let participants = data.getParticipants(d.pollId);
-    socket.emit('participantUpdate', participants);
+    io.to(d.pollId).emit('participantUpdate', participants);
   });
 
   socket.on('usernameAvailability', function(d){
