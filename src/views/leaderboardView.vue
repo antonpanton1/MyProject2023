@@ -38,56 +38,46 @@ import io from 'socket.io-client';
 const socket = io(sessionStorage.getItem("dataServer"));
 
 export default {
-    name: 'leaderboardView',
+  name: 'leaderboardView',
    
-    data: function () {
-    return {
-        pollId: "inactive poll",
-        userName: "",
-        uiLabels: {},
-        lang: localStorage.getItem("lang") || "en",
-        topPlayers: [],
-        gameLeader: true,
-        lastQuestion: false
+  data: function () {
+  return {
+      pollId: "inactive poll",
+      userName: "",
+      uiLabels: {},
+      lang: localStorage.getItem("lang") || "en",
+      topPlayers: [],
+      gameLeader: true,      
+      };
+  },
+  created: function () {
+  this.pollId = this.$route.params.id
+  this.username = this.$route.params.uid
+  socket.emit('joinPoll', this.pollId);
+  socket.emit('joinedLeaderboardView', this.pollId);
+  socket.emit("pageLoaded", this.lang);
       
-        };
-    },
-    created: function () {
-    this.pollId = this.$route.params.id
-    this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit('joinedLeaderboardView', this.pollId);
-    socket.emit("pageLoaded", this.lang);
-    
-    socket.on("endGame", this.lastQuestion = true);
-
-    socket.emit("getCurrent", this.pollId);
-
-
-    
-    socket.on("init", (labels) => {
+  socket.on("init", (labels) => {
       this.uiLabels = labels
-    });
+  });
 
-    socket.on("scoreboardUpdate", topPlayers =>
-    this.topPlayers = topPlayers
-    )},
-    methods: {
-      nextQuestion: function () {
-        console.log("knapptryck")
-        if(this.lastQuestion == false) {          console.log("inte sis ta")
+  socket.on("scoreboardUpdate", topPlayers =>
+  this.topPlayers = topPlayers
+  )},
+  methods: {
+    nextQuestion: function () {
+      socket.emit("endGame", this.pollId)
+      socket.on('endGame', (end) => {
+        if (end){
+          this.$router.push({ path: '/results/'+this.pollId})
+        }else{
           socket.emit('nextQuestion', this.pollId);
           this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
         }
-        else {
-        console.log("sista")
-        this.$router.push({ path: '/results/'+this.pollId})
-      }}
-      
-    }
-
-
+      })
+    }      
   }
+}
 </script>
 
 <style scoped>

@@ -2,9 +2,9 @@
   <body v-on:keyup.enter="joinID">
     <main>
         <h2>{{ uiLabels.inputGameID }}</h2>
-        <input type="text" v-model="idCode" :placeholder="uiLabels.GameID">
+        <input type="text" v-model="idCode" v-on:keyup.enter="joinID" :placeholder="uiLabels.GameID">
         <br><br>
-        <button class="start-button" v-on:click="joinID">{{ uiLabels.join }}</button>
+        <button class="start-button"  v-on:click="joinID">{{ uiLabels.join }}</button>
     </main>
   </body>
 </template>

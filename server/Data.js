@@ -170,7 +170,7 @@ Data.prototype.nextQuestion = function(pollId){
 
 Data.prototype.lastQuestion = function(pollId) {
   const poll = this.polls[pollId];
-  if(typeof poll !== 'undefined' && poll.currentQuestion == poll.questions.length){
+  if(typeof poll !== 'undefined' && poll.currentQuestion >= poll.questions.length -1) {
     return true
   }
   return false

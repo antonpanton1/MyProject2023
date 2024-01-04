@@ -3,20 +3,20 @@
     <body>
       <main>
         <div class="mediaContainer" v-on:keyup.enter="startPoll">
-          <section>
-            <label class="heading">{{ uiLabels.nameOfGame }}</label> 
-            <br>
-            <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
-          </section>
-          
-          <section>
-            <label class="heading">{{ uiLabels.nameOfYou }}</label>
-            <br>
-            <input type="text" v-model="username" :placeholder="uiLabels.username">          
-          </section>
-          
-          <br>
-          <button class="joinLobby" v-on:click="startPoll">{{ uiLabels.lobby }}</button>
+        <section>
+          <h1>{{ uiLabels.nameOfGame }}</h1>
+          <!-- <label class="heading">{{ uiLabels.nameOfGame }}</label>  -->
+          <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
+        </section>
+        
+        <section>
+         <!--  <label class="heading"> {{ uiLabels.nameOfYou }}</label> -->
+          <h1>{{ uiLabels.nameOfYou }}</h1>
+          <input type="text" v-model="username" :placeholder="uiLabels.username">          
+        </section>
+        
+        <br>
+        <button class="joinLobby" v-on:click="startPoll" > {{uiLabels.lobby}} </button>
         </div>
       </main>
     </body>
@@ -118,8 +118,8 @@ input {
 
 .joinLobby {
   text-decoration: none;
+  /* font-size: 1.5em; */
   padding: 2vh 2vw;
-  font-size: 1.5em;
   color: white;
   border: none;
   cursor: pointer;
@@ -129,7 +129,7 @@ input {
 }
 
 .joinLobby:hover {
-  background-color: #f05e16;
+  background-color: #F05E16;
 }
 
 input {

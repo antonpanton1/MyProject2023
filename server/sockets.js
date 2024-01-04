@@ -60,12 +60,13 @@ function sockets(io, socket, data) {
     data.nextQuestion(pollId)
   });
 
+  socket.on('endGame', function(pollId){
+    socket.emit('endGame', data.lastQuestion(pollId))
+  })
+
   socket.on('getCurrent', function(pollId){
-    if(data.lastQuestion(pollId)) {
-      socket.emit('endGame')
-    }
-    else {socket.emit('currentUpdate',data.getCurrent(pollId));
-  }});
+    socket.emit('currentUpdate',data.getCurrent(pollId));
+  });
 
   socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
