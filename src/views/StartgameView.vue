@@ -73,11 +73,12 @@
     <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="removefunc">
         {{uiLabels.removequestion}}
     </button>
-
+  </div>
+  <div id="joinbutton">
     <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
-    </div>
+  </div>  
   </div>
 
   
@@ -192,6 +193,14 @@ export default {
 }
 
 #buttonsthing{
+  display:flex;
+  margin-top: 5px;
+  justify-content: center;
+  align-items: center; 
+}
+
+#joinbutton{
+  display:flex;
   margin-top: 5px;
   justify-content: center;
   align-items: center; 
@@ -233,9 +242,12 @@ export default {
   border: none;
   cursor: pointer;
   border-radius: 1vw;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
 }
 .addQuestionButton {
-  margin_top: 100px;
+  
   display: flex;
   box-sizing: border-box;
   padding: 2vw;
