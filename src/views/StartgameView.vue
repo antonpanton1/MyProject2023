@@ -8,8 +8,8 @@
     <div class="centering">
        <div class="mediaContainer">
 
-      <div id="questionField">
-      <div id="questions">  
+      <div class="inputWrap">   
+      <div id="questionField"> 
       <p>
         <label for="Question1">
           {{uiLabels.Question1}}
@@ -32,10 +32,8 @@
         {{ question3 }}
       </p>  
     </div>
-    </div>
 
-    <div id="answerField">
-    <div class="answers">  
+    <div id="answerField"> 
       <p>
         <label for="Answer 1">
           {{ uiLabels.Answer1 }}
@@ -58,10 +56,17 @@
          {{ answer3 }}
       </p> 
     </div>
-    </div>
-
-    
-    <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
+  </div> 
+  
+    <!-- <div class="wrap"> -->
+   
+  
+<!--     </div> -->
+  
+    </div> 
+  </div> 
+  <div id="buttonsthing">
+  <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
         {{uiLabels.addquestion}}
     </button>
 
@@ -72,11 +77,6 @@
     <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
-  
-    </div>
-    
-  
-    </div> 
   </div>
 </div>
   
@@ -187,6 +187,16 @@ export default {
   justify-content: center;
   margin-bottom: 2%;
 }
+
+#buttonsthing{
+  margin-top: 275px;
+  justify-content: center;
+  align-items: center; 
+}
+.inputWrap{
+  width: 100%;
+
+}
 #questionField {
   width: 45%;
   box-sizing: border-box;
@@ -200,17 +210,14 @@ export default {
   float:right;
 }
 
-/* .answers{
-  width: 50%;
-  box-sizing: border-box;
-  float:right;
-}
 
-.questions{
-  width: 50%;
-  box-sizing: border-box;
-  float:left;
-} */
+
+.addQuestionButton,
+.removeQuestionButton,
+#joinWaitingRoomButton {
+  margin-top: 20px;   
+  
+} 
 
 #joinWaitingRoomButton {
   display: flex;
@@ -225,6 +232,7 @@ export default {
   border-radius: 1vw;
 }
 .addQuestionButton {
+  margin_top: 100px;
   display: flex;
   box-sizing: border-box;
   padding: 2vw;
@@ -247,8 +255,10 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer
-  
-  
+}
+
+.wrap{
+  margin-bottom: 500px; 
 }
 .gameCode{
     text-align: left;
