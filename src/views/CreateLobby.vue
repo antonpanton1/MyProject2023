@@ -2,7 +2,7 @@
   <div class="background">
     <body>
       <main>
-        <div class="mediaContainer">
+        <div class="mediaContainer" v-on:keyup.enter="startPoll">
           <section>
             <label class="heading">{{ uiLabels.nameOfGame }}</label> 
             <br>
@@ -77,6 +77,9 @@ export default {
     },
     startPoll: function () {
       if (this.lobby.length < 1) {
+        return;
+      }
+      if (this.username.length < 1) {
         return;
       }
       else

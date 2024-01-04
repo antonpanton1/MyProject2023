@@ -50,6 +50,7 @@
 	"leaderBoard": "Leaderboard",
 	"name": "Name:",
 	"scores": "Score:",
+	"nextQuestion": "Next Question",
 
 "ResultsView": "",
 	"results": "Results:",
@@ -58,6 +59,11 @@
 	"third": "3rd Place",
 	"losers": "Losers:",
 	"quit": "Quit",
+
+"AnswerQuestionView": "",
+	"dispQuestion": "Question:",
+	"lockIn": "Lock in answer",
+	"waitingOthers": "Waiting for other players",
 
 
 "(Comment) Tror vi kan ta bort dessa": "",

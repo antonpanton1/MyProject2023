@@ -1,5 +1,5 @@
 <template>
-  <body>
+  <body v-on:keyup.enter="joinID">
     <main>
         <h2>{{ uiLabels.inputGameID }}</h2>
         <input type="text" v-model="idCode" :placeholder="uiLabels.GameID">
