@@ -74,6 +74,12 @@ function Player(name, question, answer, points) {
       socket.on('isHost', host => {
         this.gameLeader = host
       })
+      /* socket.on('goToLeaderBoard',() => {
+        this.$router.push({ path: '/leaderboardr/'+this.pollId+'/'+this.username})
+      }); */
+      socket.on('nextView',() => {
+        this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
+      });
       socket.emit('joinPoll', this.pollId);
       socket.emit('getGameName', this.pollId);
       socket.emit('name', this.gameName);
@@ -85,8 +91,9 @@ function Player(name, question, answer, points) {
     },
     methods: {
       goToLeaderBoard: function () {
-      socket.emit("goToLeaderBoard", this.pollId)
-      this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
+        socket.emit("nextView", this.pollId)
+        /* socket.emit("goToLeaderBoard", this.pollId)
+        this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username}) */
       }
     }
   }
