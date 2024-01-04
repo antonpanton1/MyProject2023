@@ -27,7 +27,7 @@
     </div>
 
     <button v-if="gameLeader" v-on:click="nextQuestion" type="submit" id="leader" > 
-        Next Question
+        {{ uiLabels.nextQuestion }}
     </button>
 </body>
 </template>

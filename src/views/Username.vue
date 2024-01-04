@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="background" v-on:keyup.enter="submitUsername">
     <p class="gameCode">{{ uiLabels.currentGame }} {{ pollId }}</p>
     <div class="centering">
       <div class="mediaContainer">

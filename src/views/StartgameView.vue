@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="background" v-on:keyup.enter="joinGame">
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
       <div>
         <h2> {{uiLabels.title}}</h2>
@@ -78,7 +78,7 @@
   
     </div> 
   </div>
-</div>
+
   
 </template>
 
@@ -168,18 +168,18 @@ export default {
     height: 100vh;
     overflow: hidden;
 }
-.centering {
+/* .centering {
   /*display: flex;
    flex-direction: column;
   justify-content: center;
   align-items: center; 
-  padding: 0 2vw;*/
-}
-.mediaContainer {
+  padding: 0 2vw;
+} */
+/* .mediaContainer {
   /* display: flex;
   flex-direction: column;
-  gap: 10%; */
-}
+  gap: 10%; 
+} */
 #row {
   display: flex;
   justify-content: space-between;

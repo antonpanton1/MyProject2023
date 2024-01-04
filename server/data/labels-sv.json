@@ -46,6 +46,12 @@
 	"gameCode": "Spel kod:",
 	"startGame": "Starta spelet",
 
+"leaderboardView": "",
+	"leaderBoard": "Poängställning",
+	"name": "Namn:",
+	"scores": "Poäng:",
+	"nextQuestion": "Nästa Fråga",
+
 "ResultsView": "",
 	"results": "Resultat:",
 	"first": "1a Plats",
@@ -54,6 +60,10 @@
 	"losers": "Förlorare:",
 	"quit": "Avsluta",
 
+"AnswerQuestionView": "",
+	"dispQuestion": "Fråga:",
+	"lockIn": "Lås svar",
+	"waitingOthers": "Väntar på andra spelare",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"sales-pitch": "0 --> 100",

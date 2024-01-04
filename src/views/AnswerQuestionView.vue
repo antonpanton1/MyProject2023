@@ -1,17 +1,17 @@
 <template>
-  <div class="background">
-      <h1>Question:</h1>
+  <div class="background" v-on:keyup.enter="lockAnswer">
+      <h1>{{ uiLabels.dispQuestion }}</h1>
       <br>
       <h2>{{this.questions[currentQuestion].q}}?</h2>
       <br>
-      <button id="minus"  class="answer" v-on:click="decrease">-</button>
+      <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
       <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
-      <button id="plus" class="answer" v-on:click="increase">+</button>
+      <button id="plus" class="answer" v-on:click="increase" v-on:keydown.enter.prevent>+</button>
       <div class="answerSlide">
           <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
       </div>
-      <button class="submit" id="lockBtn" v-on:click="lockAnswer"> Lock in answer </button>
-      <p id="waiting" >Waiting for other players</p>
+      <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
+      <p id="waiting" > {{ uiLabels.waitingOthers }}</p>
 
     </div>
 </template>
@@ -31,6 +31,7 @@ export default {
       answer: 50,
       username: "",
       currentQuestion: 0,
+      uiLabels: {},
     }
   },
   created: function () {
