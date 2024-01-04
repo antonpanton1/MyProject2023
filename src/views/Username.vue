@@ -7,7 +7,7 @@
         <h3> {{uiLabels.pleaseChoose}} </h3>
         <input type="text" autofocus v-model="username" id="uername"  v-on:keyup.enter="submitUsername" :placeholder="uiLabels.username">
         <br>
-        <p id="unavailable">Hej</p>
+        <p id="unavailable">hej</p>
         <button class="start-button" v-on:click="submitUsername">{{ uiLabels.join }}</button>
       </div>
     </div>

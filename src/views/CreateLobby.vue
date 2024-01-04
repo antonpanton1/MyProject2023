@@ -7,7 +7,7 @@
           <h1>{{ uiLabels.nameOfGame }}</h1>
           <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
         </section>
-        
+        <p id="unavailable">hej</p>
         <section>
           <h1>{{ uiLabels.nameOfYou }}</h1>
           <input type="text" v-model="username" :placeholder="uiLabels.username">          
