@@ -71,7 +71,7 @@ header{
 }
 
 main{
-  position: fixed; /* or absolute */
+  position: fixed;
   top: 40%;
   left: 50%;
   align-items: center;

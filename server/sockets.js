@@ -19,7 +19,6 @@ function sockets(io, socket, data) {
   });
 
   socket.on('idCheck', function(pollId){
-    console.log("begun idcheck for: ", pollId)
     socket.emit('idAvailable', data.idCheck(pollId))
   })
 
@@ -51,7 +50,6 @@ function sockets(io, socket, data) {
   });
 
   socket.on('getGameName', function(pollId){
-    console.log('Kom till getname', pollId)
    socket.emit ('gameNameUpdate', data.getgName(pollId));
    
   });
@@ -75,7 +73,6 @@ function sockets(io, socket, data) {
 
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer, d.username);
-    /* io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId)); */
   });
 
   socket.on('submitUsername', function(d) {

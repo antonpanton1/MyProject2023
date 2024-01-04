@@ -38,7 +38,7 @@
         <label for="Answer 1">
           {{ uiLabels.Answer1 }}
          </label><br>
-         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer" >
+         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer">
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
@@ -57,12 +57,6 @@
       </p> 
     </div>
   </div> 
-  
-    <!-- <div class="wrap"> -->
-   
-  
-<!--     </div> -->
-  
     </div> 
   </div> 
   <div id="buttonsthing">

@@ -55,15 +55,6 @@ export default {
     toggleNav: function () {
       this.hideNav = !this.hideNav;
     },
-    startGame: function () {
-      // Should redirect to the next Game-page
-    },
-    joinGame: function () {
-      // Should redirect to the next Join-page
-    },
-    instructions: function () {
-      // Should redirect to an instructions page
-    }
   },
 };
 </script>

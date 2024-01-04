@@ -44,7 +44,7 @@
   </div>
 
     <div class="button">
-      <router-link class="quit" :to="'/Start/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">{{ uiLabels.quit }}</router-link>
+      <router-link class="quit" :to="'/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">{{ uiLabels.quit }}</router-link>
     </div>
   </div> 
 </template>
@@ -89,10 +89,6 @@ export default {
 .result-view {
   background-image: linear-gradient(to bottom right, red, yellow);
   color: rgb(28, 28, 28);
-  /*display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;*/
   height: 100vh;
 }
 

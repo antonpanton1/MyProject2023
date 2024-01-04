@@ -5,12 +5,10 @@
         <div class="mediaContainer" v-on:keyup.enter="startPoll">
         <section>
           <h1>{{ uiLabels.nameOfGame }}</h1>
-          <!-- <label class="heading">{{ uiLabels.nameOfGame }}</label>  -->
           <input type="text" name="create" v-model="lobby" :placeholder="uiLabels.lobbyname" > 
         </section>
         
         <section>
-         <!--  <label class="heading"> {{ uiLabels.nameOfYou }}</label> -->
           <h1>{{ uiLabels.nameOfYou }}</h1>
           <input type="text" v-model="username" :placeholder="uiLabels.username">          
         </section>
@@ -56,9 +54,6 @@ export default {
     };
   },
   created: function () {
-    //socket.emit('idUpdate', this.pollId);
-    
-    //socket.emit("gameNameUpdate", this.gameName);
     socket.on("init", (labels) => {
       this.uiLabels = labels
     })
@@ -73,7 +68,7 @@ export default {
   methods: {
     redirect(pollId) {
       this.$router.push({ path: '/startgame/' + this.pollId + "/" + this.username })
-      //this.$router.push({ path: `/username/${pollId}` });
+      
     },
     startPoll: function () {
       if (this.lobby.length < 1) {
@@ -118,7 +113,6 @@ input {
 
 .joinLobby {
   text-decoration: none;
-  /* font-size: 1.5em; */
   padding: 2vh 2vw;
   color: white;
   border: none;
