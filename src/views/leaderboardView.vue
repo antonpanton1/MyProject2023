@@ -1,5 +1,6 @@
 <template>
   <div class="background">
+    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
     <div id="gameTitle"> 
       <div class="text">
         <h1>
@@ -121,7 +122,7 @@ export default {
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
   overflow: hidden;
-  height: 100vh
+  height: 110vh
 }
 
 #gameTitle {
@@ -147,7 +148,8 @@ export default {
 #picture {
   display: flex;
   justify-content: center;
-  margin-top: 40vh;
+  margin-top: 30vh;
+  margin-bottom: 2vh;
 }
 
 #players, #scores {
@@ -172,5 +174,9 @@ export default {
 button:hover {
   background-color: #f05e16;
 }
-
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
 </style>

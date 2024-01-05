@@ -1,5 +1,6 @@
 <template>
   <div class="background" v-on:keyup.enter="lockAnswer">
+    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
       <h1>{{ uiLabels.dispQuestion }}</h1>
       <br>
       <h2>{{this.questions[currentQuestion]?.q}}?</h2>
@@ -211,7 +212,11 @@ button {
   height: 15px;
   width: 15px;
 }
-
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
 .submit {
   text-align: center;
   color: white;
