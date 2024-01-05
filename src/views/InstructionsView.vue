@@ -19,6 +19,7 @@
       <p>{{ uiLabels.hT2 }}</p>
       <p>{{ uiLabels.hT3 }}</p>
       <p>{{ uiLabels.hT4 }}</p>
+      <p>{{ uiLabels.hT5 }}</p>
     </ul>
 
         <h2>{{uiLabels.tips}}</h2>
@@ -27,6 +28,7 @@
       <p>{{ uiLabels.tT3 }}</p>
       <p>{{ uiLabels.tT4 }}</p>
       <p>{{ uiLabels.tT5 }}</p>
+      <p>{{ uiLabels.tT6 }}</p>
 
     </div>
 

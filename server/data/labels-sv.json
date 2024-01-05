@@ -48,6 +48,12 @@
 	"gameCode": "Spelkod:",
 	"startGame": "Starta spelet",
 
+"leaderboardView": "",
+	"leaderBoard": "Poängställning",
+	"name": "Namn:",
+	"scores": "Poäng:",
+	"nextQuestion": "Nästa fråga",
+
 "ResultsView": "",
 	"results": "Resultat:",
 	"first": "1a Plats",
@@ -82,28 +88,29 @@
 
 "InstructionsView": "",
 	"insructions": "Instruktioner",
-	"overview": "Skapa spel",
+	"overview": "Skapa nytt spel",
 	"how": "Gå med i spel",
 	"tips":"Spelets gång",
 	"return": "Tillbaka",
 
-	"oT1": "1. Om du vill skapa ett nytt spel för dig och dina vänner, klicka då på Skapa Spel.",
-	"oT2": "2. Du presenteras då med två alternativ där du får fylla i vad spelet ska heta samt ditt användarnam.",
-	"oT3": "3. Därefter presenteras upp till 3 frågor där varje spelare har möjlighet att skapa upp till 3 frågor var.",
+	"oT1": "1. Om du vill skapa ett nytt spel för dig och dina vänner, klicka då på Skapa nytt spel.",
+	"oT2": "2. Du presenteras då med två alternativ där du får fylla i vad spelet ska heta samt ditt användarnam. Gå vidare med Skapa lobby-knappen.",
+	"oT3": "3. Därefter presenteras upp till 3 frågor där varje spelare har möjlighet att skapa upp till 3 frågor var. Varje fråga måste ha ett svar med ett naturligt tal mellan 0 och 100 (0 och 100 är inkluderade)",
 	"oT4": "4. För ett så rättvist spel som möjligt rekommenderas att samtliga spelare skapar lika många frågor.",
 	"oT5": "5. Efter detta blir du som spelledare ansvarig för att dela spelkoden med dina vänner så att de kan ansluta till just ditt spel.",
-	"oT6": "6. När ni är redo klickar ni på Create Lobby för att påbörja spelet.",
+	"oT6": "6. När alla spelare är redo, klicka på Starta spelet för att påbörja spelet.",
 
-	"hT1": "1. Alternativet för er som redan har en ett spel skapat och ska ansluta till någon annans spel.",
-	"hT2": "2. Var god fyll i den unika spelkoden för just er lobby. Var god ta hänsyn till både stora och små bokstäver.",
-	"hT3": "3. Du ombeds nu att välja användarnamn. Tänk på att varje unik spelare behöver ha ett unikt användarnamn.",
-	"hT4": "4. Du placeras nu i en lobby där ni inväntar spelledaren som sedan startar spelet då alla spelare lyckats ansluta till lobbyn.",
+	"hT1": "1. Om din kompis redan har skapat ett spel och du vill gå med i deras lobby så klickar du på Gå med i spel.",
+	"hT2": "2. Fyll i den unika spelkoden för just er lobby. Var god ta hänsyn till både stora och små bokstäver.",
+	"hT3": "3. Du ombeds nu att välja användarnamn. Tänk på att varje spelare behöver ha ett unikt användarnamn.",
+	"hT4": "4. Nu är det dags att skriva dina frågor. Varje spelare har möjlighet att skapa upp till 3 frågor var. Varje fråga måste ha ett svar med ett naturligt tal mellan 0 och 100 (0 och 100 är inkluderade).",
+	"hT5": "5. Gå vidare till väntrummet när du är klar med dina frågor, här får du vänta tills alla spelare är redo och spelledaren startar spelet.",
 
 	"tT1": "1. Spelet går till så att alla spelarnas frågor presenteras i tur och ordning.",
-	"tT2": "2. Efter en viss tid då frågan presenterats kommer samtliga spelare att tvingas gissa ett tal mellan 0 - 100 de tror kan vara det rätta svaret.",
-	"tT3": "3. Detta görs genom att dra i slidern, alternativt klicka på plus- respektive minusknappen.",
-	"tT4": "4. Efter att alla spelare gissat eller den maximala tiden som spelledaren satt passerat, presenteras det korrekta svaret.",
-	"tT5": "5. En topplista visas för samtliga spelare.",
-	"tT6": "6. Detta görs om och om igen tills att samtliga frågor tagits upp och besvarats."
+	"tT2": "2. Frågorna har ett svar mellan 0 och 100 och du behöver välja ett svar innan spelledaren går vidare. Spelet belönar nära gissningar så även om du inte kan svaret, ta en bra gissning och du kanske inte är så långt borta från svaret.",
+	"tT3": "3. Välj ditt svar genom att dra i slidern, alternativt klicka på plus- respektive minusknappen.",
+	"tT4": "4. Efter att alla spelare gissat eller spelledaren väljer att gå vidare, presenteras det korrekta svaret.",
+	"tT5": "5. En topplista visas för samtliga spelare. Din poäng är baserad på skillnaden mellan din gissning och det rätta svaret. Till exempel om man har gissat 10 och svaret var 56 så hamnar poängen på 46. Om man istället gissar rätt svar så får man -10 poäng.",
+	"tT6": "6. Detta görs om igen tills att samtliga frågor tagits upp och besvarats. Spelaren med lägst poäng i slutet vinner spelet!"
 
 }
