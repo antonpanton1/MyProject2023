@@ -52,6 +52,15 @@ Data.prototype.addQuestion = function(pollId, q) {
   }
 }
 
+Data.prototype.getYourAnswer = function(pollId, username) {
+  const poll = this.polls[pollId];
+  const participant = poll.participants[username];
+  if (typeof poll !== 'undefined') {
+    return participant.answers[poll.currentQuestion]
+  }
+  return 0
+}
+
 Data.prototype.ready = function(pollId){
   const poll = this.polls[pollId];
   if(typeof poll !== 'undefined'){

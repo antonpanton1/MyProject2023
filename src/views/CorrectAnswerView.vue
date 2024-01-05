@@ -4,24 +4,44 @@
   
     <div class="header">
       <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
+
       <h2>{{ uiLabels.allAnswers }}</h2><br>
     </div>
 
-    <div class="slider">
-      <vue-slider 
-        v-model="answers" 
-        disabled="true" 
-        :marks="[this.questions[currentQuestion]?.a,]" 
-        :process="false"
-        :railStyle="{ backgroundColor: 'rgb(255, 196, 100)' }"
-        :tooltip-style="{ backgroundColor: '#F05E16', borderColor: '#F05E16' }"
-      >
-        <template v-slot:dot="{ value }">
-          <div class="custom-dot"></div>
-        </template>
-      </vue-slider>
+    <div class="sliderA">
+      <div class="sliderB">
+        <vue-slider 
+          v-model="answers" 
+          :disabled="true" 
+          :marks="[this.questions[currentQuestion]?.a]"
+          :process="false"
+          :railStyle="{ backgroundColor: '#a94411' }"
+          :tooltip-style="{ backgroundColor: '#F05E16', borderColor: '#F05E16' }"
+        >
+          <template v-slot:dot="{ value }">
+            <div class="custom-dot"></div>
+          </template>
+        </vue-slider>
+      </div>
+      <div class="sliderB">
+        <vue-slider 
+          v-model="yourAnswer" 
+          :disabled="true" 
+          :marks="[this.questions[currentQuestion]?.a]"
+          :process="false"
+          :railStyle="{ backgroundColor: '#a94411' }"
+          :tooltip="'always'"
+          :tooltip-style="{ backgroundColor: '#F05E16', borderColor: '#F05E16' }"
+        >
+          <template v-slot:dot="{ value }">
+            <div class="custom-dot"></div>
+          </template>
+        </vue-slider>
+      </div>
     </div>
-    <br><br>
+    <br>
+    <h4>{{ uiLabels.youAnswerd }} {{ this.yourAnswer }} {{ uiLabels.andGot }} {{ this.score }} {{ uiLabels.points }}</h4>
+    <br>
     <button v-if="gameLeader" v-on:click="goToLeaderBoard" type="submit">{{ uiLabels.next }}</button>
   
 </div>
@@ -29,6 +49,7 @@
 
 <script>
 import io from 'socket.io-client'
+import { vShow } from 'vue';
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
 
@@ -51,6 +72,8 @@ export default {
       currentQuestion: 0,
       questions: [],
       gameLeader: true,
+      yourAnswer: 50,
+      score: 1,
     }
   },
   created: function () {
@@ -68,20 +91,30 @@ export default {
     socket.on('allAnswers', answers => {
       this.answers = answers
     });
+      socket.on('YourAnswer', yourAnswer => {
+        this.yourAnswer = yourAnswer
+        console.log("kom till your answer")
+        this.score = Math.abs(this.questions[this.currentQuestion].a - this.yourAnswer)
+        if (this.score == 0){
+          this.score = -10;
+        } 
+      });
+
     socket.on('isHost', host => {
       this.gameLeader = host
-    })
+    });
     socket.on('sendToLeaderboard',() => {
       this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
     });
     socket.emit('joinPoll', this.pollId);
     socket.emit('getGameName', this.pollId);
     socket.emit('name', this.gameName);
-    socket.emit('getCurrent', this.pollId)
+    socket.emit('getCurrent', this.pollId);
     socket.emit('getAnswers', {pollId: this.pollId, currentQuestion: this.currentQuestion})
     socket.emit("pageLoaded", this.lang);
     socket.emit("getQuestions", this.pollId);
-    socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
+    socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
+      socket.emit('getYourAnswer', {pollId: this.pollId, username: this.username});
   },
   methods: {
     goToLeaderBoard: function () {
@@ -99,12 +132,18 @@ export default {
   overflow: hidden;
 }
 
-.slider {
+.sliderA {
   width: 50%;
   margin: auto;
   cursor: default;
-  
-  
+  position: relative;
+}
+
+.sliderB {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 .custom-dot {
   width: 100%;

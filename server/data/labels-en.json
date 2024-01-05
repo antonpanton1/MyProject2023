@@ -73,6 +73,9 @@
 	"next": "Next",
 	"correctAnswer": "Correct answer: ",
 	"allAnswers": "Answer distribution:",
+	"youAnswerd": "You answered",
+	"andGot": "and got",
+	"points": "points.",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",
