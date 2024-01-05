@@ -1,8 +1,9 @@
 <template>
   <div class="start-view">
+
     <div class="small-button-container">
-      <button class="small-button" v-on:click="switchLanguage" style="left: 40px;">{{ uiLabels.changeLanguage }}</button>
-      <router-link class="small-button" :to="'/instructions/'" style="right: 40px;">{{ uiLabels.instructions }}</router-link>
+      <button class="small-button" v-on:click="switchLanguage">{{ uiLabels.changeLanguage }}</button>
+      <router-link class="small-button" :to="'/instructions/'">{{ uiLabels.instructions }}</router-link>
     </div>
 
     <h1 class="game-title">0-100</h1>
@@ -55,6 +56,15 @@ export default {
     toggleNav: function () {
       this.hideNav = !this.hideNav;
     },
+    startGame: function () {
+      // Should redirect to the next Game-page
+    },
+    joinGame: function () {
+      // Should redirect to the next Join-page
+    },
+    instructions: function () {
+      // Should redirect to an instructions page
+    }
   },
 };
 </script>
@@ -86,8 +96,9 @@ export default {
 .small-button-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 50vw;
   flex-direction: row;
-  gap: 20vw;
   margin-top: 0.1vh;
 }
 .big-button-container {

@@ -126,15 +126,18 @@ body {
 
 .small-button {
   text-decoration: none;
-  padding: 2vw 2vw;
   font-size: 1.5em;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 1vw;
-  padding: 10px 20px;
+  border-radius: 0.75vw;
+  padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+.small-button:hover {
+  background-color: #db0700;
 }
 
 .ins-text {

@@ -31,6 +31,7 @@ function sockets(io, socket, data) {
   });
 
   socket.on('calculateScore', function(d){
+    console.log(d.username,"answered", d.answer)
     data.calcScore(d.pollId, d.username, d.answer)
   })
 
@@ -73,6 +74,7 @@ function sockets(io, socket, data) {
 
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer, d.username);
+    io.to(d.pollId).emit('answerSubmitted')
   });
 
   socket.on('submitUsername', function(d) {
@@ -93,6 +95,10 @@ function sockets(io, socket, data) {
     let participants = data.getParticipants(pollId);
     socket.emit('participantUpdate', participants);
   });
+  
+  socket.on('totalPlayers', function(pollId){
+    socket.emit('totalPlayers',data.getParticipants(pollId))
+  })
 
   socket.on('nextView', function(pollId){
     io.to(pollId).emit('nextView')
@@ -114,8 +120,13 @@ function sockets(io, socket, data) {
   
   socket.on('joinedLeaderboardView', function(pollId) {
     let topPlayers = data.updateTopPlayers(pollId);
+    console.log(topPlayers)
     socket.emit('scoreboardUpdate', topPlayers)
   }); 
+
+  socket.on('lockScores', function(pollId){
+    io.to(pollId).emit('lockIn')
+  })
 
   socket.on('joinedResultsView', function(pollId) {
     let topPlayers = data.updateTopPlayers(pollId);

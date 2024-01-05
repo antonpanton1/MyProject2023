@@ -1,7 +1,7 @@
 <template>
 
   <div class="result-view">
-      <h1 class="title"> {{ uiLabels.results }} </h1>
+    <h1 class="title"> {{ uiLabels.results }} </h1>
     <div class="podium">
       <svg width="210" height="250">
         <rect width="200" height="150" style="fill:rgb(230, 155, 111);stroke-width:3;stroke:rgb(0,0,0)" />
@@ -10,8 +10,7 @@
         <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[1]?.username }} </text>
       </svg>
 
-      <svg width="210" height="330">
-        
+      <svg width="210" height="330">     
         <rect width="200" height="230" style="fill:rgb(240, 154, 56);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="60%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.first }}</text>
         <text x="50%" y="18%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[0]?.score }}</text>
@@ -28,23 +27,19 @@
 
     <div id="listwrap" v-if="topPlayers.length > 3">
       <h2 style="margin-top: -80px;">{{ uiLabels.losers }} </h2>
-    <div class="loserName">
-          <div v-for="(topPlayer, index) in topPlayers.slice(3)" :key="topPlayer.id">
+      <div class="loserName">
+        <div v-for="(topPlayer, index) in topPlayers.slice(3)" :key="topPlayer.id">
           {{ index + 4 }}. {{ topPlayer.username }}
-          </div>
-      
-        
-    </div> 
-    <div class="loserScore">
-      <div v-for="(topPlayer, index) in topPlayers.slice(3)" :key="topPlayer.id">
-        {{ topPlayer.score }} <br>
+        </div> 
+      </div> 
+      <div class="loserScore">
+        <div v-for="(topPlayer, index) in topPlayers.slice(3)" :key="topPlayer.id">
+          {{ topPlayer.score }} <br>
+        </div>
       </div>
     </div>
-
-  </div>
-
     <div class="button">
-      <router-link class="quit" :to="'/'" style="text-decoration: none; color: inherit; display: inline-block; padding: 10px; background-color: #ed2626; color: #fff; border: none; cursor: pointer;">{{ uiLabels.quit }}</router-link>
+      <router-link class="quit" :to="'/'">{{ uiLabels.quit }}</router-link>
     </div>
   </div> 
 </template>
@@ -58,30 +53,27 @@ export default {
     name: 'ResultsView',
    
     data: function () {
-    return {
+      return {
         pollId: "inactive poll",
         userName: "",
         uiLabels: {},
         lang: localStorage.getItem("lang") || "en",
         topPlayers: [],
-        
-      
-        };
+      };
     },
     created: function () {
-    this.pollId = this.$route.params.id
-    this.username = this.$route.params.uid
-    socket.emit('joinPoll', this.pollId);
-    socket.emit('joinedResultsView', this.pollId);
-    socket.emit("pageLoaded", this.lang);
-    socket.on("init", (labels) => {
-      this.uiLabels = labels
-    });
-
-    socket.on("scoreboardUpdate", topPlayers =>
-    this.topPlayers = topPlayers
-    
-    )}
+      this.pollId = this.$route.params.id
+      this.username = this.$route.params.uid
+      socket.emit('joinPoll', this.pollId);
+      socket.emit('joinedResultsView', this.pollId);
+      socket.emit("pageLoaded", this.lang);
+      socket.on("init", (labels) => {
+        this.uiLabels = labels
+      });
+      socket.on("scoreboardUpdate", topPlayers =>
+        this.topPlayers = topPlayers
+      )
+    }
   } 
 </script>
 
@@ -121,11 +113,37 @@ export default {
   margin-bottom: 5vh;
 }
 
-.button{
-  width: 50%;
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50vw;
+  flex-direction: row;
+  margin-top: 0.1vh;
+  position: absolute;
+  left: 75vw;
+}
+
+.quit {
+  width: auto;
   box-sizing: border-box;
   float: right;
   margin-bottom: 5vh;
+
+  text-decoration: none;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.75vw;
+  padding: 1vh 2vw;
+  font-size: 1em;
+  background-color: #ed2626;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+
+.quit:hover {
+  background-color: #db0700;
 }
 
 </style>

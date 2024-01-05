@@ -27,14 +27,15 @@ const socket = io(sessionStorage.getItem("dataServer"));
 
 // Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod
 function generateRandomCode() {
-  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const numbers = '0123456789';
+  const letters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
+  const numbers = '123456789';
 
   const randomLetter = () => letters[Math.floor(Math.random() * letters.length)];
   const randomNumber = () => numbers[Math.floor(Math.random() * numbers.length)];
 
   // Kod skapas som skiftar mellan bokstav och siffra
   const code = `${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}`;
+
 
   return code;
 }

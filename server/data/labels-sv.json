@@ -10,8 +10,9 @@
 	"lobbyname": "Spelnamn",
 
 "JoinGameView": "",
-	"inputGameID": "Ange spel-ID för lobbyn",
-	"GameID": "Spel-ID",
+	"inputGameID": "Ange spelkod för lobbyn",
+	"GameID": "Spelkod",
+	"wrongGameID": "Den angivna spelkoden är fel.",
 
 "StartView": "",
 	"subHeading": "Spelet där svaret är mellan noll till hundra",
@@ -23,7 +24,8 @@
 	"currentGame": "Nuvarande spel: ",
 	"welcomeMessage": "Hej och välkommen till: ",
 	"pleaseChoose": "Var god ange ditt användarnamn",
-	"usernameUnavailable": "Användarnamnet du angett är upptaget",
+	"usernameUnavailable": "Användarnamnet du angett är redan upptaget!",
+	
 
 "QuestionsView": "",
 	"title": "Skriv dina frågor och svar nedan!",
@@ -45,12 +47,6 @@
 	"totalPlayers": "Antal spelare i spelet:",
 	"gameCode": "Spelkod:",
 	"startGame": "Starta spelet",
-
-"leaderboardView": "",
-	"leaderBoard": "Poängställning",
-	"name": "Namn:",
-	"scores": "Poäng:",
-	"nextQuestion": "Nästa Fråga",
 
 "ResultsView": "",
 	"results": "Resultat:",
@@ -109,7 +105,5 @@
 	"tT4": "4. Efter att alla spelare gissat eller den maximala tiden som spelledaren satt passerat, presenteras det korrekta svaret.",
 	"tT5": "5. En topplista visas för samtliga spelare.",
 	"tT6": "6. Detta görs om och om igen tills att samtliga frågor tagits upp och besvarats."
-
-	  
 
 }

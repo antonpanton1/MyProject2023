@@ -4,6 +4,7 @@
         <h2>{{ uiLabels.inputGameID }}</h2>
         <input type="text" v-model="idCode" v-on:keyup.enter="joinID" :placeholder="uiLabels.GameID">
         <br><br>
+        <p id="unavailable">{{ uiLabels.wrongGameID }}</p>
         <button class="start-button"  v-on:click="joinID">{{ uiLabels.join }}</button>
     </main>
   </body>
@@ -40,7 +41,7 @@ export default{
         if(available){
           this.$router.push({ path: '/username/'+this.pollId })
         }
-        else console.log('The GameID was entered wrong. Please try again')
+        else unavailable.style.display = "block";
       })    
   },
   methods: {
@@ -48,7 +49,8 @@ export default{
       this.$router.push({ path: '/username/'+this.pollId })
     },
     joinID: function () {
-      this.pollId = this.idCode
+      const upperCasedCode = this.idCode.toUpperCase();
+      this.pollId = upperCasedCode;
       socket.emit('idCheck', this.pollId)
     
     },
@@ -100,5 +102,9 @@ button{
 
 button:hover{
   background-color: #f05e16;
+}
+
+#unavailable {
+  display:none
 }
 </style>
