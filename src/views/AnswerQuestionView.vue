@@ -89,7 +89,7 @@ export default {
         this.locked = true;
         lockBtn.disabled = true;
         lockBtn.classList.toggle("submit");
-        lockBtn.textContent = "Answer locked"
+        //lockBtn.textContent = "Answer locked"
         rangeSlider.disabled = true;
         plus.disabled = true;
         plus.classList.toggle("answer");

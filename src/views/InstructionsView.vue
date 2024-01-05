@@ -33,7 +33,7 @@
     </div>
 
       <div class="small-button-container">
-    <router-link class="small-button" :to="'//'">{{ uiLabels.return }}</router-link><br>
+    <router-link class="small-button" :to="'/'">{{ uiLabels.return }}</router-link><br>
     
     </div>
     
