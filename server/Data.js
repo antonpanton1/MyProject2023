@@ -19,7 +19,7 @@ function Data() {
   } 
 }
 
-/***********************************************
+/**********************************************
 For performance reasons, methods are added to the
 prototype of the Data object/class
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
