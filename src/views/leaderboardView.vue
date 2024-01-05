@@ -87,6 +87,7 @@ export default {
 
 
     socket.on('sendToQuestion', () => {
+      console.log("send to question")
       socket.emit("endGame", this.pollId)
       socket.on('endGame', (end) => {
         if (end){

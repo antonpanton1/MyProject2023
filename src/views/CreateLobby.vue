@@ -49,7 +49,8 @@ export default {
       questionNumber: 0,
       data: {},
       gameName: "",
-      username:""
+      username:"",
+      lobby: ""
     };
   },
   created: function () {

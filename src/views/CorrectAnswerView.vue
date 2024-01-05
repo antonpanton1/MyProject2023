@@ -34,61 +34,61 @@ import 'vue-slider-component/theme/antd.css'
 
 const socket = io(sessionStorage.getItem("dataServer"));
 
-  export default {
-    name: 'correctAnswer',
+export default {
+  name: 'correctAnswer',
 
-    components: {
-      VueSlider,
-    }, 
-    data() {
-      return {
-        lang: localStorage.getItem("lang") || "en",
-        pollId: "inactive poll",
-        username: "",
-        uiLabels: {},
-        answers: [], //spelarnas svar
-        marks: [], //rätt svar 
-        qurrentQuestion: 0,
-        questions: [],
-        gameLeader: true,
-      }
-    },
-    created: function () {
-      this.pollId = this.$route.params.id
-      this.username = this.$route.params.uid
-      socket.on("init", (labels) => {
-        this.uiLabels = labels
-      });
-      socket.on('currentUpdate', current => {
-        this.currentQuestion = current
-      });
-      socket.on("sendQuestions", (questions) => 
-        this.questions = questions
-      );
-      socket.on('allAnswers', answers => {
-        this.answers = answers
-      });
-      socket.on('isHost', host => {
-        this.gameLeader = host
-      })
-      socket.on('sendToLeaderboard',() => {
-        this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
-      });
-      socket.emit('joinPoll', this.pollId);
-      socket.emit('getGameName', this.pollId);
-      socket.emit('name', this.gameName);
-      socket.emit('getCurrent', this.pollId)
-      socket.emit('getAnswers', {pollId: this.pollId, currentQuestion: this.qurrentQuestion})
-      socket.emit("pageLoaded", this.lang);
-      socket.emit("getQuestions", this.pollId);
-      socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
-    },
-    methods: {
-      goToLeaderBoard: function () {
-        socket.emit("goToLeaderboard", this.pollId)
-      }
+  components: {
+  VueSlider,
+  }, 
+  data() {
+    return {
+      lang: localStorage.getItem("lang") || "en",
+      pollId: "inactive poll",
+      username: "",
+      uiLabels: {},
+      answers: [], //spelarnas svar
+      marks: [], //rätt svar 
+      currentQuestion: 0,
+      questions: [],
+      gameLeader: true,
+    }
+  },
+  created: function () {
+    this.pollId = this.$route.params.id
+    this.username = this.$route.params.uid
+    socket.on("init", (labels) => {
+      this.uiLabels = labels
+    });
+    socket.on('currentUpdate', current => {
+      this.currentQuestion = current
+    });
+    socket.on("sendQuestions", (questions) => 
+      this.questions = questions
+    );
+    socket.on('allAnswers', answers => {
+      this.answers = answers
+    });
+    socket.on('isHost', host => {
+      this.gameLeader = host
+    })
+    socket.on('sendToLeaderboard',() => {
+      this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
+    });
+    socket.emit('joinPoll', this.pollId);
+    socket.emit('getGameName', this.pollId);
+    socket.emit('name', this.gameName);
+    socket.emit('getCurrent', this.pollId)
+    socket.emit('getAnswers', {pollId: this.pollId, currentQuestion: this.currentQuestion})
+    socket.emit("pageLoaded", this.lang);
+    socket.emit("getQuestions", this.pollId);
+    socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
+  },
+  methods: {
+    goToLeaderBoard: function () {
+      socket.emit("goToLeaderboard", this.pollId)
     }
   }
+}
 </script>
 
 <style scoped>

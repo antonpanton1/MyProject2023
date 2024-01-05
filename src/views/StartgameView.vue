@@ -15,22 +15,20 @@
         <label for="Question1">
           {{uiLabels.Question1}}
         </label><br>
-        <input typ="text" id="Question1" v-model="qu1" requeried="required" :placeholder="uiLabels.typeQuestion">
-        {{ question1 }}
+        <input typ="text" id="Question1" v-model="question1" requeried="required" :placeholder="uiLabels.typeQuestion">
+        
       </p>
       <p v-if= "questionNR > 0 ">
         <label for="Question2">
           {{uiLabels.Question2}}
         </label><br>
-        <input typ="text" id="Question2" v-model="qu2" requeried="required" :placeholder="uiLabels.typeQuestion">
-        {{ question2 }}
+        <input typ="text" id="Question2" v-model="question2" requeried="required" :placeholder="uiLabels.typeQuestion">
       </p>    
       <p v-if= "questionNR > 1 ">
         <label for="Question3">
           {{uiLabels.Question3}}
         </label><br>
-        <input typ="text" id="Question3" v-model="qu3" requeried="required" :placeholder="uiLabels.typeQuestion">
-        {{ question3 }}
+        <input typ="text" id="Question3" v-model="question3" requeried="required" :placeholder="uiLabels.typeQuestion">
       </p>  
     </div>
     
@@ -39,22 +37,19 @@
         <label for="Answer 1">
           {{ uiLabels.Answer1 }}
          </label><br>
-         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer" max="100">
-         {{ answer1 }}
+         <input type="number" id="Answer1" v-model="answer1" required="required" :placeholder="uiLabels.typeAnswer" max="100">
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer2" v-model="an2" required="required" :placeholder="uiLabels.typeAnswer" max="100">
-         {{ answer2 }}
+         <input type="number" id="Answer2" v-model="answer2" required="required" :placeholder="uiLabels.typeAnswer" max="100">
       </p>
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer3" v-model="an3" required="required" :placeholder="uiLabels.typeAnswer" max="100">
-         {{ answer3 }}
+         <input type="number" id="Answer3" v-model="answer3" required="required" :placeholder="uiLabels.typeAnswer" max="100">
       </p>
     </div>
   </div>
@@ -82,19 +77,12 @@
   </div>
   
   </div>
-
-
- 
- 
 </template>
 
 
 <script>
 import io from 'socket.io-client';
 const socket = io(sessionStorage.getItem("dataServer"));
-
-
-
 
 export default {
   data() {
@@ -105,14 +93,12 @@ export default {
       username: "",
       showMessage: true,
       questionNR: 0,
-      qu1: '',
-      qu2: '',
-      qu3: '',
-      an1: '',
-      an2: '',
-      an3: ''
-
-
+      question1: '',
+      question2: '',
+      question3: '',
+      answer1: '',
+      answer2: '',
+      answer3: ''
     };
   },
 
@@ -121,22 +107,21 @@ export default {
     areAllQuestionsAndAnswersFilled() {
       // Check if all questions and answers are filled in
       return (
-        this.qu1 !== '' &&
-        this.an1 !== '' &&
-        this.an1 <= 100 &&
-        this.an2 <= 100 &&
-        this.an3 <= 100 &&
-        this.an1 >= 0 &&
-        this.an2 >= 0 &&
-        this.an3 >= 0 &&
+        this.question1 !== '' &&
+        this.answer1 !== '' &&
+        this.answer1 <= 100 &&
+        this.answer2 <= 100 &&
+        this.answer3 <= 100 &&
+        this.answer1 >= 0 &&
+        this.answer2 >= 0 &&
+        this.answer3 >= 0 &&
         
         
         (this.questionNR < 1 ||
-          (this.qu2 !== '' && this.an2 !== '' && (this.questionNR < 2 || (this.qu3 !== '' && this.an3 !== ''))))
+          (this.question2 !== '' && this.answer2 !== '' && (this.questionNR < 2 || (this.question3 !== '' && this.answer3 !== ''))))
       );
     },
   },
-
 
   created: function () {
     this.pollId = this.$route.params.id
@@ -151,22 +136,21 @@ export default {
   },
  
   methods:{
-
     questionMark: function(){
       // Kontrollera om ett frågetecken finns i något av frågefälten
       
-      if (this.qu1.includes('?') ) {
-        this.qu1 = this.qu1.replace('?', '');
+      if (this.question1.includes('?') ) {
+        this.question1 = this.question1.replace('?', '');
       } else {
     
       }
-      if (this.qu2.includes('?') ) {
-        this.qu2 = this.qu2.replace('?', '');
+      if (this.question2.includes('?') ) {
+        this.question2 = this.question2.replace('?', '');
       } else {
         
       }
-      if (this.qu3.includes('?') ) {
-        this.qu3 = this.qu3.replace('?', '');
+      if (this.question3.includes('?') ) {
+        this.question3 = this.question3.replace('?', '');
       } else {
         
       }
@@ -174,15 +158,14 @@ export default {
     },
   removefunc: function(){
    
-   
       if (this.questionNR === 1) {
         // If removing the second question
-        this.qu2 = '';
-        this.an2 = '';
+        this.question2 = '';
+        this.answer2 = '';
       } else if (this.questionNR === 2) {
         // If removing the third question
-        this.qu3 = '';
-        this.an3 = '';
+        this.question3 = '';
+        this.answer3 = '';
       }
       this.questionNR--;
   },
@@ -191,30 +174,25 @@ export default {
 
  
   joinGame: function() {
-    
-
-    socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu1, a: this.an1})
+ 
+   
+    socket.emit('saveQuestions', {pollId: this.pollId, q: this.question1, a: this.answer1})
     console.log("första frågan skickas")
     socket.emit('playerReady', {pollId: this.pollId})
     console.log("knapp tryckt")
-    if (this.qu2 !== ''){
-      socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu2, a: this.an2})
+    if (this.question2 !== ''){
+      socket.emit('saveQuestions', {pollId: this.pollId, q: this.question2, a: this.answer2})
       console.log("andra frågan skickas")  
     }
-    if (this.qu3 !== ''){
-      socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu3, a: this.an3})
+    if (this.question3 !== ''){
+      socket.emit('saveQuestions', {pollId: this.pollId, q: this.question3, a: this.answer3})
       console.log("tredje frågan skickas")  
     }
     
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   },
   }
- 
- 
 };
-
-
-
 </script>
 
 

@@ -1,22 +1,21 @@
 <template>
   <div class="background" v-on:keyup.enter="lockAnswer">
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
-      <h1>{{ uiLabels.dispQuestion }}</h1>
-      <br>
-      <h2>{{this.questions[currentQuestion]?.q}}?</h2>
-      <br>
-      <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
-      <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
-      <button id="plus" class="answer" v-on:click="increase" v-on:keydown.enter.prevent>+</button>
-      <div class="answerSlide">
-          <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
-      </div>
-      <br>
-      <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
-      <p id="waiting"> {{ uiLabels.waitingOthers }} {{this.answered}} / {{ this.participants.length }}</p>
-      <br>
-      <button class="submit" id="nextPage" v-on:click="goNext">{{ uiLabels.goNext }}</button>
-
+    <h1>{{ uiLabels.dispQuestion }}</h1>
+    <br>
+    <h2>{{this.questions[currentQuestion]?.q}}?</h2>
+    <br>
+    <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
+    <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
+    <button id="plus" class="answer" v-on:click="increase" v-on:keydown.enter.prevent>+</button>
+    <div class="answerSlide">
+      <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
+    </div>
+    <br>
+    <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
+    <p id="waiting"> {{ uiLabels.waitingOthers }} {{this.answered}} / {{ this.participants.length }}</p>
+    <br>
+    <button class="submit" id="nextPage" v-on:click="goNext">{{ uiLabels.goNext }}</button>
     </div>
 </template>
   
@@ -79,39 +78,37 @@ export default {
     socket.emit("pageLoaded", this.lang);
   },
   methods: {
-      increase: function(){
-          this.answer ++;
-      },
-      decrease: function(){
-          this.answer --;
-      },
-      lockAnswer: function(){
-        if(!this.locked){
-          this.locked = true;
-          lockBtn.disabled = true;
-          lockBtn.classList.toggle("submit");
-          lockBtn.textContent = "Answer locked"
-          rangeSlider.disabled = true;
-          plus.disabled = true;
-          plus.classList.toggle("answer");
-          minus.disabled = true;
-          minus.classList.toggle("answer");
-          number.disabled = true;
-          waiting.style.display = "block"
-
-          if(this.host){
-            nextPage.style.display ="inline-block";
-          }
-
-          socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
-          socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})
+    increase: function(){
+      this.answer ++;
+    },
+    decrease: function(){
+      this.answer --;
+    },
+    lockAnswer: function(){
+      if(!this.locked){
+        this.locked = true;
+        lockBtn.disabled = true;
+        lockBtn.classList.toggle("submit");
+        lockBtn.textContent = "Answer locked"
+        rangeSlider.disabled = true;
+        plus.disabled = true;
+        plus.classList.toggle("answer");
+        minus.disabled = true;
+        minus.classList.toggle("answer");
+        number.disabled = true;
+        waiting.style.display = "block"
+        if(this.host){
+          nextPage.style.display ="inline-block";
         }
-      },
-      goNext: function(){
 
-        socket.emit('lockScores', this.pollId)
-        socket.emit("sendToCorrectAnswer", this.pollId)
+        socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
+        socket.emit('calculateScore', {pollId: this.pollId, username: this.username, answer: this.answer})        
       }
+    },
+    goNext: function(){
+      socket.emit('lockScores', this.pollId)
+      socket.emit("sendToCorrectAnswer", this.pollId)
+    }
   }
 }
 </script>

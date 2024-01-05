@@ -20,7 +20,7 @@
 import ResponsiveNav from "@/components/ResponsiveNav.vue";
 import io from "socket.io-client";
 //const socket = io("localhost:3000"); //Lämna denna bortkommenterad
-//sessionStorage.setItem("dataServer", "172.20.10.3:3000");// Aktivera för att andra på ditt WI-FI ska kunna ansluta. Ändra IP till just ditt wi-fi men ha kvar ':3000'
+//sessionStorage.setItem("dataServer", "172.20.10.5:3000");// Aktivera för att andra på ditt WI-FI ska kunna ansluta. Ändra IP till just ditt wi-fi men ha kvar ':3000'
 sessionStorage.setItem("dataServer", "localhost:3000"); // Aktivera för endast för lokal användning
 const socket = io(sessionStorage.getItem("dataServer")); // Hämtar det objekt vi skapat på raden över varje gång socket frågas efter
 
