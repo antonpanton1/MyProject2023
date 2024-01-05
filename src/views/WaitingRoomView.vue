@@ -1,5 +1,6 @@
 <template>
   <div class="background">    
+    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
     <div class="mediaContainer"> 
       <div class="writingQuestions">
         {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
@@ -99,6 +100,11 @@ export default {
   background-image: linear-gradient(to bottom right, red, yellow);
   height: 100vh;
   overflow: hidden;
+}
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
 }
 .writingQuestions{
   text-align: left;
