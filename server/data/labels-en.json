@@ -85,27 +85,29 @@
 
 "InstructionsView": "",
 	"insructions": "Instructions",
-	"overview": "Overview",
-	"how": "How to play",
+	"overview": "Create Game",
+	"how": "Join Game",
 	"tips":"How the game works",
-	"return": "Return",
+	"return": "Back",
 
 	"oT1": "1. If you want to create a new game for yourself and your friends, click on Create Game.",
-	"oT2": "2. You will then be presented with two options where you can fill in the name of the game and your username.",
-	"oT3": "3. Afterward, up to 3 questions will be presented where each player has the opportunity to create up to 3 questions each.",
+	"oT2": "2. You will then be presented with two options where you fill in the name of the game and your username. Click on Create Lobby to create your lobby where your friends can join.",
+	"oT3": "3. Afterward, up to 3 questions will be presented where each player has the opportunity to create up to 3 questions each. Every question must have an answer of a natural number between 0 and 100 (0 and 100 are included).",
 	"oT4": "4. For a fair game, it is recommended that all players create an equal number of questions.",
-	"oT5": "5. After this, you, as the game master, are responsible for sharing the game code with your friends so they can join your game.",
-	"oT6": "6. When you're ready, click on Create Lobby to start the game.",
+	"oT5": "5. After this, you, as the host, are responsible for sharing the game code with your friends so they can join your game.",
+	"oT6": "6. When everyone is ready, click on Start Game to start playing.",
 
-	"hT1": "1. The option for those who already have a game created and want to join someone else's game.",
-	"hT2": "2. Please fill in the unique game code for your lobby. Please consider both uppercase and lowercase letters.",
-	"hT3": "3. You are now asked to choose a username. Keep in mind that each unique player needs to have a unique username.",
-	"hT4": "4. You are now in a lobby where you wait for the game master, who will start the game once all players have successfully joined the lobby.",
+	"hT1": "1. If your friend already has created a new game and you want to join theirs, click on Join Game",
+	"hT2": "2. Fill in the unique game code for your lobby. Please consider both uppercase and lowercase letters.",
+	"hT3": "3. You are now asked to choose a username. Keep in mind that each player needs to have a unique username.",
+	"hT4": "4. Now it’s time to write your questions, each player has the opportunity to create up to 3 questions each. Every question must have an answer of a natural number between 0 and 100 (0 and 100 are included).",
+	"hT5": "5. When you are done with your questions, join the waiting room and wait for the host to start the game.",
 
 	"tT1": "1. The game proceeds with all players' questions presented in turn.",
-	"tT2": "2. After a certain time when the question has been presented, all players will be forced to guess a number between 0 - 100 that they think is the correct answer.",
-	"tT3": "3. This is done by dragging the slider or clicking on the plus or minus button.",
-	"tT4": "4. After all players have guessed or the maximum time set by the game master has passed, the correct answer is revealed.",
-	"tT5": "5. A leaderboard is shown for all players."
+	"tT2": "2. The questions have an answer between 0 and 100 and you have to pick your answer before the host moves on. The game rewards close guesses so even if you don’t know the answer, take a good guess and you might not be too far off.",
+	"tT3": "3. Pick your answer by dragging the slider or clicking on the plus or minus button. You can also enter your answer manually by clicking on the numbers.",
+	"tT4": "4. After all players have guessed or the host decides to go on with the game, the correct answer is revealed.",
+	"tT5": "5. A leaderboard is shown for all players. Your score is based on the difference between your guess and the answer. For example if you choose 10 and the answer was 56 your score will be 46. If you instead guessed the correct answer you will get -10 points for that question.",
+	"tT6": "6. This is repeated until all questions have been raised and answerd. The player with the least points at the end wins the game!"
 	  
 }
