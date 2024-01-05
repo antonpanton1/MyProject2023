@@ -80,11 +80,14 @@ Data.prototype.calcScore = function(pollId, username, answer){
   const poll = this.polls[pollId];
   if (typeof poll !== "undefined"){
     const participant = poll.participants[username];
-    var score = Math.abs(poll.questions[poll.currentQuestion].a - answer)
-    if (score == 0){
-      var score = -10;
-    } 
-    participant.score += score
+    if(typeof participant !== "undefined"){
+      var score = Math.abs(poll.questions[poll.currentQuestion].a - answer)
+      if (score == 0){
+        var score = -10;
+      } 
+      participant.score += score
+    }
+    
   }
 }
 
@@ -190,17 +193,22 @@ Data.prototype.idCheck = function(pollId){
 
 Data.prototype.submitAnswer = function(pollId, answer, username) {
   const poll = this.polls[pollId];
-  const participant = poll.participants[username];
-  if (typeof poll !== 'undefined' && participant !== 'undefined') {
-    participant.answers.push(answer)
+  if (typeof poll !== 'undefined') {
+    const participant = poll.participants[username];
+    if(typeof participant !== 'undefined'){
+      participant.answers.push(answer)
+    }
   }
 }
 
  Data.prototype.hostCheck = function(pollId, username) {
   const poll = this.polls[pollId];
-  const participant = poll.participants[username];
-  if (typeof poll !== 'undefined' && participant !== 'undefined') {
-    return participant.host === true;
+  if (typeof poll !== 'undefined') {
+    const participant = poll.participants[username];
+    if(typeof participant !== 'undefined'){
+      return participant.host === true;
+    }
+   
   }
   return false
 } 
@@ -209,11 +217,13 @@ Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
     const participant = Object.values(poll.participants)
-    const answers = participant.reduce((acc, participant) => { 
-      return acc.concat(participant.answers[poll.currentQuestion]);
-    }, [] );
-    return answers
-  }
+    if(typeof participant !== "undefined"){
+      const answers = participant.reduce((acc, participant) => { 
+        return acc.concat(participant.answers[poll.currentQuestion]);
+      }, [] );
+      return answers
+    }
+    }
   return []
 }
 export { Data };

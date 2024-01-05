@@ -56,7 +56,7 @@ export default {
   data: function () {
     return {
       pollId: "inactive poll",
-      userName: "",
+      username: "",
       uiLabels: {},
       lang: localStorage.getItem("lang") || "en",
       topPlayers: [],
@@ -71,10 +71,6 @@ export default {
     socket.emit('joinedLeaderboardView', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
-    socket.emit('endGame', this.pollId);
-    socket.on('endGame', (end)=>{
-      this.end = end
-    });
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
@@ -85,31 +81,16 @@ export default {
     this.topPlayers = topPlayers
     );
 
+    socket.on('endGame', () => {
+      this.$router.push({ path: '/results/'+this.pollId})
+    });
 
     socket.on('sendToQuestion', () => {
       console.log("send to question")
-      socket.emit("endGame", this.pollId)
-      socket.on('endGame', (end) => {
-        if (end){
-          this.$router.push({ path: '/results/'+this.pollId})
-        }else{
-          this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
-        }
-      })
+      this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
     })
   },
   methods: {
-    nextQuestion: function () {
-      socket.emit("endGame", this.pollId)
-      socket.on('endGame', (end) => {
-        if (end){
-          this.$router.push({ path: '/results/'+this.pollId})
-        }else{
-          socket.emit('nextQuestion', this.pollId);
-          this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
-        }
-      })
-    },
     goNext: function(){
       socket.emit('nextQuestion', this.pollId);
       socket.emit('goToQuestion', this.pollId);

@@ -67,18 +67,18 @@ function sockets(io, socket, data) {
     data.nextQuestion(pollId)
   });
 
-  socket.on('endGame', function(pollId){
+ /*  socket.on('endGame', function(pollId){
     socket.emit('endGame', data.lastQuestion(pollId))
   })
-
+ */
   socket.on('getCurrent', function(pollId){
     socket.emit('currentUpdate',data.getCurrent(pollId));
   });
 
-  socket.on('runQuestion', function(d) {
+  /* socket.on('runQuestion', function(d) {
     io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
     io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
-  });
+  }); */
 
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer, d.username);
@@ -128,7 +128,12 @@ function sockets(io, socket, data) {
 
   socket.on('goToQuestion', function(pollId){
     console.log("sending question")
-    io.to(pollId).emit('sendToQuestion')
+    let lastQuestion = data.lastQuestion(pollId)
+    if (lastQuestion){
+      io.to(pollId).emit('endGame')
+    }else{
+      io.to(pollId).emit('sendToQuestion')
+    }
   })
 
   socket.on('resetAll', () => {
