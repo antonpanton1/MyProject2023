@@ -166,7 +166,8 @@ export default {
    
     socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu1, a: this.an1})
     console.log("första frågan skickas")
-   
+    socket.emit('playerReady', {pollId: this.pollId})
+    console.log("knapp tryckt")
     if (this.qu2 !== ''){
       socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu2, a: this.an2})
       console.log("andra frågan skickas")  

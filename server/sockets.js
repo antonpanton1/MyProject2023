@@ -26,9 +26,16 @@ function sockets(io, socket, data) {
     data.addQuestion(d.pollId, {q: d.q, a: d.a});
     /* data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
     data.addQuestion(d.pollId, {q: d.q3, a: d.a3}); */
-    data.ready(d.pollId);
+    
     io.to(d.pollId).emit('sendQuestions', data.getAllQuestions(d.pollId))
   });
+
+  socket.on('playerReady', function(d) {
+    console.log("spelare redo")
+    data.ready(d.pollId);
+  }
+  
+  )
 
   socket.on('calculateScore', function(d){
     console.log(d.username,"answered", d.answer)
@@ -48,6 +55,7 @@ function sockets(io, socket, data) {
     socket.join(pollId);
     socket.emit('newQuestion', data.getQuestion(pollId))
     socket.emit('dataUpdate', data.getAnswers(pollId));
+    
   });
 
   socket.on('getGameName', function(pollId){
@@ -115,7 +123,7 @@ function sockets(io, socket, data) {
   
   socket.on('joinedWaitingRoom', function(pollId) {
     let ready = data.getReady(pollId);
-    socket.emit('readyUpdate', ready)
+    io.to(pollId).emit('readyUpdate', ready)
   }); 
   
   socket.on('joinedLeaderboardView', function(pollId) {

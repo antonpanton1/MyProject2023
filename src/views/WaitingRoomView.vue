@@ -59,6 +59,7 @@ export default {
     });
     socket.on('readyUpdate', (ready) => {
       this.ready = ready
+      console.log(ready)
     });
     
     socket.emit('hostCheck', {pollId: this.pollId, username: this.username})
