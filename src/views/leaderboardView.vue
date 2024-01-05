@@ -4,9 +4,9 @@
     <div id="gameTitle"> 
       <div class="text">
         <h1>
-          <img src= "https://assets.stickpng.com/images/580b585b2edbce24c47b2af2.png" style="width:40px">
+          <img src= "https://pngimg.com/d/gold_medal_PNG1.png" style="width:40px">
           {{ uiLabels.leaderBoard }} 
-          <img src= "https://assets.stickpng.com/images/580b585b2edbce24c47b2af2.png" style="width:40px">
+          <img src= "https://pngimg.com/d/gold_medal_PNG1.png" style="width:40px">
         </h1>
       </div>
   </div>
