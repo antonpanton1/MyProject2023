@@ -1,6 +1,7 @@
 <template>
 
-  <div class="result-view">
+  <div class="background">
+    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
     <h1 class="title"> {{ uiLabels.results }} </h1>
     <div class="podium">
       <svg width="210" height="250">
@@ -78,10 +79,11 @@ export default {
 </script>
 
 <style scoped>
-.result-view {
+.background {
   background-image: linear-gradient(to bottom right, red, yellow);
   color: rgb(28, 28, 28);
   height: 100vh;
+  overflow: hidden;
 }
 
 .title {
@@ -145,5 +147,9 @@ export default {
 .quit:hover {
   background-color: #db0700;
 }
-
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
 </style>

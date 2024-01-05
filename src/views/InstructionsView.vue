@@ -111,7 +111,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 180vh;
+  height: 140vh;
 
 }
 
