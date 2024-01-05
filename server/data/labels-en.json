@@ -69,8 +69,9 @@
 	"goNext":"Show correct answer",
 
 "CorrectAnswerView": "",
-	"next": "next",
+	"next": "Next",
 	"correctAnswer": "Correct answer: ",
+	"allAnswers": "Answer distribution:",
 
 "(Comment) Tror vi kan ta bort dessa": "",
 	"joinGame": "Submit",

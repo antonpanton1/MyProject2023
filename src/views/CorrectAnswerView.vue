@@ -1,9 +1,12 @@
 <template>
 <div class="background">
+  <p class="gameCode">{{uiLabels.currentGame}} {{ pollId }}</p>
   
     <div class="header">
-    <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
+      <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
+      <h2>{{ uiLabels.allAnswers }}</h2><br>
     </div>
+
     <div class="slider">
       <vue-slider 
         v-model="answers" 
@@ -30,13 +33,6 @@ import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
 
 const socket = io(sessionStorage.getItem("dataServer"));
-
-/* function Player(name, question, answer, points) {
-  this.name = name;
-  this.question = question
-  this.answer = answer
-  this.points = points
-  } */
 
   export default {
     name: 'correctAnswer',
@@ -98,18 +94,16 @@ const socket = io(sessionStorage.getItem("dataServer"));
 <style scoped>
 
 .background {
-    background-image: linear-gradient(to bottom right, red, yellow);
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-image: linear-gradient(to bottom right, red, yellow);
+  height: 100vh;
+  overflow: hidden;
 }
 
 .slider {
   width: 50%;
   margin: auto;
   cursor: default;
+  
   
 }
 .custom-dot {
@@ -142,5 +136,12 @@ button:hover {
   flex-direction: column;
   align-items: center;
 }
+
+.gameCode{
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+}
+
 
 </style>
