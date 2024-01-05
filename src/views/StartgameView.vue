@@ -15,21 +15,21 @@
         <label for="Question1">
           {{uiLabels.Question1}}
         </label><br>
-        <input typ="text" id="Question1" v-model="qu1" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
+        <input typ="text" id="Question1" v-model="qu1" requeried="required" :placeholder="uiLabels.typeQuestion">
         {{ question1 }}
       </p>
       <p v-if= "questionNR > 0 ">
         <label for="Question2">
           {{uiLabels.Question2}}
         </label><br>
-        <input typ="text" id="Question2" v-model="qu2" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
+        <input typ="text" id="Question2" v-model="qu2" requeried="required" :placeholder="uiLabels.typeQuestion">
         {{ question2 }}
       </p>    
       <p v-if= "questionNR > 1 ">
         <label for="Question3">
           {{uiLabels.Question3}}
         </label><br>
-        <input typ="text" id="Question3" v-model="qu3" requeried="required" :placeholder="uiLabels.typeQuestion" style="width:300px;">
+        <input typ="text" id="Question3" v-model="qu3" requeried="required" :placeholder="uiLabels.typeQuestion">
         {{ question3 }}
       </p>  
     </div>
@@ -72,7 +72,7 @@
     </button>
   </div>
   <div id="joinbutton">
-    <button id="joinWaitingRoomButton" type="submit" v-on:click="questionMark" :disabled="!areAllQuestionsAndAnswersFilled">
+    <button class="joinWaitingRoomButton" type="submit" v-on:click="questionMark" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
   </div>
@@ -235,25 +235,13 @@ export default {
   flex-direction: column;
   gap: 10%;
 }
-
-
-#row {
-  display: flex;
-  justify-content: space-between;
-  gap: 3vw;
-  justify-content: center;
-  margin-bottom: 2%;
-}
-
-
 #buttonsthing{
   display:flex;
   margin-top: 5px;
   justify-content: center;
   align-items: center;
+  gap: 5%;
 }
-
-
 #joinbutton{
   display:flex;
   margin-top: 5px;
@@ -262,8 +250,6 @@ export default {
 }
 .inputWrap{
   width: 100%;
-
-
 }
 #questionField {
   width: 45%;
@@ -277,59 +263,66 @@ export default {
   padding: 2vw;
   float:right;
 }
-
-
-
-
-
-
-.addQuestionButton,
-.removeQuestionButton,
-#joinWaitingRoomButton {
-  margin-top: 20px;  
- 
-}
-
-
-#joinWaitingRoomButton {
+.joinWaitingRoomButton {
   display: flex;
   box-sizing: border-box;
-  background-color:#F05E16 ;
-  padding: 2vw;
   text-align: center;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 2vh 2vw;
   font-size: 1.5em;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 1vw;
-  margin-top: 15px;
-  justify-content: center;
-  align-items: center;
+  background-color: #ff8000;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+.joinWaitingRoomButton:hover {
+  background-color: #f05e16;
 }
 .addQuestionButton {
  
   display: flex;
   box-sizing: border-box;
-  padding: 2vw;
-  background-color: green;
+  text-align: center;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 2vh;
+  font-size: 1.5em;
   color: white;
   border: none;
-  border-radius: 1vw;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
+  border-radius: 1vw;
+  background-color: green;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+.addQuestionButton:hover {
+  background-color:rgb(0, 110, 0);
 }
 .removeQuestionButton {
   display: flex;
   box-sizing: border-box;
-  padding: 2vw;
-  background-color: red;
+  text-align: center;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  padding: 2vh;
+  font-size: 1.5em;
   color: white;
   border: none;
+  cursor: pointer;
   border-radius: 1vw;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer
+  background-color: red;
+  box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
+}
+.removeQuestionButton:hover {
+  background-color:#db0700;
 }
 
 
