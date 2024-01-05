@@ -48,6 +48,12 @@
 	"gameCode": "Spelkod:",
 	"startGame": "Starta spelet",
 
+"leaderboardView": "",
+	"leaderBoard": "Poängställning",
+	"name": "Namn:",
+	"scores": "Poäng:",
+	"nextQuestion": "Nästa fråga",
+
 "ResultsView": "",
 	"results": "Resultat:",
 	"first": "1a Plats",
