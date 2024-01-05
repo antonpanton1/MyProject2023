@@ -199,10 +199,13 @@ Data.prototype.submitAnswer = function(pollId, answer, username) {
 Data.prototype.getAnswers = function(pollId, currentQuestion) {
   const poll = this.polls[pollId];
   if (typeof poll !== 'undefined') {
-    const answers = Object.values(poll.participants).map(participant => participant.answers[currentQuestion]);
+    const participant = Object.values(poll.participants)
+    const answers = participant.reduce((acc, participant) => { 
+      return acc.concat(participant.answers[poll.currentQuestion]);
+    }, [] );
     return answers
   }
-  return {}
+  return []
 }
 export { Data };
 

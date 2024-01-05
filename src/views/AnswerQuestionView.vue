@@ -122,6 +122,7 @@ export default {
   overflow: hidden;
 }
 
+
 input {
     font-size: 24pt;
     width: 40pt;
@@ -141,7 +142,8 @@ input[type=number]{
 button {
   background-color: #a94411;
   margin: 20px;
-  padding: 3%;
+  /*padding: 3%;*/
+  padding: 2vh 2vw;
   text-align: center;
   font-size: 24px;
   color: black;
@@ -149,22 +151,8 @@ button {
   cursor: pointer;
   border-radius: 8px;
   transition-duration: 0.4s;
-}
-
-/* button {
-  text-align: center;
-  font-size: 1.5em;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 2vh 2vw;
-  border-radius: 1vw;
-  background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
-  transition-duration: 0.4s;
-  margin: 1vw;
 }
- */
 
 .answer {
     background-color:#ff8000;

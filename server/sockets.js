@@ -96,7 +96,8 @@ function sockets(io, socket, data) {
   })
 
   socket.on("getAnswers", function(d){
-    socket.emit('allAnswers', data.getAnswers(d.pollId, d.currentQuestion) );
+    console.log(data.getAnswers(d.pollId, d.currentQuestion))
+    socket.emit('allAnswers', data.getAnswers(d.pollId, d.currentQuestion));
   })
 
   socket.on('joinedLobby', function(pollId) {

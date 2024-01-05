@@ -31,12 +31,12 @@ import 'vue-slider-component/theme/antd.css'
 
 const socket = io(sessionStorage.getItem("dataServer"));
 
-function Player(name, question, answer, points) {
+/* function Player(name, question, answer, points) {
   this.name = name;
   this.question = question
   this.answer = answer
   this.points = points
-  }
+  } */
 
   export default {
     name: 'correctAnswer',
