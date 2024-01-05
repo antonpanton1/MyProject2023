@@ -54,7 +54,7 @@ function Player(name, question, answer, points) {
         marks: [], //rätt svar 
         qurrentQuestion: 0,
         questions: [],
-        gameLeader: true
+        gameLeader: true,
       }
     },
     created: function () {
@@ -75,10 +75,7 @@ function Player(name, question, answer, points) {
       socket.on('isHost', host => {
         this.gameLeader = host
       })
-      /* socket.on('goToLeaderBoard',() => {
-        this.$router.push({ path: '/leaderboardr/'+this.pollId+'/'+this.username})
-      }); */
-      socket.on('nextView',() => {
+      socket.on('sendToLeaderboard',() => {
         this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username})
       });
       socket.emit('joinPoll', this.pollId);
@@ -92,9 +89,7 @@ function Player(name, question, answer, points) {
     },
     methods: {
       goToLeaderBoard: function () {
-        socket.emit("nextView", this.pollId)
-        /* socket.emit("goToLeaderBoard", this.pollId)
-        this.$router.push({ path: '/leaderboard/'+this.pollId+'/'+this.username}) */
+        socket.emit("goToLeaderboard", this.pollId)
       }
     }
   }

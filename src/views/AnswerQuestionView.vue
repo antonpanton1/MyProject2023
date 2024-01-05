@@ -37,20 +37,21 @@ export default {
       host: false,
       participants: [],
       answered: 0,
-      locked: false
+      locked: false,
     }
   },
+
   created: function () {
     this.pollId = this.$route.params.id
     this.username = this.$route.params.uid
-
+    this.locked = false
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
     socket.on('lockIn', () =>
     this.lockAnswer()
     );
-    socket.on('nextView',() => {
+    socket.on('goToCorrectAnswer',() => {
       this.$router.push({ path: '/correctanswer/'+this.pollId+'/'+this.username})
     });
     socket.on("sendQuestions", (questions) => 
@@ -106,10 +107,9 @@ export default {
         }
       },
       goNext: function(){
-        this.$router.push({ path: '/correctanswer/'+this.pollId+'/'+this.username})
 
         socket.emit('lockScores', this.pollId)
-        socket.emit("nextView", this.pollId)
+        socket.emit("sendToCorrectAnswer", this.pollId)
       }
   }
 }

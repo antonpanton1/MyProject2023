@@ -75,7 +75,6 @@ Data.prototype.calcScore = function(pollId, username, answer){
     if (score == 0){
       var score = -10;
     } 
-    console.log('totala score for', username, "is", score)
     participant.score += score
   }
 }
@@ -83,11 +82,8 @@ Data.prototype.calcScore = function(pollId, username, answer){
 Data.prototype.updateTopPlayers = function(pollId){
   const poll = this.polls[pollId];
   if (typeof poll !== "undefined"){
-    console.log(poll.participants)
     const userScores = Object.entries(poll.participants).map(([username, data]) => ({username, score: data.score,}));
-    console.log('uscerscore:', userScores)
     userScores.sort((a, b) => a.score - b.score);
-    console.log('sorted', userScores )
     return userScores.slice(0,5);   
   }
   return []
@@ -161,7 +157,7 @@ Data.prototype.nextQuestion = function(pollId){
 
 Data.prototype.lastQuestion = function(pollId) {
   const poll = this.polls[pollId];
-  if(typeof poll !== 'undefined' && poll.currentQuestion >= poll.questions.length -1) {
+  if(typeof poll !== 'undefined' && poll.currentQuestion >= poll.questions.length) {
     return true
   }
   return false

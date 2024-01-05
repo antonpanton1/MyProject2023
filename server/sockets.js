@@ -112,6 +112,21 @@ function sockets(io, socket, data) {
     io.to(pollId).emit('nextView')
   })
 
+  socket.on('sendToCorrectAnswer', function(pollId){
+    console.log('sending to corrext')
+    io.to(pollId).emit('goToCorrectAnswer')
+  })
+
+  socket.on('goToLeaderboard', function(pollId){
+    console.log("sending leaderboard")
+    io.to(pollId).emit('sendToLeaderboard')
+  })
+
+  socket.on('goToQuestion', function(pollId){
+    console.log("sending question")
+    io.to(pollId).emit('sendToQuestion')
+  })
+
   socket.on('resetAll', () => {
     data = new Data();
     data.initializeData();

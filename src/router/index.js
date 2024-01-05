@@ -54,6 +54,7 @@ const router = createRouter({
       path: '/leaderboard/:id/:uid',
       name: 'leaderboardView',
       component: () => import('../views/leaderboardView.vue')
+      
     }, 
     {
       path: '/createlobby/',

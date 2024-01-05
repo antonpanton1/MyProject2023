@@ -28,11 +28,12 @@
       <img src= "https://static.vecteezy.com/system/resources/previews/019/819/389/non_2x/award-medal-gold-silver-and-bronze-medals-on-transparent-background-file-png.png" alt="Span" title = "Another in-line element" style="width: 200px;">
     </div>
 
-    <button v-if="host" v-on:click="nextQuestion" type="submit" id="leader" > 
+    <button v-if="host" v-on:click="goNext" type="submit" id="leader" > 
       {{ uiLabels.nextQuestion }}
     </button>
+    <button v-if="host && end" v-on:click="goNext" type="submit" id="results"> visa resultat </button>
 </body>
-</template>
+</template> 
 
 
 <script>
@@ -50,7 +51,7 @@ export default {
       lang: localStorage.getItem("lang") || "en",
       topPlayers: [],
       host: false,   
-     /*  end: false,   */ 
+      end: false, 
     };
   },
   created: function () {
@@ -60,7 +61,10 @@ export default {
     socket.emit('joinedLeaderboardView', this.pollId);
     socket.emit("pageLoaded", this.lang);
     socket.emit('hostCheck', {pollId: this.pollId, username: this.username});
-        
+    socket.emit('endGame', this.pollId);
+    socket.on('endGame', (end)=>{
+      this.end = end
+    });
     socket.on("init", (labels) => {
       this.uiLabels = labels
     });
@@ -70,6 +74,18 @@ export default {
     socket.on("scoreboardUpdate", topPlayers =>
     this.topPlayers = topPlayers
     );
+
+
+    socket.on('sendToQuestion', () => {
+      socket.emit("endGame", this.pollId)
+      socket.on('endGame', (end) => {
+        if (end){
+          this.$router.push({ path: '/results/'+this.pollId})
+        }else{
+          this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
+        }
+      })
+    })
   },
   methods: {
     nextQuestion: function () {
@@ -82,7 +98,12 @@ export default {
           this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
         }
       })
-    }      
+    },
+    goNext: function(){
+      socket.emit('nextQuestion', this.pollId);
+      socket.emit('goToQuestion', this.pollId);
+    }
+          
   }
 }
 </script>
