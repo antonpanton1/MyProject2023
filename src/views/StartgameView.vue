@@ -72,7 +72,7 @@
     </button>
   </div>
   <div id="joinbutton">
-    <button id="joinWaitingRoomButton" type="submit" v-on:click="joinGame" :disabled="!areAllQuestionsAndAnswersFilled">
+    <button id="joinWaitingRoomButton" type="submit" v-on:click="questionMark" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
   </div>  
@@ -86,7 +86,7 @@
 
 <script>
 import io from 'socket.io-client';
-const socket = io("localhost:3000");
+const socket = io(sessionStorage.getItem("dataServer"));
 
 
 
@@ -140,14 +140,28 @@ export default {
  
   methods:{
 
-
-    mounted() {
-    // 3 sec timer
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 3000);
-  },
+    questionMark: function(){
+      // Kontrollera om ett frågetecken finns i något av frågefälten
+      
+      if (this.qu1.includes('?') ) {
+        this.qu1 = this.qu1.replace('?', '');
+      } else {
+    
+      }
+      if (this.qu2.includes('?') ) {
+        this.qu2 = this.qu2.replace('?', '');
+      } else {
+        
+      }
+      if (this.qu3.includes('?') ) {
+        this.qu3 = this.qu3.replace('?', '');
+      } else {
+        
+      }
+      this.joinGame();
+    },
   removefunc: function(){
+   
    
       if (this.questionNR === 1) {
         // If removing the second question
@@ -180,10 +194,13 @@ export default {
   }
   }
  
+ 
 };
 
 
+
 </script>
+
 
 
 <style scoped>
