@@ -131,7 +131,6 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 0.75vw;
-/*   top: 30px; */
   padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;
