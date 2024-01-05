@@ -1,15 +1,20 @@
 <template>
-  <body>
+  <div class="background">
     <div id="gameTitle"> 
-      <h1>
-        {{ uiLabels.leaderBoard }} 
-      </h1>
-    </div>
+      <div class="text">
+        <h1>
+          <img src= "https://assets.stickpng.com/images/580b585b2edbce24c47b2af2.png" style="width:40px">
+          {{ uiLabels.leaderBoard }} 
+          <img src= "https://assets.stickpng.com/images/580b585b2edbce24c47b2af2.png" style="width:40px">
+        </h1>
+      </div>
+  </div>
   
     <div id="leaderBoard">
       <div id="players">
         <h2> {{ uiLabels.name }} </h2>
         <div v-for="(topPlayer, index) in topPlayers" :key="topPlayer.id">
+          <br>
           <div id="names">
             {{ index + 1 }}. {{ topPlayer.username }}
           </div>
@@ -19,20 +24,24 @@
       <div id="scores">
         <h2> {{ uiLabels.scores }} </h2>
           <div v-for="(topPlayers) in topPlayers">
+            <br>
             {{ topPlayers.score }}
           </div>
       </div>
     </div>
     
     <div id="picture">
-      <img src= "https://static.vecteezy.com/system/resources/previews/019/819/389/non_2x/award-medal-gold-silver-and-bronze-medals-on-transparent-background-file-png.png" alt="Span" title = "Another in-line element" style="width: 200px;">
+      <img src= "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Medals_Set_Transparent_PNG_Clip_Art_Image.png?m=1461120901" alt="Span" title = "Another in-line element" style="width: 400px;">
+      <img src= "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Medals_Set_Transparent_PNG_Clip_Art_Image.png?m=1461120901" alt="Span" title = "Another in-line element" style="width: 400px;">
+      <img src= "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Medals_Set_Transparent_PNG_Clip_Art_Image.png?m=1461120901" alt="Span" title = "Another in-line element" style="width: 400px;">
+      <img src= "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Medals_Set_Transparent_PNG_Clip_Art_Image.png?m=1461120901" alt="Span" title = "Another in-line element" style="width: 400px;">
     </div>
 
     <button v-if="host" v-on:click="goNext" type="submit" id="leader" > 
       {{ uiLabels.nextQuestion }}
     </button>
     <button v-if="host && end" v-on:click="goNext" type="submit" id="results"> visa resultat </button>
-</body>
+  </div>
 </template> 
 
 
@@ -109,14 +118,17 @@ export default {
 </script>
 
 <style scoped>
-body {
+.background {
   background-image: linear-gradient(to bottom right, red, yellow);
-  flex-direction: column;
+  overflow: hidden;
   height: 100vh
 }
 
 #gameTitle {
+  display: grid;
   display: flex;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 5px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -142,6 +154,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
+    font-size: 20px;
   }
 
   button {
@@ -158,4 +172,5 @@ body {
 button:hover {
   background-color: #f05e16;
 }
+
 </style>

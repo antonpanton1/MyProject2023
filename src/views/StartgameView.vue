@@ -33,8 +33,7 @@
         {{ question3 }}
       </p>  
     </div>
-
-
+    
     <div id="answerField">
       <p>
         <label for="Answer 1">
@@ -147,7 +146,6 @@ export default {
     })
     socket.emit('joinPoll', this.pollId);
     socket.emit("pageLoaded", this.lang);    
-   
 
 
   },
@@ -188,10 +186,13 @@ export default {
       }
       this.questionNR--;
   },
+  
+ 
+
  
   joinGame: function() {
- 
-   
+    
+
     socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu1, a: this.an1})
     console.log("första frågan skickas")
     socket.emit('playerReady', {pollId: this.pollId})
@@ -204,6 +205,7 @@ export default {
       socket.emit('saveQuestions', {pollId: this.pollId, q: this.qu3, a: this.an3})
       console.log("tredje frågan skickas")  
     }
+    
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
   },
   }
