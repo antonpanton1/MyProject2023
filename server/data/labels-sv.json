@@ -40,6 +40,8 @@
 	"joinwaitroom": "Gå till väntrum",
 	"typeQuestion": "Skriv din fråga",
 	"typeAnswer": "Svar",
+	"notValid": "Svar inte giltiga",
+
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",

@@ -40,21 +40,21 @@
         <label for="Answer 1">
           {{ uiLabels.Answer1 }}
          </label><br>
-         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer">
+         <input type="number" id="Answer1" v-model="an1" required="required" :placeholder="uiLabels.typeAnswer" max="100">
          {{ answer1 }}
       </p>  
       <p v-if= "questionNR > 0 ">
         <label for="Answer 2">
           {{uiLabels.Answer2}}
          </label><br>
-         <input type="number" id="Answer2" v-model="an2" required="required" :placeholder="uiLabels.typeAnswer" >
+         <input type="number" id="Answer2" v-model="an2" required="required" :placeholder="uiLabels.typeAnswer" max="100">
          {{ answer2 }}
       </p>
       <p v-if= "questionNR > 1 ">
         <label for="Answer 3">
           {{uiLabels.Answer3}}
          </label><br>
-         <input type="number" id="Answer3" v-model="an3" required="required" :placeholder="uiLabels.typeAnswer" >
+         <input type="number" id="Answer3" v-model="an3" required="required" :placeholder="uiLabels.typeAnswer" max="100">
          {{ answer3 }}
       </p>
     </div>
@@ -75,7 +75,13 @@
     <button id="joinWaitingRoomButton" type="submit" v-on:click="questionMark" :disabled="!areAllQuestionsAndAnswersFilled">
             {{uiLabels.joinwaitroom}}
     </button>
-  </div>  
+  </div>
+  <div>
+    <label v-if="!areAllQuestionsAndAnswersFilled">
+      {{ uiLabels.notValid }}
+    </label>
+  </div>
+  
   </div>
 
 
@@ -118,6 +124,14 @@ export default {
       return (
         this.qu1 !== '' &&
         this.an1 !== '' &&
+        this.an1 <= 100 &&
+        this.an2 <= 100 &&
+        this.an3 <= 100 &&
+        this.an1 >= 0 &&
+        this.an2 >= 0 &&
+        this.an3 >= 0 &&
+        
+        
         (this.questionNR < 1 ||
           (this.qu2 !== '' && this.an2 !== '' && (this.questionNR < 2 || (this.qu3 !== '' && this.an3 !== ''))))
       );
@@ -191,7 +205,7 @@ export default {
       console.log("tredje frågan skickas")  
     }
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})
-  }
+  },
   }
  
  

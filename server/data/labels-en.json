@@ -39,6 +39,7 @@
 	"joinwaitroom": "Join Waiting Room",
 	"typeQuestion": "Type your question",
 	"typeAnswer": "Answer",
+	"notValid": "Answers not valid",
 
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",

@@ -1,9 +1,9 @@
 <template>
 <div class="background">
   
-
+    <div class="header">
     <h1>{{ uiLabels.correctAnswer }} {{ this.questions[currentQuestion]?.a }}</h1><br>
-
+    </div>
     <div class="slider">
       <vue-slider 
         v-model="answers" 
@@ -106,12 +106,16 @@ function Player(name, question, answer, points) {
     background-image: linear-gradient(to bottom right, red, yellow);
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .slider {
   width: 50%;
   margin: auto;
   cursor: default;
+  
 }
 .custom-dot {
   width: 100%;
@@ -122,6 +126,7 @@ function Player(name, question, answer, points) {
 
 
 button {
+  margin-bottom: 25vh;
   padding: 2vh 2vw;
   text-align: center;
   font-size: 1.5em;
@@ -134,6 +139,13 @@ button {
 }
 button:hover {
   background-color: #f05e16;
+}
+
+.header {
+  margin-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 </style>
