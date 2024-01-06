@@ -26,7 +26,6 @@
 	"pleaseChoose": "Var god ange ditt användarnamn",
 	"usernameUnavailable": "Användarnamnet du angett är redan upptaget!",
 	
-
 "QuestionsView": "",
 	"title": "Skriv dina frågor och svar nedan!",
 	"Question1": "Fråga 1:",
@@ -41,7 +40,6 @@
 	"typeQuestion": "Skriv din fråga",
 	"typeAnswer": "Svar",
 	"notValid": "Svar inte giltiga",
-
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",
@@ -77,20 +75,6 @@
 	"youAnswerd": "Du svarade",
 	"andGot": "och fick",
 	"points": "poäng.",
-
-"(Comment) Tror vi kan ta bort dessa": "",
-	"sales-pitch": "0 --> 100",
-	"invite": "Bjud in deltagare med den här länken:",
-	"createPoll": "Skapa röstning",
-	"participatePoll": "Delta i röstning",
-	"question": "Fråga",
-	"answer": "Svar",
-	"about": "Om oss",
-	"participateInPoll": "Gå med",
-	"joinGame": "Gå med",
-	"usernamePrompt": "Välj ett användarnamn",
-	
-	"joinGameWithCode": "Gå med i spel",
 
 "InstructionsView": "",
 	"insructions": "Instruktioner",

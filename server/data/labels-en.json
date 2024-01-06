@@ -67,7 +67,6 @@
 	"lockIn": "Lock in answer",
 	"waitingOthers": "Waiting for other players",
 	"goNext":"Show correct answer",
-	
 
 "CorrectAnswerView": "",
 	"next": "Next",
@@ -76,18 +75,6 @@
 	"youAnswerd": "You answered",
 	"andGot": "and got",
 	"points": "points.",
-
-"(Comment) Tror vi kan ta bort dessa": "",
-	"joinGame": "Submit",
-	"participateInPoll": "Participate", 
-	"usernamePrompt": "Chose a username",
-"SkelletonCode": "",
-	"invite": "Invite participants with this link:",
-	"createPoll": "Create poll",
-	"participatePoll": "Participate in poll",
-	"question": "Question",
-	"answer": "Answer",
-	"about": "About",
 
 "InstructionsView": "",
 	"insructions": "Instructions",
