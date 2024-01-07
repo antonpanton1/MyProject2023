@@ -2,12 +2,13 @@
   <div class="background">
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
       <div>
-        <h2> {{uiLabels.title}}</h2>
+        <h2>{{uiLabels.title}}</h2>
+        <label>{{ uiLabels.howToWrite1 }}</label><br>
+        <label>{{ uiLabels.howToWrite2 }}</label>
       </div>
    
     <div class="centering">
        <div class="mediaContainer">
-
 
       <div class="inputWrap">  
       <div id="questionField">
@@ -59,7 +60,6 @@
   <button class="addQuestionButton" v-if="questionNR < 2" type="submit" v-on:click="questionNR++">
         {{uiLabels.addquestion}}
     </button>
-
 
     <button class="removeQuestionButton" v-if="questionNR > -0" type="submit" v-on:click="removefunc">
         {{uiLabels.removequestion}}

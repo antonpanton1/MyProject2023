@@ -9,7 +9,8 @@
         {{ uiLabels.totalPlayers }} {{ participants.length }} 
       </div>
     </div>   
-    <div id="gameCode">     
+    <div id="gameCode">    
+      <label v-if="gameLeader">{{ uiLabels.howToAdd }}</label> 
       <h1>{{ uiLabels.gameCode }} {{pollId}}</h1>
       <div>
         <div v-for="(participants) in this.participants">
@@ -103,9 +104,9 @@ export default {
 }
 
 .gameCode{
-    text-align: left;
-    margin-left: 1vw;
-    margin-top: 1vw;
+  text-align: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 .writingQuestions{
   text-align: left;
@@ -140,6 +141,10 @@ export default {
 }
 .leader:hover {
   background-color: #f05e16;
+}
+
+h1 {
+  margin-top: 5px;
 }
 
 </style>

@@ -12,9 +12,12 @@
       <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
     </div>
     <br>
+    <label id="howTo1">{{ uiLabels.howToAnswer1 }}</label><br>
+    <label id="howTo2">{{ uiLabels.howToAnswer2 }}</label><br>
     <button class="submit" id="lockBtn" v-on:click="lockAnswer" > {{ uiLabels.lockIn }} </button>
     <p id="waiting"> {{ uiLabels.waitingOthers }} {{this.answered}} / {{ this.participants.length }}</p>
     <br>
+    <label id="nextLabel">{{ uiLabels.whenToLock }}</label>
     <button class="submit" id="nextPage" v-on:click="goNext">{{ uiLabels.goNext }}</button>
     </div>
 </template>
@@ -95,9 +98,12 @@ export default {
         minus.disabled = true;
         minus.classList.toggle("answer");
         number.disabled = true;
-        waiting.style.display = "block"
+        waiting.style.display = "block";
+        howTo1.style.display = "none";
+        howTo2.style.display = "none";
         if(this.host){
-          nextPage.style.display ="inline-block";
+          nextPage.style.display = "inline-block";
+          nextLabel.style.display = "block";
         }
 
         socket.emit("submitAnswer", {pollId: this.pollId, username: this.username, answer: this.answer})
@@ -151,15 +157,15 @@ button {
 }
 
 .answer {
-    background-color:#ff8000;
-    margin: 10px;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    transition-duration: 0.4s;
+  background-color:#ff8000;
+  margin: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 0.4s;
 }
 
 .answer:hover {
@@ -207,9 +213,9 @@ button {
   width: 15px;
 }
 .gameCode{
-    text-align: left;
-    margin-left: 1vw;
-    margin-top: 1vw;
+  text-align: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 .submit {
   text-align: center;
@@ -239,6 +245,9 @@ button {
   display: none;
 }
 
+#nextLabel {
+  display: none;
+}
 
 </style>
   

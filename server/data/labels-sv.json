@@ -10,7 +10,7 @@
 	"lobbyname": "Spelnamn",
 
 "JoinGameView": "",
-	"inputGameID": "Ange spelkod för lobbyn",
+	"inputGameID": "Ange spelkoden från din spelledare.",
 	"GameID": "Spelkod",
 	"wrongGameID": "Den angivna spelkoden är fel.",
 
@@ -34,12 +34,14 @@
 	"Answer1":"Svar 1:",
 	"Answer2": "Svar 2:",
 	"Answer3": "Svar 3:",
-	"addquestion": "Lägg till fråga",
+	"addquestion": "Skriv ytterliggare en fråga",
 	"removequestion": "Ta bort fråga",
 	"joinwaitroom": "Gå till väntrum",
 	"typeQuestion": "Skriv din fråga",
 	"typeAnswer": "Svar",
 	"notValid": "Svar inte giltiga",
+	"howToWrite1": "Varje fråga måste ha ett svar mellan 0 och 100 och du kan skriva upp till 3 frågor.",
+	"howToWrite2": " När du är klar går du vidare till väntrummet med orangea knappen.",
 
 "WaitingRoomView": "",
 	"participantsReady": "Deltagare redo:",
@@ -47,6 +49,7 @@
 	"totalPlayers": "Antal spelare i spelet:",
 	"gameCode": "Spelkod:",
 	"startGame": "Starta spelet",
+	"howToAdd": "Dela spelkoden med dina kompisar och be dem gå med i ditt spel.",
 
 "leaderboardView": "",
 	"leaderBoard": "Poängställning",
@@ -67,6 +70,9 @@
 	"lockIn": "Lås svar",
 	"waitingOthers": "Väntar på andra spelare",
 	"goNext":"Gå vidare till svaret",
+	"howToAnswer1": "Välj ditt svar genom att dra i slidern, alternativt klicka på plus- respektive minusknappen.", 
+	"howToAnswer2": " Du kan även skriva in ditt svar manuellt i textrutan.",
+	"whenToLock": "Vänta med att gå vidare tills alla har svarat eller lås deras svar och gå vidare ändå genom att klicka på knappen.",
 
 "CorrectAnswerView": "",
 	"next": "Gå vidare",

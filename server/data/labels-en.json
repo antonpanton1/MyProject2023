@@ -10,9 +10,9 @@
 	"lobbyname": "Lobby name",
 
 "JoinGameView": "",
-	"inputGameID": "Enter Game-ID for the lobby",
+	"inputGameID": "Enter the Game-ID from your host.",
 	"GameID": "Game-ID",
-	"wrongGameID": "The given Game-ID does not match any currently active lobbys",
+	"wrongGameID": "The given Game-ID does not match any currently active lobbys.",
 
 "StartView": "",
 	"subHeading": "The general knowledge game for the generally unknowledgeable",
@@ -34,12 +34,14 @@
 	"Answer1": "Answer 1:",
 	"Answer2": "Answer 2:",
 	"Answer3": "Answer 3:",
-	"addquestion": "Add Question",
+	"addquestion": "Write Another Question",
 	"removequestion": "Remove Question",
 	"joinwaitroom": "Join Waiting Room",
 	"typeQuestion": "Type your question",
 	"typeAnswer": "Answer",
 	"notValid": "Answers not valid",
+	"howToWrite1": "Each question must have an answer between 0 and 100. You can write up to 3 questions.",
+	"howToWrite2": " When you are done, join the waitingroom with the orange button.",
 
 "WaitingRoomView": "",
 	"participantsReady": "Participants Ready:",
@@ -47,6 +49,7 @@
 	"totalPlayers": "Amount of players in the game:",
 	"gameCode": "Game-ID:",
 	"startGame": "Start Game",
+	"howToAdd": "Share the Game-ID with your friends and tell them to join your game.",
 
 "leaderboardView": "",
 	"leaderBoard": "Leaderboard",
@@ -64,9 +67,12 @@
 
 "AnswerQuestionView": "",
 	"dispQuestion": "Question:",
-	"lockIn": "Lock in answer",
+	"lockIn": "Lock answer",
 	"waitingOthers": "Waiting for other players",
 	"goNext":"Show correct answer",
+	"howToAnswer1": "Pick your answer by dragging the slider or clicking on the plus or minus button.",
+	"howToAnswer2": " You can also enter your answer manually by clicking on the numbers.",
+	"whenToLock": "Wait until everyone has answered or lock their answers by pressing the button.",
 
 "CorrectAnswerView": "",
 	"next": "Next",
