@@ -82,7 +82,7 @@ export default {
 .rectangle {
 
       width: 90%;
-      height: 250%;
+      height: 100%;
       background-color: #ffffff8b;
       border-radius: 1vw; /* rounded corners */
       margin: 0.1vh auto 0; /* margin top, content centered, 0 for sides */
@@ -111,7 +111,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 140vh;
+  height: 100%;
 
 }
 

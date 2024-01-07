@@ -38,7 +38,7 @@
       <img src= "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Medals_Set_Transparent_PNG_Clip_Art_Image.png?m=1461120901" alt="Span" title = "Another in-line element" style="width: 400px;">
     </div>
 
-    <button v-if="host" v-on:click="goNext" type="submit" id="leader" > 
+    <button v-if="host" class="nxtQuestion" v-on:click="goNext" type="submit" id="leader" > 
       {{ uiLabels.nextQuestion }}
     </button>
     <button v-if="host && end" v-on:click="goNext" type="submit" id="results"> visa resultat </button>
@@ -137,6 +137,9 @@ export default {
   max-width: 100%;
   height: 10vh;
   margin: 0 1vw;
+}
+.nxtQuestion {
+  margin-top: 10vh;
 }
 
 
