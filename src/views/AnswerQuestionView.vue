@@ -89,7 +89,6 @@ export default {
         this.locked = true;
         lockBtn.disabled = true;
         lockBtn.classList.toggle("submit");
-        //lockBtn.textContent = "Answer locked"
         rangeSlider.disabled = true;
         plus.disabled = true;
         plus.classList.toggle("answer");
@@ -140,7 +139,6 @@ input[type=number]{
 button {
   background-color: #a94411;
   margin: 20px;
-  /*padding: 3%;*/
   padding: 2vh 2vw;
   text-align: center;
   font-size: 24px;
@@ -174,13 +172,12 @@ button {
 
 .slider {
   width: 50%;
-  /* background: rgb(255, 196, 100); */
   background: #a94411;
   -webkit-appearance: none;
-  outline: none; /* Remove outline */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  outline: none; 
+  -webkit-transition: .2s; 
   transition: opacity .2s;
-  cursor: pointer; /* Cursor on hover */
+  cursor: pointer; 
   border-radius: 30px;
 }
 
@@ -188,13 +185,12 @@ button {
   height: 0.3rem;
 }
 
-/******** Firefox ********/
 .slider::-moz-range-track {
   height: 0.3rem;
 }
 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none; 
   appearance: none;
   height: 1.2rem;
   width: 1.2rem;
@@ -204,8 +200,8 @@ button {
 }
 
 .slider::-moz-range-thumb {
-  border: none; /*Removes extra border that FF applies*/
-  border-radius: 0; /*Removes default border-radius that FF applies*/
+  border: none;
+  border-radius: 0; 
   background-color: red;
   height: 15px;
   width: 15px;

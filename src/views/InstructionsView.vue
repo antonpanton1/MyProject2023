@@ -84,8 +84,8 @@ export default {
       width: 90%;
       height: 100%;
       background-color: #ffffff8b;
-      border-radius: 1vw; /* rounded corners */
-      margin: 0.1vh auto 0; /* margin top, content centered, 0 for sides */
+      border-radius: 1vw; 
+      margin: 0.1vh auto 0; 
       padding: 2vw;
     }
 

@@ -67,8 +67,8 @@ export default {
       pollId: "inactive poll",
       username: "",
       uiLabels: {},
-      answers: [], //spelarnas svar
-      marks: [], //rätt svar 
+      answers: [], 
+      marks: [], 
       currentQuestion: 0,
       questions: [],
       gameLeader: true,
@@ -93,7 +93,6 @@ export default {
     });
       socket.on('YourAnswer', yourAnswer => {
         this.yourAnswer = yourAnswer
-        console.log("kom till your answer")
         this.score = Math.abs(this.questions[this.currentQuestion].a - this.yourAnswer)
         if (this.score == 0){
           this.score = -10;

@@ -24,21 +24,16 @@ function sockets(io, socket, data) {
 
   socket.on('saveQuestions', function(d) {
     data.addQuestion(d.pollId, {q: d.q, a: d.a});
-    /* data.addQuestion(d.pollId, {q: d.q2, a: d.a2});
-    data.addQuestion(d.pollId, {q: d.q3, a: d.a3}); */
-    
     io.to(d.pollId).emit('sendQuestions', data.getAllQuestions(d.pollId))
   });
 
   socket.on('playerReady', function(d) {
-    console.log("spelare redo")
     data.ready(d.pollId);
   }
   
   )
 
   socket.on('calculateScore', function(d){
-    console.log(d.username,"answered", d.answer)
     data.calcScore(d.pollId, d.username, d.answer)
   })
 
@@ -67,18 +62,9 @@ function sockets(io, socket, data) {
     data.nextQuestion(pollId)
   });
 
- /*  socket.on('endGame', function(pollId){
-    socket.emit('endGame', data.lastQuestion(pollId))
-  })
- */
   socket.on('getCurrent', function(pollId){
     socket.emit('currentUpdate',data.getCurrent(pollId));
   });
-
-  /* socket.on('runQuestion', function(d) {
-    io.to(d.pollId).emit('newQuestion', data.getQuestion(d.pollId, d.questionNumber));
-    io.to(d.pollId).emit('dataUpdate', data.getAnswers(d.pollId));
-  }); */
 
   socket.on('submitAnswer', function(d) {
     data.submitAnswer(d.pollId, d.answer, d.username);
@@ -117,17 +103,14 @@ function sockets(io, socket, data) {
   })
 
   socket.on('sendToCorrectAnswer', function(pollId){
-    console.log('sending to corrext')
     io.to(pollId).emit('goToCorrectAnswer')
   })
 
   socket.on('goToLeaderboard', function(pollId){
-    console.log("sending leaderboard")
     io.to(pollId).emit('sendToLeaderboard')
   })
 
   socket.on('goToQuestion', function(pollId){
-    console.log("sending question")
     let lastQuestion = data.lastQuestion(pollId)
     if (lastQuestion){
       io.to(pollId).emit('endGame')
@@ -152,7 +135,6 @@ function sockets(io, socket, data) {
   
   socket.on('joinedLeaderboardView', function(pollId) {
     let topPlayers = data.updateTopPlayers(pollId);
-    console.log(topPlayers)
     socket.emit('scoreboardUpdate', topPlayers)
   }); 
 

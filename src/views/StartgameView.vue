@@ -105,7 +105,6 @@ export default {
 
   computed: {
     areAllQuestionsAndAnswersFilled() {
-      // Check if all questions and answers are filled in
       return (
         this.question1 !== '' &&
         this.answer1 !== '' &&
@@ -137,8 +136,6 @@ export default {
  
   methods:{
     questionMark: function(){
-      // Kontrollera om ett frågetecken finns i något av frågefälten
-      
       if (this.question1.includes('?') ) {
         this.question1 = this.question1.replace('?', '');
       } else {
@@ -159,11 +156,9 @@ export default {
   removefunc: function(){
    
       if (this.questionNR === 1) {
-        // If removing the second question
         this.question2 = '';
         this.answer2 = '';
       } else if (this.questionNR === 2) {
-        // If removing the third question
         this.question3 = '';
         this.answer3 = '';
       }
@@ -177,16 +172,12 @@ export default {
  
    
     socket.emit('saveQuestions', {pollId: this.pollId, q: this.question1, a: this.answer1})
-    console.log("första frågan skickas")
     socket.emit('playerReady', {pollId: this.pollId})
-    console.log("knapp tryckt")
     if (this.question2 !== ''){
       socket.emit('saveQuestions', {pollId: this.pollId, q: this.question2, a: this.answer2})
-      console.log("andra frågan skickas")  
     }
     if (this.question3 !== ''){
-      socket.emit('saveQuestions', {pollId: this.pollId, q: this.question3, a: this.answer3})
-      console.log("tredje frågan skickas")  
+      socket.emit('saveQuestions', {pollId: this.pollId, q: this.question3, a: this.answer3}) 
     }
     
     this.$router.push({ path: '/waitingroom/'+this.pollId+"/"+this.username})

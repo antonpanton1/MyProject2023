@@ -23,7 +23,7 @@
 import io from 'socket.io-client';
 const socket = io(sessionStorage.getItem("dataServer"));
 
-// Funktion som använder sig av bokstäverna och siffrorna nedan för att skapa en randomiserad kod
+
 function generateRandomCode() {
   const letters = 'ABCDEFGHIJKLMNPQRSTUVWXYZ';
   const numbers = '123456789';
@@ -31,7 +31,7 @@ function generateRandomCode() {
   const randomLetter = () => letters[Math.floor(Math.random() * letters.length)];
   const randomNumber = () => numbers[Math.floor(Math.random() * numbers.length)];
 
-  // Kod skapas som skiftar mellan bokstav och siffra
+  
   const code = `${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}${randomLetter()}${randomNumber()}`;
 
 
@@ -84,7 +84,6 @@ export default {
         socket.emit("createPoll", { lang: this.lang, gameName: this.gameName, pollId: this.pollId});
         socket.emit("submitUsername", { pollId: this.pollId, username: this.username, host:true });
         this.isButtonDisabled = false;
-        // Kör metoden som skickar en vidare till korrekt gameId/username
         this.redirect(this.pollId);;
     }
   }

@@ -86,7 +86,6 @@ export default {
     });
 
     socket.on('sendToQuestion', () => {
-      console.log("send to question")
       this.$router.push({ path: '/question/'+this.pollId+'/'+this.username})
     })
   },
