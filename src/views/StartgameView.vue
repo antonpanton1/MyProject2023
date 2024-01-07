@@ -201,7 +201,7 @@ export default {
 .background {
     background-image: linear-gradient(to bottom right, red, yellow);
     height: 100vh;
-    overflow: hidden;
+    overflow: scroll;
 }
  .centering {
   display: flex;
@@ -247,7 +247,7 @@ export default {
   display: flex;
   box-sizing: border-box;
   text-align: center;
-  margin-top: 20px;
+  margin: 20px;
   justify-content: center;
   align-items: center;
   text-decoration: none;

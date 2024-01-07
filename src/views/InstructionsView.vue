@@ -80,7 +80,6 @@ export default {
 <style scoped>
 
 .rectangle {
-
       width: 90%;
       height: 100%;
       background-color: #ffffff8b;

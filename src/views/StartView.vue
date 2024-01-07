@@ -20,8 +20,8 @@
 import ResponsiveNav from "@/components/ResponsiveNav.vue";
 import io from "socket.io-client";
 //const socket = io("localhost:3000"); //Lämna denna bortkommenterad
-sessionStorage.setItem("dataServer", "192.168.1.47:3000");// Aktivera för att andra på ditt WI-FI ska kunna ansluta. Ändra IP till just ditt wi-fi men ha kvar ':3000'
-//sessionStorage.setItem("dataServer", "localhost:3000"); // Aktivera för endast för lokal användning
+//sessionStorage.setItem("dataServer", "192.168.1.47:3000");// Aktivera för att andra på ditt WI-FI ska kunna ansluta. Ändra IP till just ditt wi-fi men ha kvar ':3000'
+sessionStorage.setItem("dataServer", "localhost:3000"); // Aktivera för endast för lokal användning
 const socket = io(sessionStorage.getItem("dataServer")); // Hämtar det objekt vi skapat på raden över varje gång socket frågas efter
 
 export default {
@@ -81,13 +81,13 @@ export default {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: scroll;
 }
 .game-title {
   color: black;
   font-size: 15vw;
   margin-bottom: -2vh;
-  margin-top: 1vh;
+  margin-top: 10vh;
 }
 .subheading {
   margin-bottom: 10vh;
@@ -101,6 +101,7 @@ export default {
   flex-direction: row;
   margin-top: 0.1vh;
 }
+
 .big-button-container {
   display: flex;
   align-items: center;
@@ -109,6 +110,7 @@ export default {
 }
 .big-button{
   text-decoration: none;
+  margin: 20px;
   padding: 2vh 2vw;
   font-size: 1.5em;
   color: white;
@@ -125,7 +127,6 @@ export default {
   border: none;
   cursor: pointer;
   border-radius: 0.75vw;
-/*   top: 30px; */
   padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;

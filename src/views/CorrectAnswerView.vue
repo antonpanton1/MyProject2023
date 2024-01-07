@@ -129,7 +129,7 @@ export default {
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .sliderA {

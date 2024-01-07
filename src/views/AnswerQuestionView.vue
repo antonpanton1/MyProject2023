@@ -6,7 +6,7 @@
     <h2>{{this.questions[currentQuestion]?.q}}?</h2>
     <br>
     <button id="minus"  class="answer" v-on:click="decrease" v-on:keydown.enter.prevent>-</button>
-    <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer"  >         
+    <input  id="number" type="number" min="0" max="100" step="1" for="rangeSlider" class="sliderValue" v-model="answer">         
     <button id="plus" class="answer" v-on:click="increase" v-on:keydown.enter.prevent>+</button>
     <div class="answerSlide">
       <input type="range" id="rangeSlider" min="0" max="100" step="1" class="slider" v-model="answer">
@@ -117,7 +117,7 @@ export default {
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 
@@ -140,7 +140,6 @@ input[type=number]{
 button {
   background-color: #a94411;
   margin: 20px;
-  /*padding: 3%;*/
   padding: 2vh 2vw;
   text-align: center;
   font-size: 24px;
