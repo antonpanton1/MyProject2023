@@ -52,7 +52,7 @@
 	"leaderBoard": "Poängställning",
 	"name": "Namn:",
 	"scores": "Poäng:",
-	"nextQuestion": "Nästa fråga",
+	"nextQuestion": "Gå vidare",
 
 "ResultsView": "",
 	"results": "Resultat:",
@@ -85,7 +85,7 @@
 
 	"oT1": "1. Om du vill skapa ett nytt spel för dig och dina vänner, klicka då på Skapa nytt spel.",
 	"oT2": "2. Du presenteras då med två alternativ där du får fylla i vad spelet ska heta samt ditt användarnam. Gå vidare med Skapa lobby-knappen.",
-	"oT3": "3. Därefter presenteras upp till 3 frågor där varje spelare har möjlighet att skapa upp till 3 frågor var. Varje fråga måste ha ett svar med ett naturligt tal mellan 0 och 100 (0 och 100 är inkluderade)",
+	"oT3": "3. Därefter presenteras upp till 3 frågor där varje spelare har möjlighet att skapa upp till 3 frågor var. Varje fråga måste ha ett svar med ett naturligt tal mellan 0 och 100 (0 och 100 är inkluderade).",
 	"oT4": "4. För ett så rättvist spel som möjligt rekommenderas att samtliga spelare skapar lika många frågor.",
 	"oT5": "5. Efter detta blir du som spelledare ansvarig för att dela spelkoden med dina vänner så att de kan ansluta till just ditt spel.",
 	"oT6": "6. När alla spelare är redo, klicka på Starta spelet för att påbörja spelet.",

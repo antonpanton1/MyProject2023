@@ -72,13 +72,13 @@ export default {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  overflow: scroll;
 }
 .game-title {
   color: black;
   font-size: 15vw;
   margin-bottom: -2vh;
-  margin-top: 1vh;
+  margin-top: 10vh;
 }
 .subheading {
   margin-bottom: 10vh;
@@ -92,6 +92,7 @@ export default {
   flex-direction: row;
   margin-top: 0.1vh;
 }
+
 .big-button-container {
   display: flex;
   align-items: center;
@@ -100,6 +101,7 @@ export default {
 }
 .big-button{
   text-decoration: none;
+  margin: 20px;
   padding: 2vh 2vw;
   font-size: 1.5em;
   color: white;
@@ -116,7 +118,6 @@ export default {
   border: none;
   cursor: pointer;
   border-radius: 0.75vw;
-/*   top: 30px; */
   padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;

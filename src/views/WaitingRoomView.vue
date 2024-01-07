@@ -78,6 +78,12 @@ export default {
 
 <style scoped>
 
+.background {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  height: 100vh;
+  overflow: scroll;
+}
+
 #gameCode {
   display: flex;
   flex-direction: column;
@@ -95,11 +101,7 @@ export default {
   justify-content: space-between;
   font-size: large;
 }
-.background {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  height: 100vh;
-  overflow: hidden;
-}
+
 .gameCode{
     text-align: left;
     margin-left: 1vw;
@@ -132,6 +134,7 @@ export default {
   border: none;
   cursor: pointer;
   border-radius: 1vw;
+  margin: 20px;
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }

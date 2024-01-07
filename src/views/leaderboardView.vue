@@ -102,7 +102,7 @@ export default {
 <style scoped>
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
-  overflow: hidden;
+  overflow: scroll;
   height: 110vh
 }
 
@@ -157,6 +157,7 @@ export default {
   color: white;
   border: none;
   cursor: pointer;
+  margin: 20px;
   border-radius: 1vw;
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);

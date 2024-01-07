@@ -64,7 +64,8 @@ export default{
 body {
   background-image: linear-gradient(to bottom right, red, yellow);
   flex-direction: column;
-  height: 100vh
+  height: 100vh;
+  overflow: scroll;
 }
 
 header{
