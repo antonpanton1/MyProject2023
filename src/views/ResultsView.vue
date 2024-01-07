@@ -82,7 +82,7 @@ export default {
 .background {
   background-image: linear-gradient(to bottom right, red, yellow);
   color: rgb(28, 28, 28);
-  height: 100vh;
+  height: 120vh;
   overflow: hidden;
 }
 
@@ -97,6 +97,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 10vh;
 }
 
 svg {
@@ -126,7 +127,7 @@ rect {
 .loserScore {
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 5vw;
+  margin-bottom: 5vh;
 }
 
 .button {
