@@ -108,31 +108,38 @@ export default {
 }
 
 #gameTitle {
-  display: grid;
   display: flex;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 5px;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 10vh;
-  font-size: x-large;
+  font-size: 3vh;
 }
 
 #leaderBoard {
-  
-  margin-left: 25vh;
-  margin-right: 25vh;
   display: flex;
-  justify-content: space-between
+  margin-left: 25vw;
+  margin-right: 25vw;
+  gap: 30vw;
+  justify-content: center
 }
 
 #picture {
+  position: fixed;
+  bottom: 1vh;
   display: flex;
   justify-content: center;
-  margin-top: 30vh;
-  margin-bottom: 2vh;
+  margin-top: 10vh;
+
 }
+
+#picture img {
+  max-width: 100%;
+  height: 10vh;
+  margin: 0 1vw;
+  width: 10vw;
+}
+
 
 #players, #scores {
     display: flex;
@@ -153,6 +160,7 @@ export default {
   background-color: #ff8000;
   box-shadow: -2px 4px 6px rgb(0, 0, 0, 0.1);
 }
+
 button:hover {
   background-color: #f05e16;
 }
