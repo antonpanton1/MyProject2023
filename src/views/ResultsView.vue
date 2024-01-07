@@ -4,14 +4,14 @@
     <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
     <h1 class="title"> {{ uiLabels.results }} </h1>
     <div class="podium">
-      <svg width="210" height="250">
+      <svg width="100%" height="250">
         <rect width="200" height="150" style="fill:rgb(230, 155, 111);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="47%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.second }}</text>
         <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[1]?.score }}</text>
         <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[1]?.username }} </text>
       </svg>
 
-      <svg width="210" height="330">     
+      <svg width="100%" height="330">     
         <rect width="200" height="230" style="fill:rgb(240, 154, 56);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="60%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.first }}</text>
         <text x="50%" y="18%" alignment-baseline="bottom" text-anchor="middle" fill="white">{{ topPlayers[0]?.score }}</text>
@@ -19,7 +19,7 @@
       </svg>
 
       <svg width="210" height="200">
-        <rect width="200" height="100" style="fill:rgb(213, 95, 31);stroke-width:3;stroke:rgb(0,0,0)" />
+        <rect width="100%" height="100" style="fill:rgb(213, 95, 31);stroke-width:3;stroke:rgb(0,0,0)" />
         <text x="50%" y="35%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ uiLabels.third }}</text>
         <text v-if="topPlayers.length > 1" x="50%" y="20%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2]?.score }} </text>
         <text v-if="topPlayers.length > 1" x="50%" y="10%" alignment-baseline="bottom" text-anchor="middle" fill="white"> {{ topPlayers[2]?.username }} </text>
@@ -88,40 +88,54 @@ export default {
 
 .title {
   color: black;
-  font-size: 50px;
-  margin-bottom: 00px;
-  position: center;
-  margin-top: -7px;
-  padding:30px;
+  font-size: 6vh;
+  margin-bottom: 0;
+  text-align: center;
+  padding: 3vw;
+}
+.podium {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-#listwrap{
-  width:45%;
-  box-sizing: border-box;
-  float: left;
-  margin-bottom: 5vh;
+svg {
+  width: 30vw;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+rect {
+  width: 100%;
+  height: 100%;
+  fill: rgb(230, 155, 111);
+  stroke-width: 3;
+  stroke: rgb(0, 0, 0);
 }
-.loserName{
-  width: 50%;
+
+#listwrap {
+  width: 100%;
   box-sizing: border-box;
-  float: left;
-  margin-bottom: 5vh;
+  margin-bottom: 5vw;
 }
-.loserScore{
-  width: 50%;
+
+.loserName,
+.loserScore {
+  width: 100%;
   box-sizing: border-box;
-  float: right;
-  margin-bottom: 5vh;
+  margin-bottom: 5vw;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 50vw;
+  gap: 5vw;
   flex-direction: row;
-  margin-top: 0.1vh;
+  margin-top: 1vh;
   position: absolute;
   left: 75vw;
 }
@@ -129,15 +143,13 @@ export default {
 .quit {
   width: auto;
   box-sizing: border-box;
-  float: right;
-  margin-bottom: 5vh;
-
+  margin-bottom: 5vw;
   text-decoration: none;
   font-size: 1.5em;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 0.75vw;
+  border-radius: 1vw;
   padding: 1vh 2vw;
   font-size: 1em;
   background-color: #ed2626;
@@ -147,9 +159,10 @@ export default {
 .quit:hover {
   background-color: #db0700;
 }
-.gameCode{
-    text-align: left;
-    margin-left: 1vw;
-    margin-top: 1vw;
+
+.gameCode {
+  text-align: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 </style>

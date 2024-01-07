@@ -137,7 +137,6 @@ export default {
   max-width: 100%;
   height: 10vh;
   margin: 0 1vw;
-  width: 10vw;
 }
 
 
