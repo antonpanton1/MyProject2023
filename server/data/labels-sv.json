@@ -40,7 +40,7 @@
 	"typeQuestion": "Skriv din fråga",
 	"typeAnswer": "Svar",
 	"notValid": "Svar inte giltiga",
-	"howToWrite1": "Varje fråga måste ha ett svar mellan 0 och 100 och du kan skriva upp till 3 frågor.",
+	"howToWrite1": "Varje fråga måste ha ett svar mellan 0 och 100. Du kan skriva upp till 3 frågor.",
 	"howToWrite2": " När du är klar går du vidare till väntrummet med orangea knappen.",
 
 "WaitingRoomView": "",
@@ -72,7 +72,7 @@
 	"goNext":"Gå vidare till svaret",
 	"howToAnswer1": "Välj ditt svar genom att dra i slidern, alternativt klicka på plus- respektive minusknappen.", 
 	"howToAnswer2": " Du kan även skriva in ditt svar manuellt i textrutan.",
-	"whenToLock": "Vänta med att gå vidare tills alla har svarat eller lås deras svar och gå vidare ändå genom att klicka på knappen.",
+	"whenToLock": "Vänta med att gå vidare tills alla har låst sina svar eller gå vidare ändå genom att klicka på Gå vidare till svaret.",
 
 "CorrectAnswerView": "",
 	"next": "Gå vidare",

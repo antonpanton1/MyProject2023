@@ -1,6 +1,5 @@
 <template>
-  <div class="background">    
-    <p class="gameCode"> {{uiLabels.currentGame}} {{ pollId }}</p>
+  <div class="background"> 
     <div class="mediaContainer"> 
       <div class="writingQuestions">
         {{ uiLabels.writingQuestions }} {{ ready }} / {{ participants.length }} 
@@ -9,12 +8,12 @@
         {{ uiLabels.totalPlayers }} {{ participants.length }} 
       </div>
     </div>   
-    <div id="gameCode">    
-      <label v-if="gameLeader">{{ uiLabels.howToAdd }}</label> 
-      <h1>{{ uiLabels.gameCode }} {{pollId}}</h1>
-      <div>
-        <div v-for="(participants) in this.participants">
-        {{ participants }}
+    <h1>{{ uiLabels.gameCode }} {{pollId}}</h1> 
+    <div class="gameCodeContainer">
+  
+      <div class="gameCodeList">
+        <div v-for="(participant, index) in participants" :key="index">
+          {{ participant }}
         </div>
       </div>
     </div>
@@ -102,11 +101,18 @@ export default {
   justify-content: space-between;
   font-size: large;
 }
-
+.background {
+  background-image: linear-gradient(to bottom right, red, yellow);
+  height: 100vh;
+  width: 100%;
+  align-items: fixed;
+  overflow-y: auto;
+}
 .gameCode{
-  text-align: left;
-  margin-left: 1vw;
-  margin-top: 1vw;
+    text-align: left;
+    margin-left: 1vw;
+    margin-top: 1vw;
+;
 }
 .writingQuestions{
   text-align: left;
@@ -125,9 +131,11 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 0 2vw;
+  margin-bottom: 2vh;
 }
 
 .leader {
+  margin-top: 8vh;
   padding: 2vh 2vw;
   text-align: center;
   font-size: 1.5em;
@@ -142,9 +150,22 @@ export default {
 .leader:hover {
   background-color: #f05e16;
 }
-
-h1 {
-  margin-top: 5px;
+.gameCodeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
 }
 
+.gameCodeList {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+  
+  overflow-y: auto;
+  max-height: 60vh;
+  width: 30%;
+}
 </style>
