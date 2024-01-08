@@ -8,6 +8,8 @@
         {{ uiLabels.totalPlayers }} {{ participants.length }} 
       </div>
     </div>   
+    <br>
+    <label v-if="gameLeader">{{ uiLabels.howToAdd }}</label> 
     <h1>{{ uiLabels.gameCode }} {{pollId}}</h1> 
     <div class="gameCodeContainer">
   
@@ -84,6 +86,10 @@ export default {
   overflow: scroll;
 }
 
+h1 {
+  margin-top: 5px;
+}
+
 #gameCode {
   display: flex;
   flex-direction: column;
@@ -109,10 +115,9 @@ export default {
   overflow-y: auto;
 }
 .gameCode{
-    text-align: left;
-    margin-left: 1vw;
-    margin-top: 1vw;
-;
+  text-align: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 .writingQuestions{
   text-align: left;
